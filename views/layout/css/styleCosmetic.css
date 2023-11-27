@@ -1,0 +1,151 @@
+/* ######################################################################## */
+/* ########################### ESTÉTICA ################################### */
+/* ######################################################################## */
+/* Fuentes de la web */
+@import url('https://fonts.googleapis.com/css2?family=Agbalumo&family=Inconsolata&family=Kanit&family=Space+Grotesk&display=swap');
+/** 
+  * font-family: Agbalumo; -> Títulos
+  * font-family: Inconsolata;
+  * font-family: Kanit;
+  * font-family: Space Grotesk; -> Footer
+  */
+
+body * {
+  font-family: Agbalumo;
+}
+footer * {
+  font-family: Space Grotesk;
+}
+
+
+/* ######################################################################## */
+/* ############################# HEADER ################################### */
+/* ######################################################################## */
+header {
+  background-color: #9dc58c;
+  border-bottom: 1px lightgreen solid;
+}
+header a {
+  text-decoration: none;
+}
+
+/* ######################################################################## */
+/* ################################ NAV ################################### */
+/* ######################################################################## */
+body>nav {
+  background-color: #7e9e70;
+}
+body>nav a {
+  text-decoration: none;
+}
+
+/* ######################################################################## */
+/* ############################### MAIN ################################### */
+/* ######################################################################## */
+main * {
+  font-family: Space Grotesk;
+}
+
+/* ######################################################################## */
+/* ############################# FOOTER ################################### */
+/* ######################################################################## */
+footer {
+  background-color: #9dc58c;
+}
+
+
+
+
+
+/* ######################################################################## */
+/* #################### Reglas para aplicar con JS ######################## */
+/* ######################################################################## */
+.hide {
+  visibility: hidden;
+}
+.lblError {
+  border: 1px solid red;
+}
+.none {
+  display: none;
+}
+.btnSelected {
+  background-color: #82af6e;
+}
+.btnDeselected {
+  background-color: #b5e7a0; /* Este no sería necesario ya que podríamos eliminar classList -> btnSelected */
+}
+.deshabilitar {
+  opacity: 0.5;
+  pointer-events: none;
+}
+.inputError {
+  color: darkred;
+  font-size: small;
+  font-weight: bold;
+}
+.true {
+  color: green;
+  font-size: x-large;
+  font-weight: bold;
+}
+.false {
+  color: red;
+  font-size: medium;
+  font-weight: bold;
+}
+.error {
+  color: darkblue;
+  font-size: x-large;
+  font-weight: bold;
+}
+
+
+/* ######################################################################## */
+/* ########################## Buttons styles ############################## */
+/* ######################################################################## */
+
+.styled_btn {
+  background-color: #9dc58c;
+  color: white;
+  border: 1px solid #1f271c;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 50px;
+  border-bottom-left-radius: 50px;
+  border-bottom-right-radius: 50px;
+
+  padding: 0.5em 2em;
+  margin: 0.5em auto;
+
+  cursor: pointer;
+  box-shadow: inset 0 0 0 0 #D80286;
+  -webkit-transition: ease-out 0.4s;
+  -moz-transition: ease-out 0.4s;
+  transition: ease-out 0.4s;
+  display: inline-block;
+}
+
+.styled_btn:hover {
+  border: 1px solid;
+  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.2);
+  outline-offset: 15px;
+  outline-color: rgba(255, 255, 255, 0);
+  text-shadow: 1px 1px 2px #3f4f38;
+  box-shadow: inset 400px 50px 0 0 #D80286;
+}
+
+.styled_btn_clicked {
+  border: 1px solid;
+  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.2);
+  outline-offset: 15px;
+  outline-color: rgba(255, 255, 255, 0);
+  text-shadow: 1px 1px 2px #3f4f38;
+  box-shadow: inset 400px 50px 0 0 #D80286;
+}
+
+/* Estética de la web */ /* TODO */
+/*body {
+  background-color: #f7e6d8;
+  font-family: Arial, sans-serif;
+  color: #3b3b3b;
+}*/
