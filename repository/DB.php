@@ -4,7 +4,7 @@ class DB
 {
     private static $connection;
     private static $host = "localhost";
-    private static $dbname = "carousell";
+    private static $dbname = "erasmus";
     private static $user = "root";
     private static $password = "root";
 

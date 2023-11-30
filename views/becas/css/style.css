@@ -1,0 +1,99 @@
+/* CONVOCATORIES */
+.convocatories h1 {
+    /* margin: 0 0 20px; */
+    font-size: 1.4rem;
+    font-weight: 700;
+
+    background-color: blue;
+    padding: 0.6em 2em;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.convocatories select {
+    background-color: black;
+    border: 1px solid white;
+    border-radius: 15px;
+    color: white;
+    margin: 10px 0em;
+    padding: 10px;
+}
+
+.activity-container {
+    /* display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(2, 150px);
+    column-gap: 10px; */
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1em;
+
+    /* TODO SCROLL cuando haya muchas becas */
+    overflow-y: scroll;
+
+    border: 2px solid black;
+}
+
+/* .activity-container>* {
+    height: 180px;
+    width: 300px;
+  } */
+.convocatory-container {
+    height: 60px;
+    width: 400px;
+
+    display: grid;
+    grid-template-columns: 3;
+    grid-template-rows: 3;
+    row-gap: 1em;
+
+    background-color: darkblue;
+    border: 4px solid black;
+    color: white;
+    padding: 3em;
+    text-align: center;
+}
+
+.convocatory-name {
+    grid-area: 1 / 1 / 2 / 3;
+    border: 2px solid black;
+    border-radius: 20px;
+    margin: auto;
+    padding: 10px 40px;
+}
+
+.convocatory-course {
+    grid-area: 2 / 1 / 3 / 2;
+}
+
+.convocatory-container button {
+    grid-area: 2 / 2 / 2 / 3;
+}
+
+.convocatory-container button {
+    background-color: transparent;
+    border: 2px solid black;
+    border-radius: 14px;
+    cursor: pointer;
+    padding: 10px 20px;
+    margin: auto;
+}
+
+.convocatory-container button:hover {
+    background-color: blue;
+}
+
+.image-container {
+    position: relative;
+    margin-bottom: 10px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 3px;
+    border-radius: 10px;
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    object-fit: cover;
+}
