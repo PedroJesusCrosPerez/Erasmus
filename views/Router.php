@@ -27,6 +27,10 @@ class Router
                         require_once "forms/loginForm.php";
                         break;
 
+                    case 'signup':
+                        require_once "forms/signupForm.php";
+                        break;
+
                     case 'logout':
                         Session::delete("user");
                         header("Location: ?menu=landingpage");

@@ -9,18 +9,18 @@ class Convocatory implements JsonSerializable {
     private $date_baremation;
     private $date_definitive_lists;
     private $country;
-    private $proyect_id;
+    private $project_id;
 
     // Constructor
-    public function __construct($id=null, $type, $date_start_requests, $date_end_requests, $date_baremation, $date_definitive_lists, $country, $proyect_id) {
+    public function __construct($id=null, $type, $date_start_requests, $date_end_requests, $date_baremation, $date_definitive_lists, $country, $project_id) {
         $this->setId($id);
         $this->setType($type);
-        $this->setDateStartRequests($date_start_requests);
-        $this->setDateEndRequests($date_end_requests);
-        $this->setDateBaremation($date_baremation);
-        $this->setDateDefinitiveLists($date_definitive_lists);
+        $this->setDate_start_requests($date_start_requests);
+        $this->setDate_end_requests($date_end_requests);
+        $this->setDate_baremation($date_baremation);
+        $this->setDate_definitive_lists($date_definitive_lists);
         $this->setCountry($country);
-        $this->setProyectId($proyect_id);
+        $this->setProject_id($project_id);
     }
 
     // Getters public
@@ -32,19 +32,19 @@ class Convocatory implements JsonSerializable {
         return $this->type;
     }
 
-    public function getDateStartRequests() {
+    public function getDate_start_requests() {
         return $this->date_start_requests;
     }
 
-    public function getDateEndRequests() {
+    public function getDate_end_requests() {
         return $this->date_end_requests;
     }
 
-    public function getDateBaremation() {
+    public function getDate_baremation() {
         return $this->date_baremation;
     }
 
-    public function getDateDefinitiveLists() {
+    public function getDate_definitive_lists() {
         return $this->date_definitive_lists;
     }
 
@@ -52,8 +52,8 @@ class Convocatory implements JsonSerializable {
         return $this->country;
     }
 
-    public function getProyectId() {
-        return $this->proyect_id;
+    public function getProject_id() {
+        return $this->project_id;
     }
 
     // Setters private
@@ -65,19 +65,19 @@ class Convocatory implements JsonSerializable {
         $this->type = $type;
     }
 
-    private function setDateStartRequests($date_start_requests) {
+    private function setDate_start_requests($date_start_requests) {
         $this->date_start_requests = $date_start_requests;
     }
 
-    private function setDateEndRequests($date_end_requests) {
+    private function setDate_end_requests($date_end_requests) {
         $this->date_end_requests = $date_end_requests;
     }
 
-    private function setDateBaremation($date_baremation) {
+    private function setDate_baremation($date_baremation) {
         $this->date_baremation = $date_baremation;
     }
 
-    private function setDateDefinitiveLists($date_definitive_lists) {
+    private function setDate_definitive_lists($date_definitive_lists) {
         $this->date_definitive_lists = $date_definitive_lists;
     }
 
@@ -85,8 +85,8 @@ class Convocatory implements JsonSerializable {
         $this->country = $country;
     }
 
-    private function setProyectId($proyect_id) {
-        $this->proyect_id = $proyect_id;
+    private function setProject_id($project_id) {
+        $this->project_id = $project_id;
     }
 
     // Methods
@@ -95,12 +95,12 @@ class Convocatory implements JsonSerializable {
             "Convocatory ID: %d, Type: %s, Start Requests: %s, End Requests: %s, Baremation Date: %s, Definitive Lists Date: %s, Country: %s, Project ID: %d",
             $this->getId(),
             $this->getType(),
-            $this->getDateStartRequests(),
-            $this->getDateEndRequests(),
-            $this->getDateBaremation(),
-            $this->getDateDefinitiveLists(),
+            $this->getDate_start_requests(),
+            $this->getDate_end_requests(),
+            $this->getDate_baremation(),
+            $this->getDate_definitive_lists(),
             $this->getCountry(),
-            $this->getProyectId()
+            $this->getProject_id()
         );
     }
 

@@ -8,7 +8,7 @@ $thisdir = "views/forms";
 <!-- Signup Form - START -->
 <div class="form-container">
 
-    <h2 id="h2Titulo">Sign up</h2>
+    <h2 id="h2Titulo">Registro</h2>
 
     <form name="examinator-login" accept-charset="utf-8" autocomplete="off" enctype="multipart/form-data"
     method="post" formtarget="_blank" formnovalidate="formnovalidate" action="?menu=actionSignup">
@@ -16,16 +16,16 @@ $thisdir = "views/forms";
     <!-- Signup form - START -->
     <div name="examinatorForm">
 
-        <label for="name">Name:</label>
+        <label for="name">Nombre:</label>
         <input type="text" id="name" name="name" autofocus maxlength="45">
 
-        <label for="password">Password:</label>
+        <label for="password">Contraseña:</label>
         <input type="password" id="password" name="password" maxlength="45">
 
         <label for="signup" class="feedback" name="feedback"></label>
-        <input type="submit" value="Sign up" name="signup" id="btnSignup">
+        <input type="submit" value="Registro" name="signup" id="btnSignup">
 
-        <a href="?menu=login" name="aSignup">¿Have account? <br> -> Login</a>
+        <a href="?menu=login" name="aSignup">Iniciar sesión</a>
     </div>
     <!-- Signup form - END -->
 

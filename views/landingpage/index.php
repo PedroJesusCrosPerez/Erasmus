@@ -1,3 +1,3 @@
 <?php
-echo '<p>Landing page</p>';
+echo '<p>Mala suerte, lo siento!!! :D page</p>';
 ?>
