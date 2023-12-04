@@ -20,7 +20,7 @@
   <script type="text/javascript" src="js/functions.js" charset="utf-8" defer></script><!--  --> <!--<script type="text/javascript" src="script/programa.js" charset="utf-8" defer></script><!---->
   <!--<script type="text/javascript" src="js/Validator.js" charset="utf-8" defer></script>-->
   <script type="text/javascript" src="js/listeners.js" charset="utf-8" defer></script><!--  -->
-  <script type="text/javascript" src="js/modal.js" charset="utf-8" defer></script><!--  -->
+  <!--<script type="text/javascript" src="js/modal.js" charset="utf-8" defer></script><!--  -->
   <!--<script type="text/javascript" src="js/create_item_baremable.js" charset="utf-8" defer></script><!--  -->
 
 
@@ -62,13 +62,13 @@
 
     <h2 id="h2Titulo">Identificación</h2>
 
-    <form name="request" action="fichero.php" accept-charset="utf-8" autocomplete="off" enctype="multipart/form-data" method="post" formtarget="_blank" formnovalidate="formnovalidate">
+    <form name="request" action="manageConvocatory.php" method="post"> <!--accept-charset="utf-8" autocomplete="off" enctype="multipart/form-data" formtarget="_blank" formnovalidate="formnovalidate">-->
       <!-- Formulario Identificación - START -->
       <div id="information">
 
         <label for="project">Proyecto:</label>
         <select name="project">
-          <option value="null">Selecciona el proyecto al que pertenece</option>
+          <option value="null" disabled selected>Selecciona el proyecto al que pertenece</option>
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -139,43 +139,49 @@
       <!-- Formulario Otros - START -->
       <div id="items">
 
-        <p id="btnCreateTitle">Añadir item para baremar</p>
-        <div class="btn btnCreate" id="btnCreate" title="Crear una nueva"></div><br>
-
         <table>
           <thead>
             <tr>
+              <th>Baremable</th>
               <th>Nombre</th>
               <th>Requisito</th>
               <th>Valor mínimo</th>
               <th>Valor máximo</th>
-              <th>Acciones</th>
+              <th>Aporta alumno</th>
             </tr>
           </thead>
           <tbody id="tbody_items_batemable">
             <tr>
-              <td><input type="text" name="item_baremable_name" value="Entrevista" disabled></td>
-              <td><input type="checkbox" name="required" disabled checked></td>
-              <td><input type="number" name="min_value" disabled value="2"></td>
-              <td><input type="number" name="max_value" disabled value="4"></td>
-              <td>
-                <div class="divBtnAction">
-                  <div class="btn btnUpdate" title="Editar"></div>
-                  <div class="btn btnDelete" title="Eliminar"></div>
-                </div>
-              </td>
+              <td><input type="checkbox" name="baremable[]"></td>
+              <td>Expediente <input type="number" name="id" value="1"></td>
+              <td><input type="checkbox" name="required[]"></td>
+              <td><input type="number" name="min_value[]" min="0" max="10"></td>
+              <td><input type="number" name="max_value[]" min="0" max="10"></td>
+              <td><input type="checkbox" name="contributes_student[]"></td>
             </tr>
             <tr>
-              <td><input type="text" name="item_baremable_name"></td>
+              <td><input type="checkbox" name="baremable[]"></td>
+              <td>Idiomas <input type="number" name="id" value="2"></td>
+              <td><input type="checkbox" name="required[]"></td>
+              <td><input type="number" name="min_value[]" min="0" max="10"></td>
+              <td><input type="number" name="max_value[]" min="0" max="10"></td>
+              <td><input type="checkbox" name="contributes_student[]"></td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" name="baremable"></td>
+              <td>Entrevista <input type="number" name="id" value="3"></td>
               <td><input type="checkbox" name="required"></td>
-              <td><input type="number" name="min_value"></td>
-              <td><input type="number" name="max_value"></td>
-              <td>
-                <div class="divBtnAction">
-                  <div class="btn btnUpdate" title="Editar"></div>
-                  <div class="btn btnDelete" title="Eliminar"></div>
-                </div>
-              </td>
+              <td><input type="number" name="min_value" min="0" max="10"></td>
+              <td><input type="number" name="max_value" min="0" max="10"></td>
+              <td><input type="checkbox" name="contributes_student[]"></td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" name="baremable"></td>
+              <td>Idoneidad <input type="number" name="id" value="4"></td>
+              <td><input type="checkbox" name="required"></td>
+              <td><input type="number" name="min_value" min="0" max="10"></td>
+              <td><input type="number" name="max_value" min="0" max="10"></td>
+              <td><input type="checkbox" name="contributes_student[]"></td>
             </tr>
           </tbody>
         </table>
