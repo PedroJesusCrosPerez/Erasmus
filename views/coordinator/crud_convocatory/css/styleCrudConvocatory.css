@@ -1,14 +1,13 @@
-body * {
+#crud_convocatory * {
     font-family: Inconsolata;
+    color: white;
+    font-weight: bold;
+    font-size: 1.2em;
 }
+
 /*#############################################################################################################################*/
 /*################################################## STRUCTURE ################################################################*/
 /*#############################################################################################################################*/
-main {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 #div_buttons {
     display: flex;
     justify-content: center;
@@ -16,30 +15,41 @@ main {
 
     margin: 2em 0em;
 }
+
 /*#############################################################################################################################*/
 /*#################################################### FORM ###################################################################*/
 /*#############################################################################################################################*/
-#crud_container {
+#crud_convocatory {
     display: flex;
     flex-direction: column;
     justify-content: center;
 
-    background-color: lightgreen;
+    /* background-color: lightgreen; */
     padding: 4em;
     border: 20px solid green;
     border-radius: 20px;
 }
-#crud_container>p {
+#crud_convocatory>p {
     font-size: 3em;
     font-weight: bold;
 }
 
-form[name="convocatory"] {
+#form_crud_convocatory {
     display: flex;
     flex-direction: column;
 }
-form[name="convocatory"]>label{
+
+/* Label */
+#form_crud_convocatory>label{
     font-weight: bold;
+}
+/* Select AND Input */
+#form_crud_convocatory>select, #form_crud_convocatory>input {
+    height: 2.7em;
+    padding-left: 0.8em;
+
+    border: 1px solid hsl(0, 0%, 10%);
+    background-color: hsl(0, 0%, 14%);
 }
 
 #form_container {
@@ -49,15 +59,15 @@ form[name="convocatory"]>label{
     background-color: lightgrey;
     border: 1px solid black;
 }
-#form_convocatory {
+#form_crud_convocatory {
     display: grid;
     grid-template-rows: repeat(2,2em) 1em repeat(2,2em) 1em repeat(2,2em) 1em repeat(2,2em) 1em repeat(2,2em) 1em;
     grid-template-columns: repeat(4,1fr) 1fr 4fr;
 }
-#form_convocatory>* {
+#form_crud_convocatory>* {
     font-size: 0.8em;
 }
-#form_convocatory_title {
+#form_crud_convocatory_title {
     font-size: 1.2em;
     font-weight: bold;
     margin-bottom: 1em;
@@ -116,24 +126,24 @@ input[type="submit"]                { grid-area: 14 / 6 / 15 / 7; }
 }
 /* ICONS */
 .btnCreate {
-    background-image: url('../../../src/icons/create.svg');
+    background-image: url('../../src/icons/create.svg');
 }
 .btnCreate:hover {
-    background-image: url('../../../src/icons/create-hover.svg');
+    background-image: url('../../src/icons/create-hover.svg');
 }
 
 .btnUpdate {
-    background-image: url('../../../src/icons/pencil.svg');
+    background-image: url('../../src/icons/pencil.svg');
 }
 .btnUpdate:hover {
-    background-image: url('../../../src/icons/pencil-hover.svg');
+    background-image: url('../../src/icons/pencil-hover.svg');
 }
 
 .btnDelete {
-    background-image: url('../../../src/icons/trash.svg');
+    background-image: url('../../src/icons/trash.svg');
 }
 .btnDelete:hover {
-    background-image: url('../../../src/icons/trash-hover.svg');
+    background-image: url('../../src/icons/trash-hover.svg');
 }
 .btnSubmit {
     background-color: green;

@@ -28,7 +28,7 @@ class DBConvocatory
             foreach ($arrItem as $key => $value) 
             {
                 $db->exec("INSERT INTO convocatory_has_item_baremable (convocatory_id, item_baremable_id, required, min_value, max_value)
-                VALUES  (@convocatory_id, ".$arrItem[$key]->getId().", ".$arrItem[$key]->getRequired().", ".$arrItem[$key]->getMin_value().", ".$arrItem[$key]->getMax_value().");");
+                VALUES  (@convocatory_id, ".$arrItem[$key]->getItem_baremable_id().", ".$arrItem[$key]->getRequired().", ".$arrItem[$key]->getMin_value().", ".$arrItem[$key]->getMax_value().");");
             }
             
             $db->commit();

@@ -42,6 +42,6 @@ window.addEventListener("load", function () {
         item.addEventListener("click", function () { changeImages })
     });
 
-    console.log(links);
-    console.log(changeImages);
+    // console.log(links);
+    // console.log(changeImages);
 })

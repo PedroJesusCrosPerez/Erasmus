@@ -27,9 +27,10 @@ require_once $_SERVER["DOCUMENT_ROOT"]."/helpers/Autoload.php";
 
 $group = DBGroup::findById("1ASA");
 $item_baremable = array();
-$item_baremable[] = DBItem_baremable::findById(1);
+$item_baremable[] = DBConvocatory_has_item_baremable::findByConvocatoryId(1);
 $convocatory = DBConvocatory::findById(1);
 
 echo var_dump(DBConvocatory::insert($convocatory, $group, $item_baremable));
+
 
 ?>

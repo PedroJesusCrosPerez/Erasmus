@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="application-name" content="Proyecto final HTML5, CSS3 y javascript">
+  <meta name="author" content="Pedro Jesús Cros Pérez">
+  <meta name="description" content="Proyecto final usando todo lo aprendido HTML5, CSS3 y javascript">
+  <meta name="generator" content="Visual Studio Code">
+  <meta name="keywords"
+    content="proyecto, practicas, html, css, javascript, formulario, identificación, domicilio, otros">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!--<base href="./recursos/img" target="_blank">-->
+  <title>Formulario Pedro</title>
+
+  <!-- JAVASCRIPT -->
+  <script type="text/javascript" src="js/FormElement.js" charset="utf-8" defer></script> <!-- Elementos del html pasados a javascript -->
+  <script type="text/javascript" src="js/functions.js" charset="utf-8" defer></script><!--  --> <!--<script type="text/javascript" src="script/programa.js" charset="utf-8" defer></script><!---->
+  <!--<script type="text/javascript" src="js/Validator.js" charset="utf-8" defer></script>-->
+  <script type="text/javascript" src="js/listeners.js" charset="utf-8" defer></script><!--  -->
+  <script type="text/javascript" src="js/modal.js" charset="utf-8" defer></script><!--  -->
+  <!--<script type="text/javascript" src="js/create_item_baremable.js" charset="utf-8" defer></script><!--  -->
+
+
+  <!-- CSS3 -->
+  <link rel="stylesheet" href="css/hojaReseteoEstilosCss.css"> <!-- Hoja de reseteo de estilos CSS -->
+  <link rel="stylesheet" href="css/estiloEstructura.css"> <!-- Esqueleto de la web -->
+  <link rel="stylesheet" href="css/estiloPosicionamiento.css"> <!-- Posicionamiento con flexbox. Además introduzco paddings y margin donde cuadrar los contenedores a mi gusto personal -->
+  <link rel="stylesheet" href="css/estiloEstetica.css"> <!-- Detalles estéticos de la web: colores, fondos, tamaño y fuentes de letra -->
+
+  <!-- TODO NOTAS -->
+  <!-- Molaría poner una retroalimentación positiva de que se ha enviado correctamente el formulario -->
+  <!-- LOS CAMPOS DE LA ÚLTIMA HOJA NO SON OBLIGATORIOS -->
+  <!-- Cuando le de al botón enviar, se quitan todos los datos de los campos y aparece el mensaje formulario enviado, que a los 5 segundos se quita (utilizando setTimeOut) -->
+</head>
+
+<body>
+<!--
+  1º Datos personales
+   - Proyecto
+   - País
+   - Destinatarios
+   - Movilidades
+   - tipo
+
+  2º Fechas
+   - fechas
+-->
+  <div class="form-container">
+
+    <div id="topButton-container">
+      <button class="topButton" id="btnInformation"></button>
+      <p>Información</p>
+      <button class="topButton" id="btnDates"></button>
+      <p>Fechas</p>
+      <button class="topButton" id="btnItems"></button>
+      <p>Items baremables</p>
+    </div>
+
+
+    <h2 id="h2Titulo">Identificación</h2>
+
+    <form name="request" action="fichero.php" accept-charset="utf-8" autocomplete="off" enctype="multipart/form-data" method="post" formtarget="_blank" formnovalidate="formnovalidate">
+      <!-- Formulario Identificación - START -->
+      <div id="information">
+
+        <label for="project">Proyecto:</label>
+        <select name="project">
+          <option value="null">Selecciona el proyecto al que pertenece</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+        </select>
+        <label for="project" class="inputError" id="projectError"></label>
+        
+        <label for="country">País:</label>
+        <input type="text" name="country" maxlength="40">
+        <label for="country" class="inputError" id="countryError"></label>
+
+        <label for="group">Destinatarios:</label>
+        <select name="group">
+          <option value="null">Selecciona un grupo</option>
+          <option value="1">1ºDAW</option>
+          <option value="2">1ºDAM</option>
+          <option value="3">1ºASIR</option>
+        </select>
+        <label for="group" class="inputError" id="groupError"></label>
+
+        <label for="movilities">Núero de movilidades:</label>
+        <input type="number" name="movilities" value="1" min="1" max="30">
+        <label for="movilities" class="inputError" id="movilitiesError"></label>
+
+        <div name="divType">
+          <label for="type" name="type">Tipo</label>
+          <div>
+            <label for="type" name="type_long">Larga</label>
+            <input type="radio" name="type" value="long">
+          </div>
+          <div>
+            <label for="type" name="type_short">Corta</label>
+            <input type="radio" name="type" value="short">
+          </div>
+        </div>
+        <label for="type" class="inputError" id="typeError"></label>
+
+        <button type="button" id="btnInformationNext">Siguiente</button>
+
+        <label for="feedback" id="feedback">¡¡Tú formulario se ha enviado correctamente!!</label>
+      </div>
+      <!-- Formulario Identificación - END -->
+
+      <!-- Formulario Domicilio - START -->
+      <div id="dates">
+
+        <label for="date_requests_start" name="date_requests_start">Fecha de inicio solicitudes</label>
+        <input type="date" name="date_requests_start" id="date_requests_start">
+        <label for="date_requests_start" class="inputError" id="date_requests_startError"></label>
+
+        <label for="date_requests_end" name="date_requests_end">Fecha de fin solicitudes</label>
+        <input type="date" name="date_requests_end" id="date_requests_end">
+        <label for="date_requests_end" class="inputError" id="date_requests_endError"></label>
+
+        <label for="date_baremation" name="date_baremation">Fecha de baremación / listados provisionales</label>
+        <input type="date" name="date_baremation" id="date_baremation">
+        <label for="date_baremation" class="inputError" id="date_baremationError"></label>
+
+        <label for="date_definitive_lists" name="date_definitive_lists">Fecha de listas definitivas</label>
+        <input type="date" name="date_definitive_lists" id="date_definitive_lists">
+        <label for="date_definitive_lists" class="inputError" id="date_definitive_listsError"></label>
+
+        <button type="button" id="btnDatesBefore">Anterior</button>
+        <button type="button" id="btnDatesNext">Siguiente</button>
+
+      </div>
+      <!-- Formulario Domicilio - END -->
+
+      <!-- Formulario Otros - START -->
+      <div id="items">
+
+        <p id="btnCreateTitle">Añadir item para baremar</p>
+        <div class="btn btnCreate" id="btnCreate" title="Crear una nueva"></div><br>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Requisito</th>
+              <th>Valor mínimo</th>
+              <th>Valor máximo</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="tbody_items_batemable">
+            <tr>
+              <td><input type="text" name="item_baremable_name" value="Entrevista" disabled></td>
+              <td><input type="checkbox" name="required" disabled checked></td>
+              <td><input type="number" name="min_value" disabled value="2"></td>
+              <td><input type="number" name="max_value" disabled value="4"></td>
+              <td>
+                <div class="divBtnAction">
+                  <div class="btn btnUpdate" title="Editar"></div>
+                  <div class="btn btnDelete" title="Eliminar"></div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td><input type="text" name="item_baremable_name"></td>
+              <td><input type="checkbox" name="required"></td>
+              <td><input type="number" name="min_value"></td>
+              <td><input type="number" name="max_value"></td>
+              <td>
+                <div class="divBtnAction">
+                  <div class="btn btnUpdate" title="Editar"></div>
+                  <div class="btn btnDelete" title="Eliminar"></div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <button type="button" id="btnItemsBefore">Anterior</button>
+        <button type="button" id="btnItemsSend">ENVIAR</button>
+      </div>
+      <!-- Formulario Otros - END -->
+
+    </form>
+
+  </div>
+
+</body>
+
+</html>

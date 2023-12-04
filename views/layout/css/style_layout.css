@@ -38,7 +38,7 @@ body {
 
 main {
   display: grid;
-  grid-template-columns: 13% 87%;
+  grid-template-columns: 15% 85%;
   /* min-height: 100vh; */
   height: 90vh;
   width: 100%;
@@ -68,10 +68,7 @@ main {
   font-family: "Nunito", sans-serif;
 }
 
-.logo {
-  display: none;
-}
-
+/* NAV */
 .nav-item {
   position: relative;
   display: block;
@@ -82,7 +79,8 @@ main {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
+  /* justify-content: center; */
+  justify-content: flex-start;
   color: #fff;
   font-size: 1rem;
   padding: 15px 0;
@@ -156,7 +154,8 @@ main {
 
 .nav-text {
   display: block;
-  width: 120px;
+  /* width: 120px; */
+  width: auto;
   height: 20px;
   font-family: "Mulish", sans-serif;
 }

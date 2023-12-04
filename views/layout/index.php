@@ -8,58 +8,16 @@
     <link rel="stylesheet" href="views/layout/css/resetstyle.css">
     <link rel="stylesheet" href="views/layout/css/style_layout.css">
     <!--<link rel="stylesheet" href="css/responsive.css">-->
-    <script src="views/layout/js/js.js"></script>
+    <!-- <script src="views/layout/js/js2.js"></script> -->
 </head>
 
 <body>
 
     <main>
         <nav class="main-menu">
-            <h1>Becas erasmus</h1>
-            <ul>
-                <li class="nav-item active">
-                    <b></b>
-                    <b></b>
-                    <!-- <a href="?menu=landingpage"> --><a href="#">
-                        <span class="fa fa-home nav-icon"></span>
-                        <span class="nav-text">Home</span>
-                    </a>
-                </li>
-
-                <li class="nav-item">
-                    <b></b>
-                    <b></b>
-                    <!-- <a href="?menu=login"> --><a href="#">
-                        <span class="fa fa-user nav-icon"></span>
-                        <span class="nav-text">Profile</span>
-                    </a>
-                </li>
-
-                <li class="nav-item">
-                    <b></b>
-                    <b></b>
-                    <a href="?menu=coordinator">
-                        <span class="fa fa-settings nav-icon"></span>
-                        <span class="nav-text">Settings</span>
-                    </a>
-                </li>
-
-                <li class="nav-item">
-                    <b></b>
-                    <b></b>
-                    <a href="?menu=becas">
-                        <span class="fa fa-becas nav-icon"></span>
-                        <span class="nav-text">Becas</span>
-                    </a>
-                </li>
-
-                <!--<li class="nav-item">
-                    <a href="#">
-                        <i class="fa fa-person-running nav-icon"></i>
-                        <span class="nav-text">Activities</span>
-                    </a>
-                </li>-->
-            </ul>
+            <?php
+            require $_SERVER["DOCUMENT_ROOT"] . "/views/layout/nav.php";
+            ?>
         </nav>
 
         <section class="content">

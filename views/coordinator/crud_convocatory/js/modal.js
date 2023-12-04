@@ -52,7 +52,7 @@ window.addEventListener("load", function () {
 
         // Crear formulario form
         //fetch("views/rol/coodinator/js/template/form.html")
-        fetch("http://serverpedroerasmus/views/rol/coordinator/js/template/form.html")
+        fetch("http://serverpedroerasmus/views/rol/coordinator/crud_convocatory/js/template/form.html")
         .then(x=>x.text())
         .then(y=>{
             var form = document.createElement("div");

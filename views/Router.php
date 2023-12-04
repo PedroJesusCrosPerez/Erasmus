@@ -16,7 +16,11 @@ class Router
                         break;
 
                     case 'coordinator':
-                        require_once "coordinator/index.php";
+                        require_once "coordinator/dashboard/index.php";
+                        break;
+
+                    case 'create_convocatory':
+                        require_once "coordinator/create_convocatory/index.php";
                         break;
 
                     case 'becas':
@@ -48,7 +52,7 @@ class Router
         }
         else 
         {
-            require_once $_SERVER['REQUEST_URI']."?menu=landingpage";
+            require_once 'landingpage/index.php';
         }
     }
 
