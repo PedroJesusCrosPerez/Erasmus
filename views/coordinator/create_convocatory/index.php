@@ -1,19 +1,20 @@
 <?php
+// $thisdir = $_SERVER["DOCUMENT_ROOT"]."/views/coordinator/create_convocatory/";
+$thisdir = "/views/coordinator/create_convocatory/";
 echo '
 <head>
   <title>Formulario Pedro</title>
 
   <!-- JAVASCRIPT -->
-  <script type="text/javascript" src="js/FormElement.js" charset="utf-8" defer></script>
-  <script type="text/javascript" src="js/functions.js" charset="utf-8" defer></script>
-  <script type="text/javascript" src="js/listeners.js" charset="utf-8" defer></script>
-
+  <script type="text/javascript" src="'.$thisdir.'js/FormElement.js" charset="utf-8" defer></script>
+  <script type="text/javascript" src="'.$thisdir.'js/functions.js" charset="utf-8" defer></script>
+  <script type="text/javascript" src="'.$thisdir.'js/listeners.js" charset="utf-8" defer></script>
 
   <!-- CSS3 -->
-  <link rel="stylesheet" href="css/hojaReseteoEstilosCss.css"> <!-- Hoja de reseteo de estilos CSS -->
-  <link rel="stylesheet" href="css/estiloEstructura.css"> <!-- Esqueleto de la web -->
-  <link rel="stylesheet" href="css/estiloPosicionamiento.css"> <!-- Posicionamiento con flexbox. Además introduzco paddings y margin donde cuadrar los contenedores a mi gusto personal -->
-  <link rel="stylesheet" href="css/estiloEstetica.css"> <!-- Detalles estéticos de la web: colores, fondos, tamaño y fuentes de letra -->
+  <link rel="stylesheet" href="'.$thisdir.'css/hojaReseteoEstilosCss.css"> <!-- Hoja de reseteo de estilos CSS -->
+  <link rel="stylesheet" href="'.$thisdir.'css/structure.css"> <!-- Esqueleto de la web -->
+  <link rel="stylesheet" href="'.$thisdir.'css/estiloPosicionamiento.css"> <!-- Posicionamiento con flexbox. Además introduzco paddings y margin donde cuadrar los contenedores a mi gusto personal -->
+  <link rel="stylesheet" href="'.$thisdir.'css/estiloEstetica.css"> <!-- Detalles estéticos de la web: colores, fondos, tamaño y fuentes de letra -->
 </head>
 
   <div class="form-container">
@@ -136,26 +137,27 @@ echo '
               <td><input type="checkbox" name="contributes_student[]"></td>
             </tr>
             <tr>
-              <td><input type="checkbox" name="baremable"></td>
+              <td><input type="checkbox" name="baremable[]"></td>
               <td>Entrevista <input type="number" name="id" value="3"></td>
-              <td><input type="checkbox" name="required"></td>
-              <td><input type="number" name="min_value" min="0" max="10"></td>
-              <td><input type="number" name="max_value" min="0" max="10"></td>
+              <td><input type="checkbox" name="required[]"></td>
+              <td><input type="number" name="min_value[]" min="0" max="10"></td>
+              <td><input type="number" name="max_value[]" min="0" max="10"></td>
               <td><input type="checkbox" name="contributes_student[]"></td>
             </tr>
             <tr>
-              <td><input type="checkbox" name="baremable"></td>
+              <td><input type="checkbox" name="baremable[]"></td>
               <td>Idoneidad <input type="number" name="id" value="4"></td>
-              <td><input type="checkbox" name="required"></td>
-              <td><input type="number" name="min_value" min="0" max="10"></td>
-              <td><input type="number" name="max_value" min="0" max="10"></td>
+              <td><input type="checkbox" name="required[]"></td>
+              <td><input type="number" name="min_value[]" min="0" max="10"></td>
+              <td><input type="number" name="max_value[]" min="0" max="10"></td>
               <td><input type="checkbox" name="contributes_student[]"></td>
             </tr>
           </tbody>
         </table>
 
         <button type="button" id="btnItemsBefore">Anterior</button>
-        <button type="button" id="btnItemsSend">ENVIAR</button>
+        <!--<button type="button" id="btnItemsSend">ENVIAR</button>-->
+        <input type="submit" value="ENVIAR" name="submit">
       </div>
       <!-- Formulario Otros - END -->
 

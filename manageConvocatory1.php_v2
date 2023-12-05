@@ -39,15 +39,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     echo "Fecha de listas definitivas: " . $date_definitive_lists . "<br>";
 
     // Procesar datos de items baremables
+    
+    // Assuming form data is submitted using POST method
+    
+    $convocatory_id = 1; // Replace with the actual convocatory ID
+    $baremables = $_POST['baremable'] ?? array();
+    $ids = $_POST['item_id'] ?? array();
+    $required = $_POST['required'] ?? array();
+    $min_values = $_POST['min_value'] ?? array();
+    $max_values = $_POST['max_value'] ?? array();
+    $contributes_students = $_POST['contributes_student'] ?? array();
+    
     $arrItems = array();
-    for ($i = 0; $i < count($baremables); $i++) {
-        echo "Baremable " . ($i + 1) . ": ";
-        echo "ID: " . $ids[$i] . ", ";
-        echo "Requerido: " . (isset($required[$i]) ? "true" : "false") . ", ";
-        echo "Valor mínimo: " . (isset($min_values[$i]) ? $min_values[$i] : "N/A") . ", ";
-        echo "Valor máximo: " . (isset($max_values[$i]) ? $max_values[$i] : "N/A") . ", ";
-        echo "Aporta alumno: " . (isset($contributes_students[$i]) ? "true" : "false") . "<br>";        
-
+    foreach ($baremables as $i => $baremable) {
+        // Process each item
         $convocatory_has_item_baremable = new Convocatory_has_item_baremable(
             $convocatory_id,
             $ids[$i],
@@ -56,39 +61,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $max_values[$i],
             isset($contributes_students[$i])
         );
-        $arrItems[] = ($convocatory_has_item_baremable);
-        /*echo "<br>";
-        
-        if ($convocatory_has_item_baremable != "") {
-            echo var_dump($convocatory_has_item_baremable);
-        }*/
+    
+        $arrItems[] = $convocatory_has_item_baremable;
     }
+    
+// Display the $convocatory object
+echo "Convocatory Object:\n";
+var_dump($convocatory);
 
-    $convocatory = new Convocatory(
-        null,
-        $type,
-        $date_requests_start,
-        $date_requests_end,
-        $date_baremation,
-        $date_definitive_lists,
-        $country,
-        $project
-    );
-    
-
-        /*// Guardar contenido en un archivo JSON
-        $outputData = array(
-            'convocatory' => $convocatory
-        );
-    
-        $outputJson = json_encode($outputData, JSON_PRETTY_PRINT);
-    
-        file_put_contents('output.json', $outputJson);
-    
-        // Imprimir objetos
-        echo var_dump($convocatory);*/
-        var_dump($convocatory);
-        print_r($arrItems);
+// Display the $arrItems array
+echo "arrItems Array:\n";
+print_r($arrItems);
 }
 
 ?>

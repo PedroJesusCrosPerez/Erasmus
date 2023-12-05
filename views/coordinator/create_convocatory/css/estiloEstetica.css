@@ -24,12 +24,6 @@
 
 
 /* Estética de la web */
-body {
-  background-color: #f7e6d8;
-  font-family: Arial, sans-serif;
-  color: #3b3b3b;
-}
-
 .form-container {
   border-radius: 20px;
   background-color: #ffffff;
@@ -38,13 +32,13 @@ body {
 
 h2 {
   text-align: center;
-  font-size: 36px;
+  font-size: 24px;
   color: #3b3b3b;
 }
 
 label {
   display: block;
-  font-size: 18px;
+  font-size: 12px;
   font-weight: bold;
 }
 
@@ -55,7 +49,7 @@ select {
   border-radius: 5px;
   background-color: #f7e6d8;
   color: #3b3b3b;
-  font-size: 16px;
+  font-size: 10px;
   resize: none;
   transition: all 0.3s ease;
 }
@@ -76,7 +70,7 @@ select:focus {
   border: none;
   /*background-color: #b5e7a0;*/
   /*color: #fff;*/
-  font-size: 1.2rem;
+  font-size: 0.8rem;
   /*cursor: pointer;*/
   transition: transform 0.3s ease-in-out;
 }
@@ -98,7 +92,7 @@ button[type="button"], button[type="submit"] {
   border-radius: 5px;
   background-color: #b5e7a0;
   color: #3b3b3b;
-  font-size: 18px;
+  font-size: 12px;
   font-weight: bold;
   cursor: pointer;
   transition: all 0.3s ease;

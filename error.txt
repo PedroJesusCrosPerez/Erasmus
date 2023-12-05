@@ -1,0 +1,33 @@
+Array
+(
+    [project] => 3
+    [country] => andorra
+    [group] => 2
+    [movilities] => 12
+    [type] => short
+    [date_requests_start] => 2023-12-07
+    [date_requests_end] => 2023-12-08
+    [date_baremation] => 2023-12-21
+    [date_definitive_lists] => 2023-12-23
+    [baremable] => Array
+        (
+            [0] => on
+            [1] => on
+        )
+
+    [id] => 4
+    [required] => Array
+        (
+            [0] => on
+            [1] => on
+        )
+
+    [min_value] => 
+    [max_value] => 
+    [contributes_student] => Array
+        (
+            [0] => on
+        )
+
+    [submit] => ENVIAR
+)
