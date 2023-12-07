@@ -8,23 +8,25 @@ class Request implements JsonSerializable
     private $name;
     private $surname;
     private $birthdate;
-    private $course;
+    private $group;
     private $phone;
     private $email;
     private $address;
+    private $photo;
     private $convocatory_id;
 
     // Constructor
-    public function __construct($id, $dni, $name, $surname, $birthdate, $course, $phone, $email, $address, $convocatory_id) {
+    public function __construct($id, $dni, $name, $surname, $birthdate, $group, $phone, $email, $address, $photo, $convocatory_id) {
         $this->setId($id);
         $this->setDni($dni);
         $this->setName($name);
         $this->setSurname($surname);
         $this->setBirthdate($birthdate);
-        $this->setCourse($course);
+        $this->setGroup($group);
         $this->setPhone($phone);
         $this->setEmail($email);
         $this->setAddress($address);
+        $this->setPhoto($photo);
         $this->setConvocatoryId($convocatory_id);
     }
 
@@ -49,8 +51,8 @@ class Request implements JsonSerializable
         return $this->birthdate;
     }
 
-    public function getCourse() {
-        return $this->course;
+    public function getGroup() {
+        return $this->group;
     }
 
     public function getPhone() {
@@ -63,6 +65,10 @@ class Request implements JsonSerializable
 
     public function getAddress() {
         return $this->address;
+    }
+    
+    public function getPhoto() {
+        return $this->photo;
     }
 
     public function getConvocatoryId() {
@@ -90,8 +96,8 @@ class Request implements JsonSerializable
         $this->birthdate = $birthdate;
     }
 
-    private function setCourse($course) {
-        $this->course = $course;
+    private function setGroup($group) {
+        $this->group = $group;
     }
 
     private function setPhone($phone) {
@@ -106,6 +112,10 @@ class Request implements JsonSerializable
         $this->address = $address;
     }
 
+    private function setPhoto($photo) {
+        $this->photo = $photo;
+    }
+
     private function setConvocatoryId($convocatory_id) {
         $this->convocatory_id = $convocatory_id;
     }
@@ -113,13 +123,17 @@ class Request implements JsonSerializable
     // Methods
     public function __toString() {
         return sprintf(
-            "Request ID: %d, Name: %s %s, Birthdate: %s, Course: %s, Email: %s",
+            "Request ID: %s, DNI: %s, Name: %s, Surname: %s, Birthdate: %s, Group: %s, Phone: %s, Email: %s, Address: %s, Convocatory ID: %s",
             $this->getId(),
+            $this->getDni(),
             $this->getName(),
             $this->getSurname(),
             $this->getBirthdate(),
-            $this->getCourse(),
-            $this->getEmail()
+            $this->getGroup(),
+            $this->getPhone(),
+            $this->getEmail(),
+            $this->getAddress(),
+            $this->getConvocatoryId()
         );
     }
 

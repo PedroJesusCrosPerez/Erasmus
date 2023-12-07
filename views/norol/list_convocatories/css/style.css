@@ -19,7 +19,7 @@
     padding: 10px;
 }
 
-.activity-container {
+.convocatories-container {
     /* display: grid;
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(2, 150px);
@@ -35,7 +35,7 @@
     border: 2px solid black;
 }
 
-/* .activity-container>* {
+/* .convocatories-container>* {
     height: 180px;
     width: 300px;
   } */

@@ -30,6 +30,40 @@ switch ($_SERVER["REQUEST_METHOD"])
             case 'findAll':
                 echo json_encode(DBConvocatory::findAll());
                 break;
+
+            case 'findByGroup':
+                if (isset($_GET["group"])) {
+                    switch ($_GET["group"]) {
+                        case 'findAll':
+                            $groups = DBGroup::findAll();
+                            $convocatories = array();
+
+                            $length = count($groups);
+                            for ($i=0; $i < $length; $i++) { 
+                                $convocatories[] = DBConvocatory::findByGroupId($groups[$i]);
+                            }
+                            
+                            echo json_encode(DBConvocatory::createArrCon_has_group( $groups, $convocatories ));
+                            break;
+                        
+                        case 'findById':
+                            if (isset($_GET["id"])) {
+                                $group = DBGroup::findById($_GET["id"]);
+                                $convocatories = DBConvocatory::findByGroupId($_GET["id"]);
+                                
+                                echo json_encode(DBConvocatory::createArrCon_has_groupByGroup_id($_GET["id"]));
+                            }
+                            break;
+                        
+                        default: // Select * | findAll
+                            $group = DBGroup::findAll();
+                            $convocatories = DBConvocatory::findAll();
+                            
+                            echo json_encode(DBConvocatory::createArrCon_has_group( $group, $convocatories ));
+                            break;
+                    }
+                }
+                break;
             
             default:
                 echo json_encode(['error' => 'Invalid operation']);

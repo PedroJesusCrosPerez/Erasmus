@@ -25,16 +25,25 @@ echo '
         <b></b>
         <a href="?menu=create_convocatory">
             <span class="fa fa-create_convocatory nav-icon"></span>
-            <span class="nav-text">Crear convocatoria beca</span>
+            <span class="nav-text">Crear convocatoria</span>
         </a>
     </li>
 
-    <li class="nav-item" id="menu-becas">
+    <li class="nav-item" id="menu-list_convocatories">
         <b></b>
         <b></b>
-        <a href="?menu=becas">
+        <a href="?menu=list_convocatories">
+            <span class="fa fa-list_list_convocatories nav-icon"></span>
+            <span class="nav-text">Listado de convocatorias</span>
+        </a>
+    </li>
+    
+    <li class="nav-item" id="menu-complete-request">
+        <b></b>
+        <b></b>
+        <a href="?menu=complete_request">
             <span class="fa fa-list_becas nav-icon"></span>
-            <span class="nav-text">Listado de becas</span>
+            <span class="nav-text">Rellenar solicitud</span>
         </a>
     </li>
 

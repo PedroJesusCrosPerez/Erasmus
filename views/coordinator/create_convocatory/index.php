@@ -1,6 +1,10 @@
 <?php
 // $thisdir = $_SERVER["DOCUMENT_ROOT"]."/views/coordinator/create_convocatory/";
 $thisdir = "/views/coordinator/create_convocatory/";
+
+$arrProjects = DBProject::findAll();
+$arrGroups = DBGroup::findAll();
+
 echo '
 <head>
   <title>Formulario Pedro</title>
@@ -31,16 +35,18 @@ echo '
 
     <h2 id="h2Titulo">Identificación</h2>
 
-    <form name="request" action="manageConvocatory.php" method="post"> <!--accept-charset="utf-8" autocomplete="off" enctype="multipart/form-data" formtarget="_blank" formnovalidate="formnovalidate">-->
+    <form name="request" action="createConvocatory.php" method="post"> <!--accept-charset="utf-8" autocomplete="off" enctype="multipart/form-data" formtarget="_blank" formnovalidate="formnovalidate">-->
       <!-- Formulario Identificación - START -->
       <div id="information">
 
         <label for="project">Proyecto:</label>
         <select name="project">
           <option value="null" disabled selected>Selecciona el proyecto al que pertenece</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
+          ';
+          foreach ($arrProjects as $project) {
+            echo '<option value="'.$project->getId().'">'.$project->getName().'</option>';
+          }
+          echo '
         </select>
         <label for="project" class="inputError" id="projectError"></label>
         
@@ -51,9 +57,11 @@ echo '
         <label for="group">Destinatarios:</label>
         <select name="group">
           <option value="null">Selecciona un grupo</option>
-          <option value="1">1ºDAW</option>
-          <option value="2">1ºDAM</option>
-          <option value="3">1ºASIR</option>
+          ';
+          foreach ($arrGroups as $group) {
+            echo '<option value="'.$group->getId().'">'.$group->getName().'</option>';
+          }
+          echo '
         </select>
         <label for="group" class="inputError" id="groupError"></label>
 
@@ -122,7 +130,7 @@ echo '
           <tbody id="tbody_items_batemable">
             <tr>
               <td><input type="checkbox" name="baremable[]"></td>
-              <td>Expediente <input type="number" name="id" value="1"></td>
+              <td>Expediente <input type="number" name="id[]" value="1"></td>
               <td><input type="checkbox" name="required[]"></td>
               <td><input type="number" name="min_value[]" min="0" max="10"></td>
               <td><input type="number" name="max_value[]" min="0" max="10"></td>
@@ -130,7 +138,7 @@ echo '
             </tr>
             <tr>
               <td><input type="checkbox" name="baremable[]"></td>
-              <td>Idiomas <input type="number" name="id" value="2"></td>
+              <td>Idiomas <input type="number" name="id[]" value="2"></td>
               <td><input type="checkbox" name="required[]"></td>
               <td><input type="number" name="min_value[]" min="0" max="10"></td>
               <td><input type="number" name="max_value[]" min="0" max="10"></td>
@@ -138,7 +146,7 @@ echo '
             </tr>
             <tr>
               <td><input type="checkbox" name="baremable[]"></td>
-              <td>Entrevista <input type="number" name="id" value="3"></td>
+              <td>Entrevista <input type="number" name="id[]" value="3"></td>
               <td><input type="checkbox" name="required[]"></td>
               <td><input type="number" name="min_value[]" min="0" max="10"></td>
               <td><input type="number" name="max_value[]" min="0" max="10"></td>
@@ -146,7 +154,7 @@ echo '
             </tr>
             <tr>
               <td><input type="checkbox" name="baremable[]"></td>
-              <td>Idoneidad <input type="number" name="id" value="4"></td>
+              <td>Idoneidad <input type="number" name="id[]" value="4"></td>
               <td><input type="checkbox" name="required[]"></td>
               <td><input type="number" name="min_value[]" min="0" max="10"></td>
               <td><input type="number" name="max_value[]" min="0" max="10"></td>

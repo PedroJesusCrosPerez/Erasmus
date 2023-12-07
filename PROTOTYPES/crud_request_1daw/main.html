@@ -18,20 +18,14 @@
   <!-- JAVASCRIPT -->
   <script type="text/javascript" src="script/FormElement.js" charset="utf-8" defer></script> <!-- Elementos del html pasados a javascript -->
   <script type="text/javascript" src="script/functions.js" charset="utf-8" defer></script><!--  --> <!--<script type="text/javascript" src="script/programa.js" charset="utf-8" defer></script><!---->
-  <script type="text/javascript" src="script/Validator.js" charset="utf-8" defer></script>
+  <!-- <script type="text/javascript" src="script/Validator.js" charset="utf-8" defer></script> -->
   <script type="text/javascript" src="script/listeners.js" charset="utf-8" defer></script><!--  -->
-
 
   <!-- CSS3 -->
   <link rel="stylesheet" href="css/hojaReseteoEstilosCss.css"> <!-- Hoja de reseteo de estilos CSS -->
   <link rel="stylesheet" href="css/estiloEstructura.css"> <!-- Esqueleto de la web -->
   <link rel="stylesheet" href="css/estiloPosicionamiento.css"> <!-- Posicionamiento con flexbox. Además introduzco paddings y margin donde cuadrar los contenedores a mi gusto personal -->
   <link rel="stylesheet" href="css/estiloEstetica.css"> <!-- Detalles estéticos de la web: colores, fondos, tamaño y fuentes de letra -->
-
-  <!-- TODO NOTAS -->
-  <!-- Molaría poner una retroalimentación positiva de que se ha enviado correctamente el formulario -->
-  <!-- LOS CAMPOS DE LA ÚLTIMA HOJA NO SON OBLIGATORIOS -->
-  <!-- Cuando le de al botón enviar, se quitan todos los datos de los campos y aparece el mensaje formulario enviado, que a los 5 segundos se quita (utilizando setTimeOut) -->
 </head>
 
 <body>
@@ -57,7 +51,6 @@
       <button class="topButton" id="btnOtros"></button>
       <p>Otros</p>
     </div>
-
 
     <h2 id="h2Titulo">Identificación</h2>
 
@@ -111,22 +104,11 @@
       <!-- Formulario Otros - START -->
       <div id="otros">
 
-        <label for="intereses" id="lblIntereses">Intereses:</label>
-        <div id="grpCBIntereses">
-          <div>
-            <label for="cine" class="cine">Cine</label>
-            <input type="checkbox" id="cine" class="cine" name="cine" value="CINE">
-          </div>
-          <div>
-            <label for="musica" class="musica">Música</label>
-            <input type="checkbox" id="musica" class="musica" name="musica" value="MUSICA">
-          </div>
-          <div>
-            <label for="lectura" class="lectura">Lectura</label>
-            <input type="checkbox" id="lectura" class="lectura" name="lectura" value="LECTURA">
-          </div>
-        </div>
-        <label for="intereses" class="inputError" id="interesesError"></label>
+        <label for="photo" id="lblPhoto">Fotografía:</label>
+        <input type="file" name="photo">
+        <label for="photo" class="inputError" id="photoError"></label>
+
+        <button type="button" id="btnViewImage">Visualizar imágen</button>
 
         <button type="button" id="btnOtrosAnterior">Anterior</button>
         <button type="button" id="btnOtrosEnviar">ENVIAR</button>

@@ -11,35 +11,55 @@ class Router
             {
                 switch ($_GET['menu']) 
                 {
+                    // Página de aterrizage
                     case 'langingpage':
                         require_once 'landingpage/index.php';
                         break;
 
+                    // >>>>>>>>>>>>>>>>>>>>>> COORDINATOR - START >>>>>>>>>>>>>>>>>>>>>>>>
+                    // Panel de control de coordinador erasmus
                     case 'coordinator':
                         require_once "coordinator/dashboard/index.php";
                         break;
-
+                    
+                    // Formulario con "Anterior y Siguiente" crear convocatoria
                     case 'create_convocatory':
                         require_once "coordinator/create_convocatory/index.php";
                         break;
+                    
+                    // TODO CRUD CONVOCATORY
+                    case 'crud_convocatory':
+                        require_once "coordinator/crud_convocatory/index.php";
+                        break;
+                    // <<<<<<<<<<<<<<<<<<<<<<< COORDINATOR - END <<<<<<<<<<<<<<<<<<<<<<<<<
 
-                    case 'becas':
-                        require_once "becas/index.php";
+                    // Listado de becas con botón solicitar
+                    case 'list_convocatories':
+                        require_once "norol/list_convocatories/index.php";
                         break;
 
+                    // Solicitud para rellenar
+                    case 'complete_request':
+                        require_once "request/index.php";
+                        break;
+
+                    // Formulario de inicio de sesión (coordinador)
                     case 'login':
                         require_once "forms/loginForm.php";
                         break;
 
+                    // Formulario de registro de usuario (coordinador)
                     case 'signup':
                         require_once "forms/signupForm.php";
                         break;
 
+                    // Cerrar sesión (coordinador)
                     case 'logout':
                         Session::delete("user");
                         header("Location: ?menu=landingpage");
                         break;
 
+                    // Página de aterrizage
                     default:
                         require_once 'landingpage/index.php';
                         break;
