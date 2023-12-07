@@ -168,11 +168,25 @@ class DBConvocatory
         }
     }
     
-    static function createArrCon_has_group($group, $arrConvocatory) {
-        $arrCon_has_group = array(
-            "group" => $group,
-            "convocatories" => $arrConvocatory
-        );
+    // static function createArrCon_has_group($group, $arrConvocatory) {
+    //     $arrCon_has_group = array(
+    //         "group" => $group,
+    //         "convocatories" => $arrConvocatory
+    //     );
+        
+    //     return $arrCon_has_group;
+    // }
+    static function createArrCon_has_group($arrGroup) {
+        $arrConvocatory = null;
+        $arrCon_has_group = array();
+
+        foreach ($arrGroup as $value) {
+            $arrConvocatory = DBConvocatory::findByGroupId($value->getId());
+            $arrCon_has_group[] = array(
+                "group" => $value,
+                "convocatories" => $arrConvocatory
+            );
+        }
         
         return $arrCon_has_group;
     }

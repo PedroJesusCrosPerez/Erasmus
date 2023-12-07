@@ -7,6 +7,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="views/layout/css/resetstyle.css">
     <link rel="stylesheet" href="views/layout/css/style_layout.css">
+    <link rel="stylesheet" href="views/layout/css/styleCosmetic.css">
     <!--<link rel="stylesheet" href="css/responsive.css">-->
     <!-- <script src="views/layout/js/js2.js"></script> -->
 </head>

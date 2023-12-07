@@ -10,15 +10,18 @@ echo '
   <title>Formulario Pedro</title>
 
   <!-- JAVASCRIPT -->
-  <script type="text/javascript" src="'.$thisdir.'js/FormElement.js" charset="utf-8" defer></script>
+  <script type="text/javascript" src="'.$thisdir.'js/formElements.js" charset="utf-8" defer></script>
   <script type="text/javascript" src="'.$thisdir.'js/functions.js" charset="utf-8" defer></script>
   <script type="text/javascript" src="'.$thisdir.'js/listeners.js" charset="utf-8" defer></script>
 
+  <!--<script src="'.$thisdir.'js/formElements.js"></script>
+  <script src="'.$thisdir.'js/functions.js"></script>
+  <script src="'.$thisdir.'js/listeners.js"></script>-->
+
   <!-- CSS3 -->
-  <link rel="stylesheet" href="'.$thisdir.'css/hojaReseteoEstilosCss.css"> <!-- Hoja de reseteo de estilos CSS -->
-  <link rel="stylesheet" href="'.$thisdir.'css/structure.css"> <!-- Esqueleto de la web -->
-  <link rel="stylesheet" href="'.$thisdir.'css/estiloPosicionamiento.css"> <!-- Posicionamiento con flexbox. Además introduzco paddings y margin donde cuadrar los contenedores a mi gusto personal -->
-  <link rel="stylesheet" href="'.$thisdir.'css/estiloEstetica.css"> <!-- Detalles estéticos de la web: colores, fondos, tamaño y fuentes de letra -->
+  <link rel="stylesheet" href="'.$thisdir.'css/styleStructure.css"> <!-- Esqueleto de la web -->
+  <link rel="stylesheet" href="'.$thisdir.'css/stylePositioning.css"> <!-- Posicionamiento con flexbox. Además introduzco paddings y margin donde cuadrar los contenedores a mi gusto personal -->
+  <link rel="stylesheet" href="'.$thisdir.'css/styleCosmetic.css"> <!-- Detalles estéticos de la web: colores, fondos, tamaño y fuentes de letra -->
 </head>
 
   <div class="form-container">
@@ -36,7 +39,7 @@ echo '
     <h2 id="h2Titulo">Identificación</h2>
 
     <form name="request" action="createConvocatory.php" method="post"> <!--accept-charset="utf-8" autocomplete="off" enctype="multipart/form-data" formtarget="_blank" formnovalidate="formnovalidate">-->
-      <!-- Formulario Identificación - START -->
+      <!-- Formulario Información - START -->
       <div id="information">
 
         <label for="project">Proyecto:</label>
@@ -86,9 +89,9 @@ echo '
 
         <label for="feedback" id="feedback">¡¡Tú formulario se ha enviado correctamente!!</label>
       </div>
-      <!-- Formulario Identificación - END -->
+      <!-- Formulario Información - END -->
 
-      <!-- Formulario Domicilio - START -->
+      <!-- Formulario Fechas - START -->
       <div id="dates">
 
         <label for="date_requests_start" name="date_requests_start">Fecha de inicio solicitudes</label>
@@ -111,9 +114,9 @@ echo '
         <button type="button" id="btnDatesNext">Siguiente</button>
 
       </div>
-      <!-- Formulario Domicilio - END -->
+      <!-- Formulario Fechas - END -->
 
-      <!-- Formulario Otros - START -->
+      <!-- Formulario Items baremables - START -->
       <div id="items">
 
         <table>
@@ -127,39 +130,20 @@ echo '
               <th>Aporta alumno</th>
             </tr>
           </thead>
-          <tbody id="tbody_items_batemable">
-            <tr>
-              <td><input type="checkbox" name="baremable[]"></td>
-              <td>Expediente <input type="number" name="id[]" value="1"></td>
-              <td><input type="checkbox" name="required[]"></td>
-              <td><input type="number" name="min_value[]" min="0" max="10"></td>
-              <td><input type="number" name="max_value[]" min="0" max="10"></td>
-              <td><input type="checkbox" name="contributes_student[]"></td>
-            </tr>
-            <tr>
-              <td><input type="checkbox" name="baremable[]"></td>
-              <td>Idiomas <input type="number" name="id[]" value="2"></td>
-              <td><input type="checkbox" name="required[]"></td>
-              <td><input type="number" name="min_value[]" min="0" max="10"></td>
-              <td><input type="number" name="max_value[]" min="0" max="10"></td>
-              <td><input type="checkbox" name="contributes_student[]"></td>
-            </tr>
-            <tr>
-              <td><input type="checkbox" name="baremable[]"></td>
-              <td>Entrevista <input type="number" name="id[]" value="3"></td>
-              <td><input type="checkbox" name="required[]"></td>
-              <td><input type="number" name="min_value[]" min="0" max="10"></td>
-              <td><input type="number" name="max_value[]" min="0" max="10"></td>
-              <td><input type="checkbox" name="contributes_student[]"></td>
-            </tr>
-            <tr>
-              <td><input type="checkbox" name="baremable[]"></td>
-              <td>Idoneidad <input type="number" name="id[]" value="4"></td>
-              <td><input type="checkbox" name="required[]"></td>
-              <td><input type="number" name="min_value[]" min="0" max="10"></td>
-              <td><input type="number" name="max_value[]" min="0" max="10"></td>
-              <td><input type="checkbox" name="contributes_student[]"></td>
-            </tr>
+          <tbody id="tbody_items_baremable">
+            ';
+            $arrItems = DBItem_baremable::findAll();
+            foreach ($arrItems as $item) {
+              echo '<tr>
+                      <td><input type="checkbox" name="baremable[]" value="'.$item->getId().'"></td>
+                      <td>'.$item->getName().'</td>
+                      <td><input type="checkbox" name="required'.$item->getId().'" value="true"></td>
+                      <td><input type="number" name="min_value'.$item->getId().'" min="0" max="10"></td>
+                      <td><input type="number" name="max_value'.$item->getId().'" min="0" max="10"></td>
+                      <td><input type="checkbox" name="contributes_student'.$item->getId().'" value="true"></td>
+                    </tr>';
+            }
+            echo '
           </tbody>
         </table>
 
@@ -167,7 +151,7 @@ echo '
         <!--<button type="button" id="btnItemsSend">ENVIAR</button>-->
         <input type="submit" value="ENVIAR" name="submit">
       </div>
-      <!-- Formulario Otros - END -->
+      <!-- Formulario Items baremables - END -->
 
     </form>
 

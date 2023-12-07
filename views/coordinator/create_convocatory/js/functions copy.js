@@ -6,6 +6,7 @@ function inicializarWeb() {
     topButtonBackgroundColor(); // Coloreo botones superiores de [ Dates | Items ] 
 
     btnInformation.classList.add('btnSeleccionado');
+    // document.getElementById("items").classList.add("none");
 
     ocultarErrores(); // Inicializo errores visibility a false
     v_dates.classList.add('none');
@@ -85,7 +86,7 @@ function topButtonBackgroundColor() {
 
 function ocultarErrores() {
     for (let i = 0; i < v_inputError.length; i++) {
-        v_inputError[i].classList.add('hide');
+        v_inputError[i].classList.add('oculto');
     }
 }
 
@@ -106,11 +107,11 @@ function seleccionarBoton(boton) {
     boton.classList.add('btnSeleccionado');
 }
 function mostrarMensajeError(mensaje, input) {
-    mensaje.classList.remove('hide'); // Mostrar el mensaje de error
+    mensaje.classList.remove('oculto'); // Mostrar el mensaje de error
     input.classList.add('error'); // Mostrar borde rojo
 }
 function ocultarMensajeError(mensaje, input) {
-    mensaje.classList.add('hide'); // Ocultar el mensaje de error
+    mensaje.classList.add('oculto'); // Ocultar el mensaje de error
     input.classList.remove('error'); // Ocultar borde rojo
 }
 

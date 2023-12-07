@@ -7,6 +7,9 @@ function inicializarWeb() {
 
     btnIdentificacion.classList.add('btnSeleccionado');
 
+    // Oculto botón visualizar imágen, el cuál se habilitará cuando se suba una
+    document.querySelector("#btnViewImage").classList.add("ocultar");
+
     ocultarErrores(); // Inicializo errores visibility a false
     v_domicilio.classList.add('eliminar');
     v_otros.classList.add('eliminar');

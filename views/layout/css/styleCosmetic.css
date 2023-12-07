@@ -1,0 +1,49 @@
+/* ######################################################################## */
+/* ########################### ESTÉTICA ################################### */
+/* ######################################################################## */
+/* Fuentes de la web */
+@import url('https://fonts.googleapis.com/css2?family=Agbalumo&family=Inconsolata&family=Kanit&family=Space+Grotesk&display=swap');
+/** 
+  * font-family: Agbalumo; -> Títulos
+  * font-family: Inconsolata;
+  * font-family: Kanit;
+  * font-family: Space Grotesk; -> Footer
+  */
+
+
+/* ######################################################################## */
+/* #################### Reglas para aplicar con JS ######################## */
+/* ######################################################################## */
+.hide {
+    visibility: hidden;
+  }
+  .lblError {
+    border: 1px solid red;
+  }
+  .none {
+    display: none;
+  }
+  .deshabilitar {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+  .inputError {
+    color: darkred;
+    font-size: small;
+    font-weight: bold;
+  }
+  .true {
+    color: green;
+    font-size: x-large;
+    font-weight: bold;
+  }
+  .false {
+    color: red;
+    font-size: medium;
+    font-weight: bold;
+  }
+  .error {
+    color: darkblue;
+    font-size: x-large;
+    font-weight: bold;
+  }

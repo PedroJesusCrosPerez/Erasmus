@@ -36,14 +36,8 @@ switch ($_SERVER["REQUEST_METHOD"])
                     switch ($_GET["group"]) {
                         case 'findAll':
                             $groups = DBGroup::findAll();
-                            $convocatories = array();
-
-                            $length = count($groups);
-                            for ($i=0; $i < $length; $i++) { 
-                                $convocatories[] = DBConvocatory::findByGroupId($groups[$i]);
-                            }
                             
-                            echo json_encode(DBConvocatory::createArrCon_has_group( $groups, $convocatories ));
+                            echo json_encode(DBConvocatory::createArrCon_has_group( $groups ));
                             break;
                         
                         case 'findById':

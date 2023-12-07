@@ -22,7 +22,7 @@ class Item_baremable implements JsonSerializable
 
     // Setters private
     private function setId($id) {
-        $this->id = $id;
+        $this->id = trim($id);
     }
 
     private function setName($name) {

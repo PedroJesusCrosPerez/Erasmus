@@ -40,7 +40,7 @@ class Router
 
                     // Solicitud para rellenar
                     case 'complete_request':
-                        require_once "request/index.php";
+                        require_once "norol/request/index.php";
                         break;
 
                     // Formulario de inicio de sesión (coordinador)

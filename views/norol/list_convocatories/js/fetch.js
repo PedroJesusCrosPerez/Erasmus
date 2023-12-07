@@ -27,28 +27,68 @@ window.addEventListener("load", function () {
                 return response.json();
             })
             .then(data => {
+                console.log(data);
                 // Obtener elementos del DOM relevantes
                 let convocatory_container = document.getElementById("convocatories_container");
                 convocatory_container.innerHTML = "";
+                // Mensaje de error en el caso de que no haya convocatorias disponibles
+                var msgNoConvocatories = "¡¡No hay convocatorias disponibles para este grupo!!";
+                let p = document.createElement("p");
+                p.innerHTML = msgNoConvocatories;
 
-                if (data != null && data.convocatories != null) {
-                    var length = data.convocatories.length;
-                    var group = data.group;
-                    // Iterar sobre las preguntas y crear elementos para cada una
-                    for (var i = 0; i < length; i++) 
-                    {
-                        var convocatory = data.convocatories[i];
-                        var convoAux = pregunta.cloneNode(true);
+                if (data != null ) {
+                    if (!Array.isArray(data)) {
+                        if (data.convocatories) {
+                            var length = data.convocatories.length;
+                            var group = data.group;
+                            // Iterar sobre las preguntas y crear elementos para cada una
+                            for (var i = 0; i < length; i++) 
+                            {
+                                var convocatory = data.convocatories[i];
+                                var convoAux = pregunta.cloneNode(true);
+        
+                                // Agregar clases y asignar contenido
+                                convoAux.id = convocatory.id;
+                                convoAux.getElementsByClassName("convocatory_name")[0].innerHTML = convocatory.id;
+                                convoAux.getElementsByClassName("group_name")[0].innerHTML = group.name || "Default Statement";//convocatory.statement;
+        
+                                // Agregar la pregunta al contenedor y ocultarla
+                                convocatory_container.appendChild(convoAux);
+                            }
+                        } else {
+                            convocatory_container.appendChild(p);
+                        }
+                    } else {
+                        length = data.length;
 
-                        // Agregar clases y asignar contenido
-                        convoAux.id = convocatory.id;
-                        convoAux.getElementsByClassName("convocatory_name")[0].innerHTML = convocatory.id;
-                        convoAux.getElementsByClassName("group_name")[0].innerHTML = group.name || "Default Statement";//convocatory.statement;
-
-                        // Agregar la pregunta al contenedor y ocultarla
-                        convocatory_container.appendChild(convoAux);
+                        for (var i = 0; i < length; i++) {
+                            var item = data[i];
+                            var convocatories = item.convocatories;
+                        
+                            if (convocatories) {
+                                var length_j = convocatories.length;
+                        
+                                for (var j = 0; j < length_j; j++) {
+                                    var convocatory = convocatories[j];
+                                    if (convocatory != null) {
+                                        var convoAux = pregunta.cloneNode(true);
+                            
+                                        // Agregar clases y asignar contenido
+                                        convoAux.id = convocatory.id;
+                                        convoAux.getElementsByClassName("convocatory_name")[0].innerHTML = convocatory.id;
+                                        convoAux.getElementsByClassName("group_name")[0].innerHTML = item.group.name || "Default Statement";
+                            
+                                        // Agregar la pregunta al contenedor y ocultarla
+                                        convocatory_container.appendChild(convoAux);
+                                    } else {
+                                        convocatory_container.appendChild(p);
+                                    }
+                                }
+                            }
+                        }
+                        
                     }
-                    }
+                }
                 })
             
         })

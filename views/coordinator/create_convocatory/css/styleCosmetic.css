@@ -2,24 +2,11 @@
 
 
 /* Reglas para aplicar con JS */
-.oculto {
-  visibility: hidden;
-}
-.error {
-  border: 1px solid red;
-}
-.eliminar {
-  display: none;
-}
 .btnSeleccionado {
   background-color: #82af6e;
 }
 .btnDeseleccionado {
-  background-color: #b5e7a0;
-}
-.deshabilitar {
-  opacity: 0.5;
-  pointer-events: none;
+  background-color: #b5e7a0; /* Esta clase no sería necesario, ya que con hacer desde javascript un var.classList.remove("btnSeleccionado"), sería sufuciente */
 }
 
 
@@ -84,7 +71,9 @@ select:focus {
 
 
 
-button[type="button"], button[type="submit"] {
+button[type="button"], 
+button[type="submit"], 
+input[type="submit"] {
   display: block;
   width: 100%;
   padding: 10px;
@@ -98,7 +87,9 @@ button[type="button"], button[type="submit"] {
   transition: all 0.3s ease;
 }
 
-button[type="button"]:hover, button[type="submit"]:hover {
+button[type="button"]:hover, 
+button[type="submit"]:hover, 
+input[type="submit"]:hover {
     background-color: #91c36c;
 }
 
@@ -119,9 +110,16 @@ table,tr,td,th {
 }
 table th {
   padding: 1em;
+  font-weight: bold;
+  background-color: rgb(70, 70, 70);
+  color: white;
+  border: black;
 }
 table input[type="checkbox"] {
-  height: 40px;
+  height: 30px;
+}
+table * {
+  font-size: 0.9em;
 }
 
 /* Buttons */
