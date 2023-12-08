@@ -32,7 +32,7 @@ class Group implements JsonSerializable
     // Methods
     public function __toString() {
         return sprintf(
-            "Class ID: %s, Name: %s",
+            "Group ID: %s, Name: %s",
             $this->getId(),
             $this->getName()
         );

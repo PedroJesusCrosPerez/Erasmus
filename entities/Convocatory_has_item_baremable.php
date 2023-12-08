@@ -8,7 +8,7 @@ class Convocatory_has_item_baremable implements JsonSerializable {
     private $max_value;
     private $contributes_student;
 
-    public function __construct($convocatory_id, $item_baremable_id, $required, $min_value, $max_value, $contributes_student) {
+    public function __construct($convocatory_id=null, $item_baremable_id, $required, $min_value, $max_value, $contributes_student) {
         $this->setConvocatory_id($convocatory_id);
         $this->setItem_baremable_id($item_baremable_id);
         $this->setRequired($required);
@@ -65,6 +65,7 @@ class Convocatory_has_item_baremable implements JsonSerializable {
         return $this->contributes_student = $contributes_student;
     }
 
+
     // Methods
     public function jsonSerialize() {
         return get_object_vars($this);
@@ -72,12 +73,13 @@ class Convocatory_has_item_baremable implements JsonSerializable {
 
     public function __toString() {
         return sprintf(
-            "Convocatory_has_item_baremable - Convocatory ID: %d, Item Baremable ID: %d, Required: %d, Min Value: %d, Max Value: %d",
+            "Convocatory_has_item_baremable - Convocatory ID: %d, Item Baremable ID: %d, Required: %s, Min Value: %s, Max Value: %s, Contributes Student: %s",
             $this->getConvocatory_id(),
             $this->getItem_baremable_id(),
-            $this->getRequired(),
+            $this->getRequired() ? "true" : "false",
             $this->getMin_value(),
-            $this->getMax_value()
+            $this->getMax_value(),
+            $this->getContributes_student() ? "true" : "false"
         );
     }
 

@@ -12,33 +12,60 @@ class DBConvocatory
             $db = DB::getConnection();
             $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             
+            // Inicio transacción
             $db->beginTransaction();
-            $db->exec("START TRANSACTION");
-
-            $db->exec("INSERT INTO convocatory (type, date_start_requests, date_end_requests, date_baremation, date_definitive_lists, country, project_id)
-            VALUES ('".$con->getType()."', '".$con->getDate_start_requests()."', '".$con->getDate_end_requests()."', '".$con->getDate_baremation()."', '".$con->getDate_definitive_lists()."', '".$con->getCountry()."', ".$con->getProject_id().");");
-
-            $db->exec("SET @convocatory_id = LAST_INSERT_ID();");
+    
+            // INSERT tabla convocatoria
+            $stmt = $db->prepare("  INSERT INTO convocatory (type, date_start_requests, date_end_requests, date_baremation, date_definitive_lists, country, project_id)
+                                    VALUES (?, ?, ?, ?, ?, ?, ?)");
+            $stmt->execute([
+                $con->getType(), 
+                $con->getDate_start_requests(), 
+                $con->getDate_end_requests(), 
+                $con->getDate_baremation(), 
+                $con->getDate_definitive_lists(), 
+                $con->getCountry(), 
+                $con->getProject_id()
+            ]);
+    
+            // Obtengo el ID de la convocatoria
+            $convocatory_id = $db->lastInsertId();
             
-            $db->exec("INSERT INTO convocatory_has_group (convocatory_id, group_id)
-            VALUES (@convocatory_id, '".$group->getId()."');");
+            // INSERT tabla group
+            $stmt = $db->prepare("  INSERT INTO convocatory_has_group (convocatory_id, group_id)
+                                    VALUES (?, ?)");
+            $stmt->execute([$convocatory_id, $group->getId()]);
             
-            // $db->exec("INSERT INTO convocatory_has_item_baremable (convocatory_id, item_baremable_id, required, min_value, max_value)
-            // VALUES (@convocatory_id, 1, 1, 10, 100), (@convocatory_id, 2, 0, 0, 50);)";
-            foreach ($arrItem as $key => $value) 
+            // INSERT tabla convocatory_has_item_baremable
+            $stmt = $db->prepare("  INSERT INTO convocatory_has_item_baremable (convocatory_id, item_baremable_id, required, min_value, max_value, contributes_student)
+                                    VALUES (?, ?, ?, ?, ?, ?)");
+            foreach ($arrItem as $item) 
             {
-                $db->exec("INSERT INTO convocatory_has_item_baremable (convocatory_id, item_baremable_id, required, min_value, max_value)
-                            VALUES (@convocatory_id, ".$arrItem[$key]->getItem_baremable_id().", ".$arrItem[$key]->getRequired().", ".$arrItem[$key]->getMin_value().", ".$arrItem[$key]->getMax_value().");");
+                $required = $item->getRequired() ? 1 : 0;
+                $contributes_strudent = $item->getContributes_student() ? 1 : 0;
+                $max_value = is_numeric($item->getMax_value()) ? $item->getMax_value() : null;
+
+                $stmt->execute([
+                    $convocatory_id, 
+                    $item->getItem_baremable_id(), 
+                    $required, 
+                    $item->getMin_value(), 
+                    $max_value, 
+                    $contributes_strudent
+                ]);
             }
             
+            // COMMIT si todo está bien
             $db->commit();
         } 
         catch (Exception $e) 
         {
+            // Sino, rollback y vuelvo al estado inicial antes de comenzar la transacción
             $db->rollBack();
             echo "Fallo: " . $e->getMessage();
         }
     }
+
 
     public static function insertConvocatory(Convocatory $convocatory)
     {
