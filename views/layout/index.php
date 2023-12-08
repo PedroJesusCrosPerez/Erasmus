@@ -2,18 +2,27 @@
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="application-name" content="Proyecto HTML5, CSS3, javascript y PHP">
+    <meta name="author" content="Pedro Jesús Cros Pérez">
+    <meta name="description" content="Proyecto utilizando lenguajes HTML5, CSS3, javascript y PHP">
+    <meta name="generator" content="Visual Studio Code">
+    <meta name="keywords" content="proyecto, html, css, javascript, php, formulario, erasmus, login, crud convocatory">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <!--<base href="views/src" target="_blank">-->
+    <link rel="shortcut icon" href="views/src/icons/favicon.ico" type="image/x-icon">
+    <title>Erasmus I.E.S. Fuentezuelas</title>
+
+    <!-- CSS3 -->
     <link rel="stylesheet" href="views/layout/css/resetstyle.css">
     <link rel="stylesheet" href="views/layout/css/style_layout.css">
     <link rel="stylesheet" href="views/layout/css/styleCosmetic.css">
-    <!--<link rel="stylesheet" href="css/responsive.css">-->
-    <!-- <script src="views/layout/js/js2.js"></script> -->
 </head>
 
 <body>
-
+    
     <main>
         <nav class="main-menu">
             <?php

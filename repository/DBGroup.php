@@ -1,5 +1,4 @@
 <?php
-require_once $_SERVER["DOCUMENT_ROOT"]."/repository/DB.php";
 
 class DBGroup
 {

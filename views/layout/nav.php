@@ -1,6 +1,6 @@
 <?php
 echo '
-<h1>Becas erasmus</h1>
+<span> <img src="views/src/logos/logo.png" alt="logotipo erasmus fuentezuelas" width="60" heigth="60"> <h1>Becas erasmus</h1> </span>
 <ul>
     <li class="nav-item" id="menu-home">
         <b></b>

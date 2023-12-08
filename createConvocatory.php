@@ -76,6 +76,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit"]))
             $max_value, 
             $contributes_student
         );
+
+        $arrScore = null;
+        if ($item == 4) {
+            $languages = DBLanguage::findAll();
+            $arrScore = array();
+
+            foreach ($languages as $value) {
+                $arrScore[$value->getId()] = $_POST["score_".$value->getId()];
+            }
+            $arrItems["languages"] = $arrScore;
+        }
     }
     /**
      * <<<<<<<<<<<<<<<<< ITEMS BAREMABLES <<<<<<<<<<<<<<<<<<
@@ -91,5 +102,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit"]))
      *  - convocatory_has_item_baremable
     */
     echo DBConvocatory::insert($convocatory, $group, $arrItems);
+    // foreach ($arrItems as $key => $value) {
+    //     if (!is_array($value)) {
+    //         echo("KEY: ".$key." | VALUE: ".$value);
+    //         echo "<hr>";
+    //     } else {
+    //         foreach ($arrScore as $key => $value) {
+    //             echo("KEY: ".$key." | VALUE: ".$value);
+    //             echo "<hr>";
+    //         }
+    //     }
+    // }
 }
 ?>

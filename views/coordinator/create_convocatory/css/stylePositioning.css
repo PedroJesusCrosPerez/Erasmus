@@ -15,9 +15,9 @@ input[type="date"] {
   width: auto;
 }
 
-table input[type="number"] {
-  width: 3em;
-}
+table input[type="number"] { width: 3em; }
+table[name="language_levels"] td { padding: 1em; }
+table[name="language_levels"] { margin-top: 0.5em; }
 
 #topButton-container>* {
     margin:  0 auto;

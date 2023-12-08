@@ -1,7 +1,5 @@
 <?php
 
-require_once $_SERVER["DOCUMENT_ROOT"]."/helpers/Autoload.php";
-
 class DBConvocatory
 {
 
@@ -41,18 +39,35 @@ class DBConvocatory
                                     VALUES (?, ?, ?, ?, ?, ?)");
             foreach ($arrItem as $item) 
             {
-                $required = $item->getRequired() ? 1 : 0;
-                $contributes_strudent = $item->getContributes_student() ? 1 : 0;
-                $max_value = is_numeric($item->getMax_value()) ? $item->getMax_value() : null;
+                if ($item instanceof Convocatory_has_item_baremable && $item->getItem_baremable_id() != 4) {             
+                    $required = $item->getRequired() ? 1 : 0;
+                    $contributes_strudent = $item->getContributes_student() ? 1 : 0;
+                    $max_value = is_numeric($item->getMax_value()) ? $item->getMax_value() : null;
 
-                $stmt->execute([
-                    $convocatory_id, 
-                    $item->getItem_baremable_id(), 
-                    $required, 
-                    $item->getMin_value(), 
-                    $max_value, 
-                    $contributes_strudent
-                ]);
+                    $stmt->execute([
+                        $convocatory_id, 
+                        $item->getItem_baremable_id(), 
+                        $required, 
+                        $item->getMin_value(), 
+                        $max_value, 
+                        $contributes_strudent
+                    ]);
+                }
+            }
+
+            // Si existe la clave 'languages'
+            // INSERT tabla convocatory_has_item_baremable_has_language
+            if ( isset($arrItem["languages"]) ) {
+                $stmt = $db->prepare("  INSERT INTO convocatory_has_item_baremable_has_languages (convocatory_has_item_baremable_convocatory_id, languages_id, score)
+                VALUES (?, ?, ?)");
+
+                foreach ($arrItem["languages"] as $key => $value) {
+                    $stmt->execute([
+                        $convocatory_id, 
+                        $key, 
+                        $value
+                    ]);
+                }
             }
             
             // COMMIT si todo está bien

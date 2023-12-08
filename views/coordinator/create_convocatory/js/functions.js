@@ -1,4 +1,5 @@
 
+let tLanguageLvls = document.querySelector("table[name='language_levels']");
 // Inicializo web
 
 function inicializarWeb() {
@@ -6,7 +7,8 @@ function inicializarWeb() {
     topButtonBackgroundColor(); // Coloreo botones superiores de [ Dates | Items ] 
 
     btnInformation.classList.add('btnSeleccionado');
-
+    // tLanguageLvls.style.display="none";
+    tLanguageLvls.style.visibility="hidden";
     ocultarErrores(); // Inicializo errores visibility a false
     v_dates.classList.add('none');
     v_items.classList.add('none');
@@ -136,6 +138,13 @@ function aplicarFeedbackRetardo(time)
 {
     setTimeout( aplicarFeedback, time );
 }
+
+
+
+document.querySelector("input[value='4']").addEventListener("change", function () {
+    // tLanguageLvls.style.display = this.checked ? "" : "none";
+    tLanguageLvls.style.visibility = this.checked ? "" : "hidden";
+})
 
 
 

@@ -54,10 +54,11 @@ input[name="date_requests_end"] { grid-area: 2 / 2 / 3 / 3; }
 
 
 /* 3º Formulario Items */
-table                 { grid-area: 1 / 1 / 9 / 3; }
+table[name="items_baremables"]  { grid-area: 1 / 1 / 5 / 3; }
+table[name="language_levels"]  { grid-area: 6 / 1 / 9 / 3; }
 
-#btnItemsBefore       { grid-area: 10 / 1 / 11 / 2; }
-input[type="submit"]  { grid-area: 10 / 2 / 11 / 3; }
+#btnItemsBefore                 { grid-area: 10 / 1 / 11 / 2; }
+input[type="submit"]            { grid-area: 10 / 2 / 11 / 3; }
 
 /* #items {
   display: flex;

@@ -119,7 +119,7 @@ echo '
       <!-- Formulario Items baremables - START -->
       <div id="items">
 
-        <table>
+        <table name="items_baremables">
           <thead>
             <tr>
               <th>Baremable</th>
@@ -144,6 +144,27 @@ echo '
                     </tr>';
             }
             echo '
+          </tbody>
+        </table>
+
+        <table name="language_levels">
+          <thead>
+          <tr>';
+          $arrLanguages = DBLanguage::findAll();
+          foreach ($arrLanguages as $language) {
+            echo '<th>'.$language->getId().'</th>';
+          }
+          echo '
+          </tr>
+          </thead>
+
+          <tbody>
+            <tr>';
+            foreach ($arrLanguages as $language) {
+              echo '<td> <input type="number" name="score_'.$language->getId().'"> </td>';
+            }
+            echo '
+            </tr>
           </tbody>
         </table>
 
