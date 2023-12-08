@@ -3,19 +3,14 @@
 
 function inicializarWeb() {
     // Seleccionar primer botón superior
-    topButtonBackgroundColor(); // Coloreo botones superiores de [ Domicilio | Otros ] 
+    topButtonBackgroundColor(); // Coloreo botones superiores de [ Domicilio | UploadFiles ] 
 
     btnIdentificacion.classList.add('btnSeleccionado');
 
-    // Oculto botón visualizar imágen, el cuál se habilitará cuando se suba una
-    document.querySelector("#btnViewImage").classList.add("ocultar");
-
     ocultarErrores(); // Inicializo errores visibility a false
     v_domicilio.classList.add('eliminar');
-    v_otros.classList.add('eliminar');
+    v_uploadFiles.classList.add('eliminar');
     aplicarFeedback(false);
-
-    console.log(this);
 }
 
 
@@ -37,14 +32,14 @@ function identificacion_domicilio() {
 // ============================================================================
 // ================================= DOMICILIO ================================
 // ============================================================================
-// SIGUIENTE - Pasar de Domicilio a Otros
-function domicilio_otros() {
+// SIGUIENTE - Pasar de Domicilio a UploadFiles
+function domicilio_uploadFiles() {
     v_domicilio.classList.add('eliminar');
-    v_otros.classList.remove('eliminar');
+    v_uploadFiles.classList.remove('eliminar');
     estadoFormulario = false;
 
-    h2Titulo.innerHTML = h2Otros;
-    siguienteBoton(btnDomicilio, btnOtros);
+    h2Titulo.innerHTML = h2UploadFiles;
+    siguienteBoton(btnDomicilio, btnUploadFiles);
 }
 
 // ANTERIOR - Pasar de Domicilio a Identificación
@@ -61,20 +56,20 @@ function domicilio_identificacion() {
 // =============================================================================
 // =================================== OTROS ===================================
 // =============================================================================
-// ANTERIOR - Pasar de Otros a Domicilio
-function otros_domicilio() {
-    v_otros.classList.add('eliminar');
+// ANTERIOR - Pasar de UploadFiles a Domicilio
+function uploadFiles_domicilio() {
+    v_uploadFiles.classList.add('eliminar');
     v_domicilio.classList.remove('eliminar');
 
     h2Titulo.innerHTML = h2Domicilio;
-    siguienteBoton(btnOtros, btnDomicilio);
+    siguienteBoton(btnUploadFiles, btnDomicilio);
 }
-function otros_identificacion() {
-    v_otros.classList.add('eliminar');
+function uploadFiles_identificacion() {
+    v_uploadFiles.classList.add('eliminar');
     v_identificacion.classList.remove('eliminar');
 
     h2Titulo.innerHTML = h2Identificacion;
-    siguienteBoton(btnOtros, btnIdentificacion);
+    siguienteBoton(btnUploadFiles, btnIdentificacion);
 }
 
 
@@ -123,7 +118,7 @@ function ocultarMensajeError(mensaje, input) {
 function resetearFormulario()
 {
     aplicarFeedback(false);
-    otros_identificacion();
+    uploadFiles_identificacion();
     limpiar();
     //setTimeout( aplicarFeedback(true), 3000 );
     aplicarFeedback(true);

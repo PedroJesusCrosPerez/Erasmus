@@ -41,24 +41,19 @@ label[for="birthdate"]  { grid-area: 4 / 2 / 5 / 3; }
 input[name="birthdate"] { grid-area: 5 / 2 / 6 / 3; }
 #birthdateError         { grid-area: 6 / 3 / 7 / 3; }
 
+/* input[name="photo"] { grid-area: 8 / 1 / 9 / 2; } */
+div[name="photo"] { grid-area: 8 / 1 / 9 / 3; }
+#photoError         { grid-area: 9 / 1 / 10 / 3; }
+
+/* #btnViewImage       { grid-area: 8 / 2 / 9 / 3; } */
+
 #ideSiguiente { grid-column: 1/3; }
 
 
 
 /* 2º Formulario Domicilio */
-#domiAnterior, .provincia {
-  grid-column: 1/2;
-}
-#domiSiguiente, .localidad {
-  grid-column: 2/3;
-}
 
 
 /* 3º Formulario Otros */
-input[name="photo"] { grid-area: 2 / 1 / 3 / 3; }
-#photoError         { grid-area: 3 / 1 / 4 / 3; }
-
-#btnViewImage       { grid-area: 4 / 1 / 5 / 2; }
-
 #btnOtrosAnterior   { grid-area: 9 / 1 / 10 / 2; }
 #btnOtrosEnviar     { grid-area: 9 / 2 / 10 / 3; }
