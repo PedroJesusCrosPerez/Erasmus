@@ -16,7 +16,7 @@ class Request implements JsonSerializable
     private $convocatory_id;
 
     // Constructor
-    public function __construct($id, $dni, $name, $surname, $birthdate, $group, $phone, $email, $address, $photo, $convocatory_id) {
+    public function __construct($id=null, $dni, $name, $surname, $birthdate, $group, $phone, $email, $address, $photo, $convocatory_id) {
         $this->setId($id);
         $this->setDni($dni);
         $this->setName($name);
@@ -27,7 +27,7 @@ class Request implements JsonSerializable
         $this->setEmail($email);
         $this->setAddress($address);
         $this->setPhoto($photo);
-        $this->setConvocatoryId($convocatory_id);
+        $this->setConvocatory_id($convocatory_id);
     }
 
     // Getters
@@ -71,7 +71,7 @@ class Request implements JsonSerializable
         return $this->photo;
     }
 
-    public function getConvocatoryId() {
+    public function getConvocatory_id() {
         return $this->convocatory_id;
     }
 
@@ -116,14 +116,14 @@ class Request implements JsonSerializable
         $this->photo = $photo;
     }
 
-    private function setConvocatoryId($convocatory_id) {
+    private function setConvocatory_id($convocatory_id) {
         $this->convocatory_id = $convocatory_id;
     }
 
     // Methods
     public function __toString() {
         return sprintf(
-            "Request ID: %s, DNI: %s, Name: %s, Surname: %s, Birthdate: %s, Group: %s, Phone: %s, Email: %s, Address: %s, Convocatory ID: %s",
+            "Request ID: %s<br>· DNI: %s<br>· Name: %s<br>· Surname: %s<br>· Birthdate: %s<br>· Group: %s<br>· Phone: %s<br>· Email: %s<br>· Address: %s<br>· Photo: %s<br>· Convocatory ID: %s<br>",
             $this->getId(),
             $this->getDni(),
             $this->getName(),
@@ -133,7 +133,8 @@ class Request implements JsonSerializable
             $this->getPhone(),
             $this->getEmail(),
             $this->getAddress(),
-            $this->getConvocatoryId()
+            $this->getPhoto(),
+            $this->getConvocatory_id()
         );
     }
 

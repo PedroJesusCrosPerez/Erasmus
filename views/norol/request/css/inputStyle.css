@@ -1,6 +1,6 @@
 /**********File Inputs**********/
 .container-input {
-    text-align: center;
+    text-align: start;
     /* background: #282828; */
     /* border-top: 5px solid #c39f77; */
     /* padding: 50px 0; */
@@ -46,29 +46,29 @@
     font-family: 'Lato';
 }
 
-.inputfile-7+label {
+.inputfile+label {
     color: #c39f77;
 }
 
-.inputfile-7+label {
+.inputfile+label {
     border: 1px solid #c39f77;
     font-size: 1rem;
     background-color: #fff;
     padding: 0;
 }
 
-.inputfile-7:focus+label,
-.inputfile-7.has-focus+label,
-.inputfile-7+label:hover {
+.inputfile:focus+label,
+.inputfile.has-focus+label,
+.inputfile+label:hover {
     border-color: #9f8465;
 }
 
-.inputfile-7+label span,
-.inputfile-7+label strong {
+.inputfile+label span,
+.inputfile+label strong {
     padding: 0.625rem 0.525rem;
 }
 
-.inputfile-7+label span {
+.inputfile+label span {
     width: 14em;
     min-height: 1em;
     display: inline-block;
@@ -78,21 +78,21 @@
     vertical-align: top;
 }
 
-.inputfile-7+label strong {
+.inputfile+label strong {
     height: 100%;
     color: #fff;
     background-color: #c39f77;
     display: inline-block;
 }
 
-.inputfile-7:focus+label strong,
-.inputfile-7.has-focus+label strong,
-.inputfile-7+label:hover strong {
+.inputfile:focus+label strong,
+.inputfile.has-focus+label strong,
+.inputfile+label:hover strong {
     background-color: #9f8465;
 }
 
 @media screen and (max-width: 50em) {
-    .inputfile-7+label strong {
+    .inputfile+label strong {
         display: block;
     }
 }

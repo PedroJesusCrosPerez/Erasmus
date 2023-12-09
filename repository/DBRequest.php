@@ -46,13 +46,13 @@ class DBRequest
     // ############################################################################################
     // ################################## INSERT ##################################################
     // ############################################################################################
-    public static function insert(Request $request): bool
+    public static function insert2(Request $request): bool
     {
         $cn = DB::getConnection();
         $reached = false;
     
         // Using placeholders and prepared statements
-        $sql = "INSERT INTO your_table_name (dni, name, surname, birthdate, group, phone, email, address, photo, convocatory_id)
+        $sql = "INSERT INTO request (dni, name, surname, birthdate, group, phone, email, address, photo, convocatory_id)
                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     
         $stmt = $cn->prepare($sql);
@@ -91,6 +91,94 @@ class DBRequest
         // $cn->close();
         
         return $reached;
+    }
+
+    public static function insert(Request $request, $arrItems)
+    {
+        try 
+        {
+            $db = DB::getConnection();
+            $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            
+            // Inicio transacción
+            $db->beginTransaction();
+            $convocatory_id = $request->getConvocatory_id();
+    
+            // INSERT tabla solicitud
+            $stmt = $db->prepare("  INSERT INTO request (dni, name, surname, birthdate, `group`, phone, email, address, photo, convocatory_id)
+                                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                foreach ([$request->getDni(), $request->getName(), $request->getSurname(), $request->getBirthdate(), $request->getGroup(), $request->getPhone(), $request->getEmail(), $request->getAddress(), $request->getPhoto(), $request->getConvocatory_id()] as $value) {
+                    echo " · Value: ". $value . ":" . strlen($value) . "<br>";
+                }
+            $stmt->execute([
+                $request->getDni(),
+                $request->getName(),
+                $request->getSurname(),
+                $request->getBirthdate(),
+                $request->getGroup(),
+                $request->getPhone(),
+                $request->getEmail(),
+                $request->getAddress(),
+                $request->getPhoto(),
+                $request->getConvocatory_id()
+            ]);
+    
+            // Obtengo el ID de la solicitud
+            $request_id = $db->lastInsertId();
+            
+            // // INSERT tabla baremacion
+            // $stmt = $db->prepare("  INSERT INTO baremacion (request_id, convocatory_has_item_baremable_convocatory_id, convocatory_has_item_baremable_item_baremable_id, file_url)
+            //                         VALUES (?, ?, ?, ?)");
+            // foreach ($arrItems as $item) 
+            // {
+            //     if ($item instanceof Convocatory_has_item_baremable && $item->getItem_baremable_id() != 4) {             
+            //         $request_id = isset($item->getRequired()) ? 1 : 0;
+            //         $contributes_strudent = $item->getContributes_student() ? 1 : 0;
+            //         $max_value = is_numeric($item->getMax_value()) ? $item->getMax_value() : null;
+
+            //         $stmt->execute([
+            //             $convocatory_id, 
+            //             $item->getItem_baremable_id(), 
+            //             $required, 
+            //             $item->getMin_value(), 
+            //             $max_value, 
+            //             $contributes_strudent
+            //         ]);
+            //     }
+            // }
+
+
+            // INSERT tabla baremacion
+            $stmt = $db->prepare("  INSERT INTO baremacion (request_id, convocatory_has_item_baremable_convocatory_id, convocatory_has_item_baremable_item_baremable_id, file_url)
+                                    VALUES (?, ?, ?, ?)");
+            $targetDir = null;
+            foreach ($arrItems as $item_id => $item) 
+            {
+                // if ($item instanceof Convocatory_has_item_baremable && $item->getItem_baremable_id() != 4) 
+                // {
+                    $targetDir = str_replace("request_id", $request_id, $item["targetFile"]);
+                    move_uploaded_file($item["tmp_name"], $targetDir);
+
+                    $stmt->execute([
+                        $request_id, 
+                        $convocatory_id, 
+                        $item_id, 
+                        $targetDir
+                    ]);
+                    // echo "convocatory_id".$convocatory_id."<hr>";
+                    // echo "convocatory_id".$item_id."<hr>";
+                // }
+            }
+
+            // COMMIT si todo está bien
+            $db->commit();
+        } 
+        catch (Exception $e) 
+        {
+            // Sino, rollback y vuelvo al estado inicial antes de comenzar la transacción
+            $db->rollBack();
+            echo "Fallo: " . $e->getMessage();
+        }
     }
     
 

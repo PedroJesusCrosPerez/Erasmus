@@ -4,12 +4,17 @@ h2 {
 label {
     margin-bottom: 5px;
 }
+
 input, 
 select {
   display: block;
   width: 100%;
   padding: 10px;
 }
+input[type="text"],input[type="date"] {
+  width: auto;
+}
+
 #topButton-container>* {
     margin:  0 auto;
 }
@@ -21,18 +26,8 @@ select {
 }
 .form-container {
     max-width: 500px;
-    margin: 50px auto;
+    margin: 0 auto;
     padding: 30px;
-}
-#otros input[type="radio"] {
-    width: auto;
-    margin: 0 7% 0 0;
-}
-#grpRBSexo {
-    margin: auto 0 auto 0;
-}
-#grpCBIntereses>div>* {
-margin: 0 10px 0 10px;
 }
 
 #feedback {
