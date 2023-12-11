@@ -20,6 +20,8 @@ var h2UploadFiles    = "Subir ficheros";
 // ============================================================================
 // ============================== IDENTIFICACIÓN ==============================
 // ============================================================================
+// input:file
+let photo = document.querySelector("file[type='file'][name='photo']");
 // Botón
 var btnIdentificacionSiguiente = document.getElementById("ideSiguiente");
 

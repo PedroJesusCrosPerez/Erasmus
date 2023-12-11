@@ -21,7 +21,22 @@
     opacity: 0.5;
     pointer-events: none;
   }
-  
+.lupa {
+  grid-column: 2 / 3;
+  background-image: url(http://serverpedroerasmus/views/src/icons/lupa.png);
+  background-repeat: no-repeat;
+  background-position: left;
+  background-size: 2.4em;
+  width: 17%;
+  border: 3px solid black;
+  border-radius: 60px;
+  margin-left: 1em;
+
+  cursor: pointer;
+}
+.lupa:hover {
+  background-image: url(http://serverpedroerasmus/views/src/icons/lupa-active.png);
+}
   
   /* Estética de la web */
   body {

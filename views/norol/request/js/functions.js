@@ -15,6 +15,7 @@ function inicializarWeb() {
 
 
 
+
 // ===========================================================================
 // ============================== IDENTIFICACIÓN =============================
 // ===========================================================================
@@ -161,3 +162,23 @@ function limpiar()
     if ( getCBLectura() == true )
         setCBLectura(false);
 }
+
+
+
+
+
+
+window.addEventListener("DOMContentLoaded", function () {
+
+    document.querySelector("input[type='file'][name='file[photo]']").addEventListener("change", function () {
+        this.style.gridColumn = "1 / 2";
+        let seePdfIcon = document.createElement("div");
+        seePdfIcon.classList.add("lupa");
+        seePdfIcon.addEventListener("click", function () {
+            // TODO ABRIR MODAL PARA QUE SE VISUALICE LA FOTO :D, hacer los mismo en el mismo formulario con los PDF'S
+        });
+        document.querySelector("#identificacion").appendChild(seePdfIcon);
+    });
+
+});
+

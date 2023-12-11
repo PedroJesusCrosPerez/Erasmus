@@ -175,7 +175,7 @@ window.addEventListener("load", function () {
                                         convoAux.id = convocatory.id;
                                         convoAux.getElementsByClassName("convocatory_name")[0].innerHTML = convocatory.id;
                                         convoAux.getElementsByClassName("group_name")[0].innerHTML = item.group.name || "Default Statement";
-                                        convoAux.querySelector("a").href = "?menu=complete_request&id="+convocatory.id;
+                                        convoAux.querySelector("a").href = "?menu=complete_request&convocatory_id="+convocatory.id;
                             
                                         // Agregar la pregunta al contenedor y ocultarla
                                         convocatory_container.appendChild(convoAux);
