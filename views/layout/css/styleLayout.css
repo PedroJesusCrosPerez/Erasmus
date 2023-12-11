@@ -165,20 +165,30 @@ main {
   background-repeat: no-repeat;
   background-size: 1.1em;
 }
-.fa-home {
-  background-image: url(../../src/icons/home-white.png);
+/* ######################################################################################## */
+/* ################################ ICONS NAV ############################################# */
+/* ######################################################################################## */
+/* .fa-home {
+  background-image: url(../../src/icons/home-noActive.png);
 }
-.fa-user {
-  background-image: url(../../src/icons/userLoged-white.png);
+.fa-coordinator {
+  background-image: url(../../src/icons/userLoged-noActive.png);
 }
 .fa-settings {
-  background-image: url(../../src/icons/settings-white-active.png);
+  background-image: url(../../src/icons/settings-white-active-noActive.png);
 }
-.fa-becas {
-  background-image: url(../../src/icons/becas.png);
+.fa-list_convocatories {
+  background-image: url(../../src/icons/list_convocatories-noActive.png);
+}
+.fa-create_convocatory {
+  background-size: 2.1em;
+  background-image: url(../../src/icons/create_convocatory-noActive.png);
+} */
+.fa-create_convocatory {
+  background-size: 0.99em;
 }
 
-.fa-home:active {
+/* .fa-home:active {
   background-image: url(../../src/icons/home-active.svg);
 }
 .fa-user:active {
@@ -186,7 +196,7 @@ main {
 }
 .fa-settings:active {
   background-image: url(../../src/icons/settings-active.svg);
-}
+} */
 
 /* CONTENT */
 

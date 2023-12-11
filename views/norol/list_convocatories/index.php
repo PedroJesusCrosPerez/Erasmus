@@ -12,7 +12,7 @@ echo '
 <div class="convocatories">
     <h1>Solicitar becas</h1>
     <select name="group" id="slctGroup">
-        <option value="null" selected disabled>Selecciona un curso para filtrar</option>
+        <!--<option value="null" selected disabled>Selecciona un curso para filtrar</option>-->
         <option value="all">Todos</option>
         ';
         foreach ($arrGroups as $group) {

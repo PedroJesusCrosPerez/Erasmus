@@ -1,4 +1,11 @@
 <?php
+// $user = Session::read("user");
+
+// if ($user->getRole() == "coordinator") {
+    
+// } else {
+
+// }
 echo '
 <span> <img src="views/src/logos/logo.png" alt="logotipo erasmus fuentezuelas" width="60" heigth="60"> <h1>Becas erasmus</h1> </span>
 <ul>
@@ -15,8 +22,8 @@ echo '
         <b></b>
         <b></b>
         <a href="?menu=login">
-            <span class="fa fa-user nav-icon"></span>
-            <span class="nav-text">Perfil</span>
+            <span class="fa fa-coordinator nav-icon"></span>
+            <span class="nav-text">Coordinador</span>
         </a>
     </li>
 
@@ -33,7 +40,7 @@ echo '
         <b></b>
         <b></b>
         <a href="?menu=list_convocatories">
-            <span class="fa fa-list_list_convocatories nav-icon"></span>
+            <span class="fa fa-list_convocatories nav-icon"></span>
             <span class="nav-text">Listado de convocatorias</span>
         </a>
     </li>
@@ -71,7 +78,7 @@ window.addEventListener("load", function () {
 
         if (navItem.classList.contains("active")) {
             //icon.style.backgroundImage = `url(views/src/icons/${menuParam}-active.png)`;
-            icon.style.backgroundImage = `url(views/src/icons/${menuParam}.png)`;
+            icon.style.backgroundImage = `url(views/src/icons/${menuParam}-active.png)`;
         } else {
             icon.style.backgroundImage = `url(views/src/icons/${menuParam}.png)`;
         }

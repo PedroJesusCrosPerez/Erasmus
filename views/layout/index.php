@@ -17,8 +17,11 @@
 
     <!-- CSS3 -->
     <link rel="stylesheet" href="views/layout/css/resetstyle.css">
-    <link rel="stylesheet" href="views/layout/css/style_layout.css">
+    <link rel="stylesheet" href="views/layout/css/styleLayout.css">
     <link rel="stylesheet" href="views/layout/css/styleCosmetic.css">
+
+    <!-- JS -->
+    <script src="helpersJS/Validator.js"></script>
 </head>
 
 <body>

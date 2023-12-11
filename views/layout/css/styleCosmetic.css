@@ -16,34 +16,34 @@
 /* ######################################################################## */
 .hide {
     visibility: hidden;
-  }
-  .lblError {
-    border: 1px solid red;
-  }
-  .none {
-    display: none;
-  }
-  .deshabilitar {
-    opacity: 0.5;
-    pointer-events: none;
-  }
-  .inputError {
-    color: darkred;
-    font-size: small;
-    font-weight: bold;
-  }
-  .true {
-    color: green;
-    font-size: x-large;
-    font-weight: bold;
-  }
-  .false {
-    color: red;
-    font-size: medium;
-    font-weight: bold;
-  }
-  .error {
-    color: darkblue;
-    font-size: x-large;
-    font-weight: bold;
-  }
+}
+.lblError {
+  border: 1px solid red;
+}
+.none {
+  display: none;
+}
+.deshabilitar {
+  opacity: 0.5;
+  pointer-events: none;
+}
+.inputError {
+  color: darkred;
+  font-size: small;
+  font-weight: bold;
+}
+.true {
+  color: green;
+  font-size: x-large;
+  font-weight: bold;
+}
+.false {
+  color: red;
+  font-size: medium;
+  font-weight: bold;
+}
+.error {
+  color: darkblue;
+  font-size: x-large;
+  font-weight: bold;
+}

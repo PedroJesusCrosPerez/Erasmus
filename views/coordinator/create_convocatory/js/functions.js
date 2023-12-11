@@ -1,6 +1,5 @@
-
-let tLanguageLvls = document.querySelector("table[name='language_levels']");
 // Inicializo web
+
 
 function inicializarWeb() {
     // Seleccionar primer botón superior
@@ -13,10 +12,115 @@ function inicializarWeb() {
     v_dates.classList.add('none');
     v_items.classList.add('none');
     aplicarFeedback(false);
+    uploadMsgError();
 }
 
 
 
+
+
+// ===========================================================================
+// ========================== ENVÍO DE FORMULARIO ============================
+// ===========================================================================
+function submit(event) {
+    // Lógica de validación
+    const val = new Validator();
+
+
+    if ( !this.status && !val.isError() ) {
+        // Si no están todos rellenados, evita que se envíe el formulario
+        event.preventDefault();
+        alert("Por favor, completa todos los campos de texto.");
+    }
+}
+
+
+// ===========================================================================
+// ================================ VALIDAR ==================================
+// ===========================================================================
+function hide_error(input, status) {
+    // Asegurarse de que input no es null o undefined
+    if (input) {
+        let lblError = input.lblError;
+        let msgError = input.msgError;
+
+        // Asegurarse de que lblError no es null o undefined
+        if (lblError) {
+            if (status == true) {
+                lblError.innerHTML = msgError;
+                lblError.classList.remove("hide");
+                console.log("FALSE");
+            } else {
+                lblError.innerHTML = "";
+                lblError.classList.add("hide");
+                console.log("TRUE");
+            }
+        } else {
+            console.error('lblError is ==> '+lblError);
+            console.error('lblError is undefined or null');
+        }
+    } else {
+        console.error('input is undefined or null');
+    }
+}
+
+function uploadMsgError() {
+    fetch(msgErrorjsonFilePath)
+    .then(response => response.json())
+    .then(data => {
+        let fieldNames = Array.from(new FormData(form).keys());
+
+        for (const fieldName of fieldNames) {
+            let inputElement = form.querySelector(`[name="${fieldName}"]`);
+            if (inputElement) {
+                inputElement.msgError = data[fieldName] || '';
+                inputElement.lblError = "ESTO ES UNA PRUEBA";
+            }
+        }
+    })
+    .catch(error => console.error('Error al cargar el archivo JSON (msgError.json):', error));  
+}
+
+
+// ===========================================================================
+// ============================ INFORMATION ==================================
+// ===========================================================================
+let itemStatus = false;
+let lblError_aux = document.querySelector("#projectError");
+slctProjects.lblError = lblError_slctProjects;
+
+function validateSlctProject() {
+    console.log("THIS.lblError ==> " + this.lblError);
+    console.log("THIS ==> " + this);
+    itemStatus = this.value == "null" ? false : true;
+    hide_error(this, itemStatus);
+}
+
+// function validateInputCountry() {
+//     itemStatus = false;
+//     itemStatus = this.value == "null" ? false : true;
+//     hide_error(lblError_slctProjects, msgError_slctProjects, itemStatus);
+// }
+
+
+// function areTextInputsFilled() {
+//     // Obtiene todos los campos de texto dentro del formulario
+//     var textInputs = document.querySelectorAll("input[type='text']");
+    
+//     // Verifica si todos los campos de texto están rellenados
+//     for (var i = 0; i < textInputs.length; i++) {
+//         if (textInputs[i].value.trim() === "") {
+//             return false;
+//         }
+//     }
+//     return true;
+// }
+
+
+
+// ===========================================================================
+// ======================= NAVEGACIÓN DE FORMULARIO ==========================
+// ===========================================================================
 // ===========================================================================
 // ================================= INFORMATION =============================
 // ===========================================================================
