@@ -76,6 +76,7 @@ class Router
         else 
         {
             require_once 'landingpage/index.php';
+            
         }
     }
 

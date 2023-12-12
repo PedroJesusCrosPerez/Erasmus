@@ -32,7 +32,132 @@ switch ($_SERVER["REQUEST_METHOD"])
                 break;
             
             case 'findAllAll':
-                echo json_encode(DBConvocatory::findAllAll());
+                // echo json_encode(DBConvocatory::findAllAll());
+                
+                echo '
+                [
+                    {
+                        "convocatory": {
+                            "id": 1,
+                            "type": "short",
+                            "date_start_requests": "2023-12-04",
+                            "date_end_requests": "2023-12-25",
+                            "date_baremation": "2024-01-10",
+                            "date_definitive_lists": "2024-01-20",
+                            "country": "germany",
+                            "project_id": 1
+                        },
+                        "project": {
+                            "id": 1,
+                            "name": "I.E.S. Fuentezuelas por el mundo",
+                            "code": "1DWA123",
+                            "date_start": "2023-09-20",
+                            "date_end": "2024-06-20"
+                        },
+                        "requests": [
+                            {
+                                "id": 1,
+                                "dni": "78162647E",
+                                "name": "Pedro",
+                                "surname": "Cros",
+                                "birthdate": "2004-09-19",
+                                "group": "2DWA",
+                                "phone": "609323607",
+                                "email": "pcroper1909@g.educaand.es",
+                                "address": "calle de pedro cros 78162647E",
+                                "photo": "base64_encoded_image_data_1",
+                                "convocatory_id": 19
+                            },
+                            {
+                                "id": 2,
+                                "dni": "98765432F",
+                                "name": "María",
+                                "surname": "López",
+                                "birthdate": "2003-08-15",
+                                "group": "3B",
+                                "phone": "609323608",
+                                "email": "maria@g.educaand.es",
+                                "address": "calle de maría lópez 98765432F",
+                                "photo": "base64_encoded_image_data_2",
+                                "convocatory_id": 19
+                            },
+                            {
+                                "id": 3,
+                                "dni": "55555555X",
+                                "name": "Juan",
+                                "surname": "García",
+                                "birthdate": "2005-05-10",
+                                "group": "1A",
+                                "phone": "609323609",
+                                "email": "juan@gmail.com",
+                                "address": "calle de juan garcía 55555555X",
+                                "photo": "base64_encoded_image_data_3",
+                                "convocatory_id": 2
+                            },
+                            {
+                                "id": 4,
+                                "dni": "12345678A",
+                                "name": "Ana",
+                                "surname": "Martínez",
+                                "birthdate": "2004-12-12",
+                                "group": "2C",
+                                "phone": "609323610",
+                                "email": "ana@example.com",
+                                "address": "calle de ana martínez 12345678A",
+                                "photo": "base64_encoded_image_data_4",
+                                "convocatory_id": 2
+                            }
+                        ]
+                    },
+                    {
+                        "convocatory": {
+                            "id": 2,
+                            "type": "short",
+                            "date_start_requests": "2023-12-04",
+                            "date_end_requests": "2023-12-25",
+                            "date_baremation": "2024-01-10",
+                            "date_definitive_lists": "2024-01-20",
+                            "country": "spain",
+                            "project_id": 1
+                        },
+                        "project": {
+                            "id": 1,
+                            "name": "I.E.S. Fuentezuelas por el mundo",
+                            "code": "1DWA123",
+                            "date_start": "2023-09-20",
+                            "date_end": "2024-06-20"
+                        },
+                        "requests": [
+                            {
+                                "id": 5,
+                                "dni": "98765432F",
+                                "name": "María",
+                                "surname": "González",
+                                "birthdate": "2002-04-28",
+                                "group": "3A",
+                                "phone": "609323611",
+                                "email": "maria.g@example.com",
+                                "address": "Calle Principal 789",
+                                "photo": "base64_encoded_image_data_5",
+                                "convocatory_id": 2
+                            },
+                            {
+                                "id": 6,
+                                "dni": "87654321B",
+                                "name": "Javier",
+                                "surname": "Ruiz",
+                                "birthdate": "2003-10-15",
+                                "group": "1B",
+                                "phone": "609323612",
+                                "email": "javier@example.com",
+                                "address": "Avenida Central 456",
+                                "photo": "base64_encoded_image_data_6",
+                                "convocatory_id": 2
+                            }
+                        ]
+                    }
+                ]
+                ';
                 break;
 
             case 'findByGroup':

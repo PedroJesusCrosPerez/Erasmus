@@ -47,4 +47,13 @@
 }
 
 
+.contenido {
+    grid-column: 1 / 8;
+    column-gap: 6em;
 
+    background-color: grey;
+    border-radius: 20px;
+}
+.contenido > * > * {
+    margin: 1em;
+}
