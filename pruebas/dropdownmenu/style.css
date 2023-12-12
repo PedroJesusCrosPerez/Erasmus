@@ -1,0 +1,81 @@
+.contenido{
+    display: none;
+  }
+  
+  /*.PruebaSprite{
+    padding-left:19px;
+    background: transparent url("  https://sites.google.com/a/bbva.com/gdd_app/treeview.png") no-repeat scroll -3px -27px;
+  }
+  
+  .PruebaSprite-fin{
+    padding-left:19px;
+    background: transparent url("  https://sites.google.com/a/bbva.com/gdd_app/treeview.png") no-repeat scroll -3px -5px;
+  }*/
+  
+  .listaPermisos{
+    display: inline-block;
+  }
+  .listaPermisos,
+  .listaPermisos ul {  
+    list-style-type: none;
+    margin-left: 0;
+    padding-left: 30px;
+  }
+  
+  .listaPermisos > li > ul > li div{
+        padding-left:19px;  
+  }
+  
+  /*Segundo Nivel */
+  .listaPermisos > li > ul > li:not(:last-child) > div{
+    background: transparent url("https://sites.google.com/a/bbva.com/gdd_app/treeview.png") no-repeat scroll -3px -27px;  
+  }
+  
+  /*Segundo Nivel */
+  .listaPermisos > li > ul > li:last-child > div{
+    background: transparent url("https://sites.google.com/a/bbva.com/gdd_app/treeview.png") no-repeat scroll -3px -5px;  
+  }
+  
+  
+  /*Tercer nivel*/
+  .listaPermisos > li > ul > li:not(:last-child) > ul {  
+    background: transparent url("https://sites.google.com/a/bbva.com/gdd_app/treeBranch.png") repeat-y scroll -8px -44px;  
+  }
+  
+  /*Tercer nivel y siguientes*/
+  .listaPermisos > li > ul > li > ul > li:last-child div{
+    background: transparent url("https://sites.google.com/a/bbva.com/gdd_app/treeview.png") no-repeat scroll -3px -5px;  
+  }
+  
+  /*Tercer nivel y siguientes*/
+  .listaPermisos > li > ul > li > ul > li:not(:last-child) div{
+    background: transparent url("https://sites.google.com/a/bbva.com/gdd_app/treeview.png") no-repeat scroll -3px -5px;  
+  }
+  
+  
+  .triCheckbox {
+    display: inline-block;
+    cursor: pointer;
+    -webkit-touch-callout: none;
+    /*Todo esto es para que no se pueda seleccionar el texto */
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    padding-right: 5px;  
+    margin-bottom: 2px;
+  }
+  
+  .triCheckbox[data-estado="-1"] > span {
+    background-color: red;
+  /*  text-decoration: line-through;*/
+  }
+  
+  .triCheckbox[data-estado="0"] > span {
+    background-color: blue;
+  }
+  
+  .triCheckbox[data-estado="1"] > span {
+    background-color: green;
+  }

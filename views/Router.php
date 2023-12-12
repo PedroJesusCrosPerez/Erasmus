@@ -31,6 +31,10 @@ class Router
                     case 'crud_convocatory':
                         require_once "coordinator/crud_convocatory/index.php";
                         break;
+                    // Baremación
+                    case 'baremation':
+                        require_once "coordinator/baremacion/index.php";
+                        break;
                     // <<<<<<<<<<<<<<<<<<<<<<< COORDINATOR - END <<<<<<<<<<<<<<<<<<<<<<<<<
 
                     // Listado de becas con botón solicitar
@@ -42,7 +46,6 @@ class Router
                     case 'complete_request':
                         require_once "norol/request/index.php";
                         break;
-
                     // Formulario de inicio de sesión (coordinador)
                     case 'login':
                         require_once "forms/loginForm.php";

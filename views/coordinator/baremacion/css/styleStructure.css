@@ -1,0 +1,50 @@
+#divBaremacion {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    padding: 2em;
+}
+
+#convocatories {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+}
+
+
+/* Tabla */
+.convocatory {
+    display: grid;
+    grid-template-columns: 1fr repeat(6, 3fr);
+}
+
+/* Cabecera */
+#head {
+    background-color: grey;
+    font-weight: bold;
+    font-size: 1.2em;
+    margin: auto;
+}
+
+/* Lista de convocatorias */
+#convocatories > div:nth-child(2) {
+    background-color: lightgrey;
+}
+#convocatories > div:nth-child(2) > div {
+    background-color: lightgrey;
+}
+
+#convocatories div {
+    margin: auto;
+    padding: 1em;
+}
+#convocatories > div {
+    margin: 0;
+}
+#convocatories > div:hover {
+    cursor: pointer;
+}
+
+
+

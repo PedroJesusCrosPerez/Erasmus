@@ -39,9 +39,9 @@ switch ($_SERVER["REQUEST_METHOD"])
                 }
                 break;
 
-            case 'findByName':
-                $name = isset($_GET["name"]) ? $_GET["name"] : null;
-                $request = DBRequest::findByName($name);
+            case 'findByConvocatory_id':
+                $convocatory_id = isset($_GET["convocatory_id"]) ? $_GET["convocatory_id"] : null;
+                $request = DBRequest::findByConvocatoryId($convocatory_id);
                 echo json_encode(['data' => $request]);
                 break;
 

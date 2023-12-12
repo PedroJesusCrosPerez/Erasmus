@@ -74,7 +74,8 @@ function uploadMsgError() {
             let inputElement = form.querySelector(`[name="${fieldName}"]`);
             if (inputElement) {
                 inputElement.msgError = data[fieldName] || '';
-                inputElement.lblError = "ESTO ES UNA PRUEBA";
+                inputElement.lblError = inputElement.labels[1];
+                inputElement.validar = fun;
             }
         }
     })
@@ -86,16 +87,23 @@ function uploadMsgError() {
 // ============================ INFORMATION ==================================
 // ===========================================================================
 let itemStatus = false;
-let lblError_aux = document.querySelector("#projectError");
+// let lblError_aux = document.querySelector("#projectError");
+// debugger;
 slctProjects.lblError = lblError_slctProjects;
 
 function validateSlctProject() {
-    console.log("THIS.lblError ==> " + this.lblError);
-    console.log("THIS ==> " + this);
+    // console.log("THIS.lblError ==> " + this.lblError);
+    // console.log("THIS ==> " + this);
     itemStatus = this.value == "null" ? false : true;
     hide_error(this, itemStatus);
+    this.innerHTML = "Holdlfaslfd";
+    debugger
 }
 
+
+window.addEventListener("load", function () {
+    
+})
 // function validateInputCountry() {
 //     itemStatus = false;
 //     itemStatus = this.value == "null" ? false : true;

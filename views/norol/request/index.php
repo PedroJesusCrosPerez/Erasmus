@@ -17,6 +17,7 @@ echo '
   <script type="text/javascript" src="'.$thisdir.'js/functions.js" charset="utf-8" defer></script><!--  --> <!--<script type="text/javascript" src="script/programa.js" charset="utf-8" defer></script><!---->
   <script type="text/javascript" src="'.$thisdir.'js/listeners.js" charset="utf-8" defer></script><!--  -->
   <script type="text/javascript" src="'.$thisdir.'js/inputJs.js" charset="utf-8" defer></script><!--  -->
+  <!--<script type="text/javascript" src="'.$thisdir.'js/webcam.js" charset="utf-8" defer></script>--><!--  -->
   <!-- <script type="text/javascript" src="js/Validator.js" charset="utf-8" defer></script> -->
   <!-- <script src="js/inputJs.js"></script> -->
 
@@ -102,6 +103,9 @@ echo '
             </label>
         </div>-->
         <label for="photo" class="inputError" id="photoError"></label>
+        <!--<button id="openWebcam" onclick="modalFoto(event)">Open Webcam Modal</button>
+        <img id="imgFotoPerfil" src="" alt="Foto Perfil">
+        <input type="text" id="blob" readonly>-->
 
         <!-- <button type="button" id="btnViewImage">Visualizar imágen</button> -->
 

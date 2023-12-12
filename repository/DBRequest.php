@@ -40,6 +40,45 @@ class DBRequest
         return $arrRequests;
     }
 
+    // FIND BY CONVOCATORY ID
+    public static function findByConvocatoryId($convocatory_id)
+    {
+        try {
+            $cn = DB::getConnection();
+
+            // Variables
+            $arrRequests = [];
+            $stmt = $cn->prepare("SELECT * FROM request WHERE convocatory_id = :convocatory_id");
+            $stmt->bindParam(':convocatory_id', $convocatory_id, PDO::PARAM_INT);
+            $stmt->execute();
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            // Proceso
+            foreach ($result as $row) {
+                $arrRequests[] = 
+                new Request(
+                    $row["id"],
+                    $row["dni"],
+                    $row["name"],
+                    $row["surname"],
+                    $row["birthdate"],
+                    $row["group"],
+                    $row["phone"],
+                    $row["email"],
+                    $row["address"],
+                    $row["photo"],
+                    $row["convocatory_id"]
+                );
+            }
+
+            // Return
+            return $arrRequests;
+        } catch (PDOException $e) {
+            die("Error during selection: " . $e->getMessage());
+        }
+    }
+
+
 
 
 

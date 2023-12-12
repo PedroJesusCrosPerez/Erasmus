@@ -41,16 +41,25 @@ echo '
         <b></b>
         <a href="?menu=list_convocatories">
             <span class="fa fa-list_convocatories nav-icon"></span>
-            <span class="nav-text">Listado de convocatorias</span>
+            <span class="nav-text">Listado convocatorias</span>
         </a>
     </li>
     
-    <li class="nav-item" id="menu-complete-request">
+    <li class="nav-item" id="menu-complete_request">
         <b></b>
         <b></b>
         <a href="?menu=complete_request">
-            <span class="fa fa-list_becas nav-icon"></span>
+            <span class="fa fa-complete_request nav-icon"></span>
             <span class="nav-text">Rellenar solicitud</span>
+        </a>
+    </li>
+    
+    <li class="nav-item" id="menu-baremation">
+        <b></b>
+        <b></b>
+        <a href="?menu=baremation">
+            <span class="fa fa-baremation nav-icon"></span>
+            <span class="nav-text">Baremación</span>
         </a>
     </li>
 

@@ -32,7 +32,7 @@ input[name="name"]  { grid-area: 2 / 1 / 3 / 2; }
 
 label[for="surname"]  { grid-area: 1 / 2 / 2 / 3; }
 input[name="surname"] { grid-area: 2 / 2 / 3 / 3; }
-#surnameError         { grid-area: 3 / 3 / 4 / 3; }
+#surnameError         { grid-area: 3 / 2 / 4 / 3; }
 
 #lblDni     { grid-area: 4 / 1 / 5 / 2; }
 #dni        { grid-area: 5 / 1 / 6 / 2; }
@@ -42,14 +42,14 @@ label[for="birthdate"]  { grid-area: 4 / 2 / 5 / 3; }
 input[name="birthdate"] { grid-area: 5 / 2 / 6 / 3; }
 #birthdateError         { grid-area: 6 / 2 / 7 / 3; }
 
-label[for="group"]  { grid-area: 8 / 1 / 9 / 3; }
-select[name="group"]{ grid-area: 9 / 1 / 10 / 3; }
-#groupError         { grid-area: 10 / 1 / 11 / 3; }
+label[for="group"]  { grid-area: 7 / 1 / 8 / 3; }
+select[name="group"]{ grid-area: 8 / 1 / 9 / 3; }
+#groupError         { grid-area: 9 / 1 / 10 / 3; }
 
-label[for="photo"]  { grid-area: 12 / 1 / 13 / 3; }
-/* div[name="photo"]   { grid-area: 13 / 1 / 14 / 3; } */
-input[name="file[]"]   { grid-area: 13 / 1 / 14 / 3; }
-#photoError         { grid-area: 14 / 1 / 15 / 3; }
+label[for="photo"]          { grid-area: 10 / 1 / 11 / 3; }
+div[name="photo"]           { grid-area: 11 / 1 / 12 / 3; }
+/* input[name="file[photo]"]   { grid-area: 11 / 1 / 12 / 3; } */
+#photoError                 { grid-area: 12 / 1 / 13 / 3; }
 
 #ideSiguiente { grid-area: 15 / 1 / 16 / 3; }
 
@@ -59,5 +59,5 @@ input[name="file[]"]   { grid-area: 13 / 1 / 14 / 3; }
 
 
 /* 3º Formulario Otros */
-#btnOtrosAnterior   { grid-area: 9 / 1 / 10 / 2; }
-#btnOtrosEnviar     { grid-area: 9 / 2 / 10 / 3; }
+#btnOtrosAnterior   { grid-area: auto / 1 / auto / 2; }
+#btnOtrosEnviar     { grid-area: auto / 2 / auto / 3; }

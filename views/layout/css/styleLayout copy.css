@@ -1,18 +1,11 @@
 /* CONTENT */
 .content-background {
+  /* background: #f6f7fb; */
   background: #202124;
   margin: 15px;
   padding: 20px;
   border-radius: 15px;
-  height: 90%;
-  display: flex;
-}
-
-.form-container {
-  margin: auto auto;
-  padding: 30px;
-  width: 50%;
-  height: auto;
+  height: 88%;
 }
 
 nav {
@@ -33,12 +26,12 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
-  background: #212140;
+  /* min-height: 100vh; */
+  height: 100vh;
+	background: #212140;
   background-repeat: no-repeat;
   background-size: cover;
   overflow: hidden;
-  min-width: 100vh;
 }
 
 /* MAIN MENU */
@@ -46,13 +39,19 @@ body {
 main {
   display: grid;
   grid-template-columns: 15% 85%;
-  min-height: 90vh;
-  min-width: 90%;
+  /* min-height: 100vh; */
+  height: 90vh;
+  width: 100%;
+  margin: 40px;
+  /* background: rgb(254, 254, 254); */
   background: #121212;
   border-radius: 15px;
+  /*z-index: 10;*/
 }
 
 .main-menu {
+  /*overflow: hidden;*/
+  /* background: rgb(73, 57, 113); */
   background: #493971;
   padding-top: 10px;
   border-radius: 15px 0 0 15px;
@@ -80,6 +79,7 @@ main {
   display: flex;
   flex-direction: row;
   align-items: center;
+  /* justify-content: center; */
   justify-content: flex-start;
   color: #fff;
   font-size: 1rem;
@@ -139,7 +139,9 @@ main {
 
 .nav-item.active a {
   text-decoration: none;
+  /* color: #000; */
   font-weight: bold;
+  /*background: rgb(254, 254, 254);*/
   background: #121212;
 }
 
@@ -163,18 +165,48 @@ main {
   background-repeat: no-repeat;
   background-size: 1.1em;
 }
-
 /* ######################################################################################## */
 /* ################################ ICONS NAV ############################################# */
 /* ######################################################################################## */
+/* .fa-home {
+  background-image: url(../../src/icons/home-noActive.png);
+}
+.fa-coordinator {
+  background-image: url(../../src/icons/userLoged-noActive.png);
+}
+.fa-settings {
+  background-image: url(../../src/icons/settings-white-active-noActive.png);
+}
+.fa-list_convocatories {
+  background-image: url(../../src/icons/list_convocatories-noActive.png);
+}
+.fa-create_convocatory {
+  background-size: 2.1em;
+  background-image: url(../../src/icons/create_convocatory-noActive.png);
+} */
 .fa-create_convocatory {
   background-size: 0.99em;
 }
 
+/* .fa-home:active {
+  background-image: url(../../src/icons/home-active.svg);
+}
+.fa-user:active {
+  background-image: url(../../src/icons/userNotLoged.svg);
+}
+.fa-settings:active {
+  background-image: url(../../src/icons/settings-active.svg);
+} */
+
+/* CONTENT */
 
 /* LEFT CONTENT */
 
 .content-background {
+  /* display: grid;
+  grid-template-rows: 50% 50%; */
+  /* background: #f6f7fb; */
+  /* height: auto; */
   background: #202124;
   margin: 15px;
   padding: 20px;

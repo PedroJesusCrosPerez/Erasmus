@@ -43,7 +43,7 @@ echo '
       <div id="information">
 
         <label for="project">Proyecto:</label>
-        <select name="project">
+        <select name="project" id="project">
           <option value="null" disabled selected>Selecciona el proyecto al que pertenece</option>
           ';
           foreach ($arrProjects as $project) {

@@ -1,3 +1,4 @@
+// TODO ESTO LO SUYO SERÍA APLICARLO A UN FORMULARIO
 class Validator {
     // Properties
     constructor() {

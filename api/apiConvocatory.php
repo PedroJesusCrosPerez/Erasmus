@@ -30,6 +30,10 @@ switch ($_SERVER["REQUEST_METHOD"])
             case 'findAll':
                 echo json_encode(DBConvocatory::findAll());
                 break;
+            
+            case 'findAllAll':
+                echo json_encode(DBConvocatory::findAllAll());
+                break;
 
             case 'findByGroup':
                 if (isset($_GET["group"])) {

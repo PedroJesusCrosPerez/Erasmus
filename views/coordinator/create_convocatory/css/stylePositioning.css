@@ -28,10 +28,16 @@ table[name="language_levels"] { margin-top: 0.5em; }
 #topButton-container {
     padding-bottom: 3em;
 }
-.form-container {
+/* .form-container {
     max-width: 500px;
     margin: 0 auto;
     padding: 30px;
+} */
+.form-container {
+    margin: auto auto;
+    padding: 30px;
+    width: 50%;
+    height: auto;
 }
 
 #feedback {

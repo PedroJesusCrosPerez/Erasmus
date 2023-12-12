@@ -138,6 +138,33 @@ class DBConvocatory
             die("Error during selection: " . $e->getMessage());
         }
     }
+
+    public static function findAllAll()
+    {
+        try {
+            $stmt = DB::getConnection()->prepare("SELECT * FROM convocatory;");
+            $stmt->execute();
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $arrConvocatoryAssociative = [];
+    
+            if (!$result) {
+                return null;
+            }
+    
+            foreach ($result as $convocatory) {
+                $arrConvocatoryAssociative[] = array(
+                    'convocatory' => DBConvocatory::findById($convocatory["id"]),
+                    'project' => DBProject::findById($convocatory["project_id"]),
+                    'requests' => DBRequest::findByConvocatoryId($convocatory["id"])
+                );
+            }
+    
+            return $arrConvocatoryAssociative;
+        } catch (PDOException $e) {
+            die("Error during selection: " . $e->getMessage());
+        }
+    }
+    
     
 
 
