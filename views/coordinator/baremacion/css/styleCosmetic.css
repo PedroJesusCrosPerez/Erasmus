@@ -3,4 +3,94 @@
     border-radius: 20px;
     padding: 1em;
     color: white;
+
+    background-color: #212140;
+}
+
+#divBaremacion {
+    background-color: white;
+    border: 1px solid white;
+    border-radius: 15px;
+}
+
+/* Lista de convocatorias */
+#convocatories > div:nth-child(2) { background-color: #493971; }
+#convocatories > div:nth-child(2) > div { background-color: lightgrey; }
+
+.contenido {
+    background-color: grey;
+    border-radius: 20px;
+}
+
+/* Cabecera */
+#head {
+    background-color: #212140;
+    color: white;
+    font-weight: bold;
+    font-size: 1.2em;
+    margin: auto;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+#head > div {
+    background-image: url(http://serverpedroerasmus/views/src/icons/arrow-up.svg);
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: 1.3em;
+    padding-right: 1.4em;
+    margin: auto 1em;
+}
+#head > div {
+    background-color: white;
+    border-radius: 10px;
+    color: black;
+}
+#head > div:active  { background-image: url(http://serverpedroerasmus/views/src/icons/arrow-down.svg); }
+.thead_selected     { background-image: url(http://serverpedroerasmus/views/src/icons/arrow-down.svg); }
+
+.baremar {
+    width: 100%;
+    padding: 1em;
+    border: 1px solid white;
+    border-radius: 15px;
+    background-color: #493971;
+    cursor: pointer;
+    z-index: 100;
+}
+.baremar:hover { background-color: #2b1d4e; }
+
+#head { background-image: none; }
+.showCrud {
+    background-image: url(http://serverpedroerasmus/views/src/icons/crud_convocatory.png);
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: 3em;
+}
+
+.showCrud:hover {
+    background-image: url(http://serverpedroerasmus/views/src/icons/crud_convocatory_hover.png);
+}
+
+
+
+
+/* MODAL BAREMAR */
+div[name="dbaremar"] {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+table[name="tbaremar"], table[name="tbaremar"] td, table[name="tbaremar"] tr, table[name="tbaremar"] th {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+table[name="tbaremar"] td,
+table[name="tbaremar"] th {
+    padding: 2em;
+}
+
+table[name="tbaremar"] th {
+    background-color: grey;
+    color: white;
+    font-weight: bold;
 }

@@ -31,19 +31,20 @@ function identificacion_domicilio() {
 
 
 // ============================================================================
-// ================================= DOMICILIO ================================
+// ================================== Contacto ================================
 // ============================================================================
-// SIGUIENTE - Pasar de Domicilio a UploadFiles
+// SIGUIENTE - Pasar de Contacto a UploadFiles
 function domicilio_uploadFiles() {
     v_domicilio.classList.add('eliminar');
     v_uploadFiles.classList.remove('eliminar');
+    v_uploadFiles.classList.add('flex'); // TODO cuidado
     estadoFormulario = false;
 
     h2Titulo.innerHTML = h2UploadFiles;
     siguienteBoton(btnDomicilio, btnUploadFiles);
 }
 
-// ANTERIOR - Pasar de Domicilio a Identificación
+// ANTERIOR - Pasar de Contacto a Identificación
 function domicilio_identificacion() {
     v_domicilio.classList.add('eliminar');
     v_identificacion.classList.remove('eliminar');
@@ -60,6 +61,7 @@ function domicilio_identificacion() {
 // ANTERIOR - Pasar de UploadFiles a Domicilio
 function uploadFiles_domicilio() {
     v_uploadFiles.classList.add('eliminar');
+    v_uploadFiles.classList.remove('flex'); // TODO cuidado
     v_domicilio.classList.remove('eliminar');
 
     h2Titulo.innerHTML = h2Domicilio;

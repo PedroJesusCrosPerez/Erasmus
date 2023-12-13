@@ -115,7 +115,7 @@ echo '
     </div>
     <!-- Formulario Identificación - END -->
 
-    <!-- Formulario Domicilio - START -->
+    <!-- Formulario Contacto - START -->
     <div id="domicilio">
 
         <label for="lblAddress">Dirección:</label>
@@ -134,7 +134,7 @@ echo '
         <button type="button" id="btnDomiSiguiente">Siguiente</button>
 
     </div>
-    <!-- Formulario Domicilio - END -->
+    <!-- Formulario Contacto - END -->
 
     <!-- Formulario Subir archivos - START -->
     <div id="uploadFiles">
@@ -166,8 +166,10 @@ echo '
         }
         echo '
 
-        <button type="button" id="btnUploadFilesAnterior">Anterior</button>
-        <input type="submit" id="btnUploadFilesEnviar" value="ENVIAR">
+        <div>
+            <button type="button" id="btnUploadFilesAnterior">Anterior</button>
+            <input type="submit" id="btnUploadFilesEnviar" value="ENVIAR">
+        </div>
 
     </div>
     <!-- Formulario Subir archivos - END -->

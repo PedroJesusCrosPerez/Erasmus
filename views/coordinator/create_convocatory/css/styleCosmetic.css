@@ -1,5 +1,5 @@
 /* ESTÉTICA */
-
+.item_selected { background-color: grey; }
 
 /* Reglas para aplicar con JS */
 .btnSeleccionado {
@@ -145,3 +145,18 @@ table * {
 .btnCreate:hover { background-image: url('../../../views/src/icons/create-hover.svg'); }
 .btnUpdate:hover { background-image: url('../../../views/src/icons/pencil-hover.svg'); }
 .btnDelete:hover { background-image: url('../../../views/src/icons/trash-hover.svg'); }
+
+
+form[action="createConvocatory.php"] input,
+form[action="createConvocatory.php"] select {
+  font-size: 1em;
+}
+
+form[action="createConvocatory.php"] label,
+form[action="createConvocatory.php"] button {
+  font-size: 1.4em;
+}
+
+form[action="createConvocatory.php"] input[type="radio"] {
+  height: 2em;
+}

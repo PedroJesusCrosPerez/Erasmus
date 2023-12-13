@@ -31,6 +31,11 @@ switch ($_SERVER["REQUEST_METHOD"])
                 echo json_encode(DBConvocatory::findAll());
                 break;
             
+            case 'findByOnDate':
+                // echo json_encode(DBConvocatory::findByMoreDate());
+                echo json_encode("==> pending to implement");
+                break;
+            
             case 'findAllAll':
                 // echo json_encode(DBConvocatory::findAllAll());
                 

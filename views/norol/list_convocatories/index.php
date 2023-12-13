@@ -5,7 +5,7 @@ $arrGroups = DBGroup::findAll();
 
 echo '
 <head>
-    <link rel="stylesheet" href="'.$thisdir.'css/style.css">
+    <link rel="stylesheet" href="'.$thisdir.'css/styleListConvocatories.css">
     <script src="'.$thisdir.'js/functions.js"></script>
     <script src="'.$thisdir.'js/fetch.js"></script>
 </head>

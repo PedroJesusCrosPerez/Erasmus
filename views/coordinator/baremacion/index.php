@@ -4,11 +4,10 @@ echo '
 <head>
     <link rel="stylesheet" href="views/coordinator/baremacion/css/styleStructure.css">
     <link rel="stylesheet" href="views/coordinator/baremacion/css/styleCosmetic.css">
-    <link rel="stylesheet" href="views/coordinator/baremacion/css/styleDropdownMenu.css">
 
     <script src="views/coordinator/baremacion/js/fetch.js"></script>
-    <script src="views/coordinator/baremacion/js/functions.js"></script>
     <script src="views/coordinator/baremacion/js/dropdownMenu.js"></script>
+    <script src="views/coordinator/baremacion/js/modal.js"></script>
 </head>
 
 <div id="divBaremacion">

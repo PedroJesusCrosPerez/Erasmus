@@ -1,0 +1,40 @@
+/* TITLE DIV */
+div[name="landingpage"] {
+    display: flex;
+    /* flex-direction: column; */
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+div[name="landingpage"] > *:first-child {
+    background-color: white;
+    text-align: center;
+    padding: 0.5em;
+    font-size: 2em;
+
+    width: 90%;
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+}
+
+
+/* IMGS */
+div[name="imgs"] {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, auto);
+    gap: 10px;
+
+    background-color: white;
+    padding: 10px 10px;
+    border-radius: 15px;
+}
+
+div[name="imgs"] > div { margin: auto; }
+div[name="imgs"] img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.main-menu { max-height: 96%; }

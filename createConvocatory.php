@@ -31,6 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit"]))
         $date_baremation,
         $date_definitive_lists,
         $country,
+        $movilities,
         $project
     );
     /**
@@ -101,6 +102,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit"]))
      *  - convocatory_has_group
      *  - convocatory_has_item_baremable
     */
+    
     echo DBConvocatory::insert($convocatory, $group, $arrItems);
     // foreach ($arrItems as $key => $value) {
     //     if (!is_array($value)) {

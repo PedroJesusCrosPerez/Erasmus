@@ -8,14 +8,14 @@ document.body.addEventListener("load", inicializarWeb());
 // ============================================================================
 // =============================== FORM =======================================
 // ============================================================================
-form.addEventListener("submit", submit);
+// form.addEventListener("submit", submit);
 
 
 // ============================================================================
 // ============================== IDENTIFICACIÓN ==============================
 // ============================================================================
 // select
-slctProjects.addEventListener("change", validateSlctProject);
+// slctProjects.addEventListener("change", validateSlctProject);
 
 // Inputs
     // Next

@@ -44,7 +44,7 @@ echo '
 
         <label for="project">Proyecto:</label>
         <select name="project" id="project">
-          <option value="null" disabled selected>Selecciona el proyecto al que pertenece</option>
+          <option value="null" disabled selected>**Proyecto al que pertenece**</option>
           ';
           foreach ($arrProjects as $project) {
             echo '<option value="'.$project->getId().'">'.$project->getName().'</option>';
@@ -59,7 +59,7 @@ echo '
 
         <label for="group">Destinatarios:</label>
         <select name="group">
-          <option value="null">Selecciona un grupo</option>
+          <option value="null">**Grupo al que va destinado**</option>
           ';
           foreach ($arrGroups as $group) {
             echo '<option value="'.$group->getId().'">'.$group->getName().'</option>';

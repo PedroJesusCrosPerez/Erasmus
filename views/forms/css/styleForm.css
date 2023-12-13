@@ -114,7 +114,7 @@ select {
   resize: none;
   transition: all 0.3s ease;
 
-  width: 100%;
+  width: 95%;
   padding: 0.6em;
 }
 
@@ -141,9 +141,9 @@ input[type="submit"] {
 
 
 /* font-family */
-.form-container * {
+/* .form-container * {
   font-family: Agbalumo;
-}
+} */
 
 input[type="submit"]:hover {
   background-color: #91c36c;

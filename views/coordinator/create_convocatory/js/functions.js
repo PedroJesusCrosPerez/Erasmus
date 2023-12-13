@@ -13,6 +13,17 @@ function inicializarWeb() {
     v_items.classList.add('none');
     aplicarFeedback(false);
     uploadMsgError();
+
+
+    // TODO toggle
+    function toggleBackgroundColor() {
+        this.parentElement.parentElement.classList.toggle("item_selected");
+    }
+
+    const itemsRequired = document.getElementsByName("baremable[]");
+    for (const item of itemsRequired) {
+        item.addEventListener("click", toggleBackgroundColor);
+    }
 }
 
 

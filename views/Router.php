@@ -71,6 +71,8 @@ class Router
             else
             {
                 require_once 'landingpage/index.php';
+                // $url_server = 'http://'.$_SERVER['HTTP_HOST'].'?menu=home' ;
+                // header("Location: ".$url_server);
             }
         }
         else 

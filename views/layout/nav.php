@@ -1,13 +1,6 @@
 <?php
-// $user = Session::read("user");
-
-// if ($user->getRole() == "coordinator") {
-    
-// } else {
-
-// }
 echo '
-<span> <img src="views/src/logos/logo.png" alt="logotipo erasmus fuentezuelas" width="60" heigth="60"> <h1>Becas erasmus</h1> </span>
+<span> <img src="views/src/logos/logo.png" alt="logotipo erasmus fuentezuelas" width="60" heigth="60"> <h1>Convocatorias erasmus</h1> </span>
 <ul>
     <li class="nav-item" id="menu-home">
         <b></b>
@@ -27,33 +20,40 @@ echo '
         </a>
     </li>
 
-    <li class="nav-item" id="menu-create_convocatory">
-        <b></b>
-        <b></b>
-        <a href="?menu=create_convocatory">
-            <span class="fa fa-create_convocatory nav-icon"></span>
-            <span class="nav-text">Crear convocatoria</span>
-        </a>
-    </li>
-
     <li class="nav-item" id="menu-list_convocatories">
         <b></b>
         <b></b>
         <a href="?menu=list_convocatories">
             <span class="fa fa-list_convocatories nav-icon"></span>
-            <span class="nav-text">Listado convocatorias</span>
+            <span class="nav-text">Listar</span>
         </a>
     </li>
     
-    <li class="nav-item" id="menu-complete_request">
+    <!--<li class="nav-item" id="menu-complete_request">
         <b></b>
         <b></b>
         <a href="?menu=complete_request">
             <span class="fa fa-complete_request nav-icon"></span>
             <span class="nav-text">Rellenar solicitud</span>
         </a>
+    </li>-->
+
+';
+// $user = Session::read("user");
+
+// if ($user->getRole() == "coordinator") {
+// if (isset($_GET["role"]) && $_GET["role"] == "coordinator") {
+echo 
+'
+    <li class="nav-item" id="menu-create_convocatory">
+        <b></b>
+        <b></b>
+        <a href="?menu=create_convocatory">
+            <span class="fa fa-create_convocatory nav-icon"></span>
+            <span class="nav-text">Crear</span>
+        </a>
     </li>
-    
+
     <li class="nav-item" id="menu-baremation">
         <b></b>
         <b></b>
@@ -62,15 +62,11 @@ echo '
             <span class="nav-text">Baremación</span>
         </a>
     </li>
-
-    <!--<li class="nav-item">
-        <a href="#">
-            <i class="fa fa-person-running nav-icon"></i>
-            <span class="nav-text">Activities</span>
-        </a>
-    </li>-->
-</ul>
 ';
+// }
+
+echo '</ul>';
+
 ?>
 
 <script>
@@ -86,8 +82,8 @@ window.addEventListener("load", function () {
         const menuParam = href.split("?menu=")[1];
 
         if (navItem.classList.contains("active")) {
-            //icon.style.backgroundImage = `url(views/src/icons/${menuParam}-active.png)`;
-            icon.style.backgroundImage = `url(views/src/icons/${menuParam}-active.png)`;
+            // icon.style.backgroundImage = `url(views/src/icons/${menuParam}-active.png)`;
+            icon.style.backgroundImage = `url(views/src/icons/${menuParam}.png)`;
         } else {
             icon.style.backgroundImage = `url(views/src/icons/${menuParam}.png)`;
         }

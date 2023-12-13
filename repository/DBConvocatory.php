@@ -14,8 +14,8 @@ class DBConvocatory
             $db->beginTransaction();
     
             // INSERT tabla convocatoria
-            $stmt = $db->prepare("  INSERT INTO convocatory (type, date_start_requests, date_end_requests, date_baremation, date_definitive_lists, country, project_id)
-                                    VALUES (?, ?, ?, ?, ?, ?, ?)");
+            $stmt = $db->prepare("  INSERT INTO convocatory (type, date_start_requests, date_end_requests, date_baremation, date_definitive_lists, country, movilities, project_id)
+                                    VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
             $stmt->execute([
                 $con->getType(), 
                 $con->getDate_start_requests(), 
@@ -23,6 +23,7 @@ class DBConvocatory
                 $con->getDate_baremation(), 
                 $con->getDate_definitive_lists(), 
                 $con->getCountry(), 
+                $con->getMovilities(), 
                 $con->getProject_id()
             ]);
     
@@ -82,27 +83,6 @@ class DBConvocatory
     }
 
 
-    public static function insertConvocatory(Convocatory $convocatory)
-    {
-        try {
-            $stmt = DB::getConnection()->prepare("INSERT INTO convocatories (id, type, date_start_requests, date_end_requests, date_baremation, date_definitive_lists, country, project_id) 
-                                        VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-            $stmt->execute([
-                null,
-                $convocatory->getType(),
-                $convocatory->getDateStartRequests(),
-                $convocatory->getDateEndRequests(),
-                $convocatory->getDateBaremation(),
-                $convocatory->getDateDefinitiveLists(),
-                $convocatory->getCountry(),
-                $convocatory->getProyectId()
-            ]);
-        } catch (PDOException $e) {
-            die("Error during insertion: " . $e->getMessage());
-        }
-    }
-
-
 
 
     // ############################################################################################
@@ -119,7 +99,7 @@ class DBConvocatory
             if (!$result) {
                 return null;
             }
-    
+            
             foreach ($result as $row) {
                 $arrConvocatory[] = new Convocatory(
                     $row['id'],
@@ -129,6 +109,7 @@ class DBConvocatory
                     $row['date_baremation'],
                     $row['date_definitive_lists'],
                     $row['country'],
+                    $row['movilities'],
                     $row['project_id']
                 );
             }
@@ -192,6 +173,7 @@ class DBConvocatory
                 $result['date_baremation'],
                 $result['date_definitive_lists'],
                 $result['country'],
+                $result['movilities'],
                 $result['project_id']
             );
         } catch (PDOException $e) {
@@ -227,6 +209,7 @@ class DBConvocatory
                     $row['date_baremation'],
                     $row['date_definitive_lists'],
                     $row['country'],
+                    $row['movilities'],
                     $row['project_id']
                 );
             }
@@ -282,7 +265,7 @@ class DBConvocatory
     {
         try {
             $stmt = DB::getConnection()->prepare("UPDATE convocatories SET type = ?, date_start_requests = ?, date_end_requests = ?, date_baremation = ?, 
-                                        date_definitive_lists = ?, country = ?, project_id = ? WHERE id = ?");
+                                        date_definitive_lists = ?, country = ?, project_id = ?, movilities = ? WHERE id = ?");
             $stmt->execute([
                 $convocatory->getType(),
                 $convocatory->getDate_start_requests(),
@@ -291,7 +274,8 @@ class DBConvocatory
                 $convocatory->getDate_definitive_lists(),
                 $convocatory->getCountry(),
                 $convocatory->getProject_id(),
-                $convocatory->getId()
+                $convocatory->getId(),
+                $convocatory->getMovilities()
             ]);
         } catch (PDOException $e) {
             die("Error during update: " . $e->getMessage());

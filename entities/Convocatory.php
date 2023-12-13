@@ -9,10 +9,11 @@ class Convocatory implements JsonSerializable {
     private $date_baremation;
     private $date_definitive_lists;
     private $country;
+    private $movilities;
     private $project_id;
 
     // Constructor
-    public function __construct($id=null, $type, $date_start_requests, $date_end_requests, $date_baremation, $date_definitive_lists, $country, $project_id) {
+    public function __construct($id=null, $type, $date_start_requests, $date_end_requests, $date_baremation, $date_definitive_lists, $country, $movilities, $project_id) {
         $this->setId($id);
         $this->setType($type);
         $this->setDate_start_requests($date_start_requests);
@@ -20,6 +21,7 @@ class Convocatory implements JsonSerializable {
         $this->setDate_baremation($date_baremation);
         $this->setDate_definitive_lists($date_definitive_lists);
         $this->setCountry($country);
+        $this->setMovilities($movilities);
         $this->setProject_id($project_id);
     }
 
@@ -50,6 +52,10 @@ class Convocatory implements JsonSerializable {
 
     public function getCountry() {
         return $this->country;
+    }
+
+    public function getMovilities() {
+        return $this->movilities;
     }
 
     public function getProject_id() {
@@ -85,6 +91,10 @@ class Convocatory implements JsonSerializable {
         $this->country = $country;
     }
 
+    private function setMovilities($movilities) {
+        $this->movilities = $movilities;
+    }
+
     private function setProject_id($project_id) {
         $this->project_id = $project_id;
     }
@@ -92,7 +102,7 @@ class Convocatory implements JsonSerializable {
     // Methods
     public function __toString() {
         return sprintf(
-            "Convocatory ID: %d, Type: %s, Start Requests: %s, End Requests: %s, Baremation Date: %s, Definitive Lists Date: %s, Country: %s, Project ID: %d",
+            "Convocatory ID: %d, Type: %s, Start Requests: %s, End Requests: %s, Baremation Date: %s, Definitive Lists Date: %s, Country: %s, Movilities: %s, Project ID: %d",
             $this->getId(),
             $this->getType(),
             $this->getDate_start_requests(),
@@ -100,6 +110,7 @@ class Convocatory implements JsonSerializable {
             $this->getDate_baremation(),
             $this->getDate_definitive_lists(),
             $this->getCountry(),
+            $this->getMovilities(),
             $this->getProject_id()
         );
     }

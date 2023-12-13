@@ -46,7 +46,11 @@ body {
 main {
   display: grid;
   grid-template-columns: 15% 85%;
-  min-height: 90vh;
+  height: 90vh;
+  min-height: 90%;
+  max-height: 90%;
+  width: 90%;
+  max-width: 90%;
   min-width: 90%;
   background: #121212;
   border-radius: 15px;
@@ -167,9 +171,11 @@ main {
 /* ######################################################################################## */
 /* ################################ ICONS NAV ############################################# */
 /* ######################################################################################## */
-.fa-create_convocatory {
-  background-size: 0.99em;
-}
+.fa-home { background-image: url("http://serverpedroerasmus/views/src/icons/home.png"); }
+.fa-coordinator { background-image: url("http://serverpedroerasmus/views/src/icons/login.png"); }
+.fa-list_convocatories { background-image: url("http://serverpedroerasmus/views/src/icons/list_convocatories.png"); }
+.fa-create_convocatory { background-image: url("http://serverpedroerasmus/views/src/icons/create_convocatory.png"); }
+.fa-baremation { background-image: url("http://serverpedroerasmus/views/src/icons/baremation.png"); }
 
 
 /* LEFT CONTENT */
@@ -180,3 +186,16 @@ main {
   padding: 20px;
   border-radius: 15px;
 }
+
+
+
+
+
+
+/* ZONA DE PRUEBAS */
+.fa {
+  height: 1.8em;
+  background-size: 1.6em;
+}
+li a:hover  { background-color: grey; }
+li a:active { background-color: lightgrey; }

@@ -55,9 +55,14 @@ div[name="photo"]           { grid-area: 11 / 1 / 12 / 3; }
 
 
 
-/* 2º Formulario Domicilio */
+/* 2º Formulario Contacto */
 
 
-/* 3º Formulario Otros */
-#btnOtrosAnterior   { grid-area: auto / 1 / auto / 2; }
-#btnOtrosEnviar     { grid-area: auto / 2 / auto / 3; }
+/* 3º Formulario Subir archivos */
+#uploadFiles { flex-direction: column; }
+#uploadFiles > div {
+  display: flex;
+  column-gap: 1em
+}
+/* #btnOtrosAnterior   { grid-area: auto / 1 / auto / 2; }
+#btnOtrosEnviar     { grid-area: auto / 2 / auto / 3; } */

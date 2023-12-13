@@ -1,5 +1,9 @@
 window.addEventListener("load", function () {
 
+    function formatear(cadena) {
+        return cadena.charAt(0).toUpperCase() + cadena.slice(1).toLowerCase();
+    }
+
     document.getElementById("slctGroup").addEventListener("change", function () {
         fetch("http://serverpedroerasmus/views/norol/list_convocatories/js/templates/convocatory.html")
         .then(x => x.text())
@@ -49,7 +53,7 @@ window.addEventListener("load", function () {
         
                                 // Agregar clases y asignar contenido
                                 convoAux.id = convocatory.id;
-                                convoAux.getElementsByClassName("convocatory_name")[0].innerHTML = convocatory.id;
+                                convoAux.getElementsByClassName("country")[0].innerHTML = convocatory.country;
                                 convoAux.getElementsByClassName("group_name")[0].innerHTML = group.name || "Default Statement";//convocatory.statement;
                                 convoAux.getElementsByClassName("a")[0].setAtributte("href", window.location.host+"?menu=complete_request&id="+convocatory.id);
         
@@ -143,7 +147,10 @@ window.addEventListener("load", function () {
         
                                 // Agregar clases y asignar contenido
                                 convoAux.id = convocatory.id;
-                                convoAux.getElementsByClassName("convocatory_name")[0].innerHTML = convocatory.id;
+                                convoAux.getElementsByClassName("country")[0].innerHTML = convocatory.country;
+                                // convoAux.getElementsByClassName("movilities")[0].innerHTML = convocatory.movilities;
+                                convoAux.querySelector("p[name='convocatory-movilities'").innerHTML = convocatory.movilities;
+                                convoAux.getElementsByClassName("date_end_requests")[0].innerHTML = convocatory.date_end_requests;
                                 convoAux.getElementsByClassName("group_name")[0].innerHTML = group.name || "Default Statement";//convocatory.statement;
                                 // convoAux.getElementsByClassName("a")[0].setAtributte("href", window.location.host+"?menu=complete_request&id="+convocatory.id);
                                 // convoAux.getElementsByClassName("a")[0].setAtributte("href", 'www.google.es');
@@ -173,7 +180,7 @@ window.addEventListener("load", function () {
                             
                                         // Agregar clases y asignar contenido
                                         convoAux.id = convocatory.id;
-                                        convoAux.getElementsByClassName("convocatory_name")[0].innerHTML = convocatory.id;
+                                        convoAux.getElementsByClassName("country")[0].innerHTML = formatear(convocatory.country);
                                         convoAux.getElementsByClassName("group_name")[0].innerHTML = item.group.name || "Default Statement";
                                         convoAux.querySelector("a").href = "?menu=complete_request&convocatory_id="+convocatory.id;
                             
