@@ -11,6 +11,10 @@ function inicializarWeb() {
     v_domicilio.classList.add('eliminar');
     v_uploadFiles.classList.add('eliminar');
     aplicarFeedback(false);
+
+    let currenMenuOption = document.querySelector(".main-menu > ul > li:nth-child(3)");
+    currenMenuOption.classList.add("active");
+    currenMenuOption.querySelector(".nav-text").innerHTML = "Listar<br>> rellenar solicitud";
 }
 
 

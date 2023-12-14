@@ -94,3 +94,19 @@ table[name="tbaremar"] th {
     color: white;
     font-weight: bold;
 }
+
+.backGrey { background-color: grey; }
+/* .convocatoryHover { background-color: rgb(180, 180, 180); } */
+.convocatoryHover { background-color: red; }
+
+#list_convocatories > div:hover {
+    background-color: rgb(180, 180, 180);
+}
+
+#head > div:hover {
+    background-color: rgb(155, 155, 155);
+}
+
+.desplegable {
+    border-bottom: 1px solid black;
+}

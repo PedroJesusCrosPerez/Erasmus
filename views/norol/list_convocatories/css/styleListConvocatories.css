@@ -158,7 +158,7 @@
     opacity: 30%;
     z-index: 99; */
     /* background-color: rgba(0, 128, 255, 0.5); */
-    background-color: rgb(130,175,110, 0.5);
+    background-color: rgb(130,175,110, 0.8);
     border-radius: 20px;
     color: lightgrey;
     font-weight: bold;
@@ -189,3 +189,5 @@ button {
 button:hover {
     background-color: rgba(0, 128, 255, 0.8);
 } */
+
+.convocatory-container > div:nth-child(3) { height: 1.5em; }

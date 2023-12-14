@@ -221,6 +221,19 @@ window.addEventListener("load", function () {
         })
     })
 
+function toHover(item) {
+    item.addEventListener("mouseover", function () {
+        // item.classList.add("convocatoryHover");
+        item.style.backgroundColor = "rgb(180, 180, 180)";
+    });
+
+    beforeBackground = item.style.backgroundColor;
+    item.addEventListener("mouseout", function () {
+        // item.classList.remove("convocatoryHover");
+        item.style.backgroundColor = beforeBackground;
+    });
+}
+
 function cambiarColor() {
     let divConvocatories = document.querySelector("#convocatories").children[1];
     if (divConvocatories) {
@@ -228,10 +241,12 @@ function cambiarColor() {
 
         for (let i = 0; i < convocatoryItems.length; i++) {
             // Check if the index is even
-            if (i % 2 === 0) {
-                convocatoryItems[i].style.backgroundColor = "grey";
-                // convocatoryItems[i].style.color = "white";
-            }
+            // if (i % 2 === 0) {
+            //     convocatoryItems[i].style.backgroundColor = "grey";
+            //     // convocatoryItems[i].classList.add("backGrey");
+            //     // convocatoryItems[i].style.color = "white";
+            // }
+            toHover(convocatoryItems[i]);
         }
     }
 }

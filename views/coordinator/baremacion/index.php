@@ -22,7 +22,7 @@ echo '
             <div>Baremación</div>
             <div>Listados definitivos</div>
         </div>
-        <div></div>
+        <div id="list_convocatories"></div>
     </div>
 
 </div>
