@@ -174,17 +174,98 @@ function limpiar()
 
 
 
-window.addEventListener("DOMContentLoaded", function () {
+window.addEventListener("load", function () {
 
-    document.querySelector("input[type='file'][name='file[photo]']").addEventListener("change", function () {
-        this.style.gridColumn = "1 / 2";
+    // document.querySelector("input[type='file'][name='file[photo]']").addEventListener("change", function () {
+    //     this.style.gridColumn = "1 / 2";
+    //     let seePdfIcon = document.createElement("div");
+    //     seePdfIcon.classList.add("lupa");
+    //     seePdfIcon.addEventListener("click", function () {
+    //         // TODO ABRIR MODAL PARA QUE SE VISUALICE LA FOTO :D, hacer los mismo en el mismo formulario con los PDF'S
+    //     });
+    //     document.querySelector("#identificacion").appendChild(seePdfIcon);
+    // });
+
+
+        document.querySelector("input[type='file'][name='file[photo]']").style.gridColumn = "1 / 2";
         let seePdfIcon = document.createElement("div");
-        seePdfIcon.classList.add("lupa");
-        seePdfIcon.addEventListener("click", function () {
-            // TODO ABRIR MODAL PARA QUE SE VISUALICE LA FOTO :D, hacer los mismo en el mismo formulario con los PDF'S
-        });
+        seePdfIcon.style.width = "100%";
+        seePdfIcon.style.height = "80px";
+        seePdfIcon.innerHTML = "Vista previa de foto";
+        seePdfIcon.style.border = "1px solid black";
+        seePdfIcon.style.backgroundColor = "lightgrey";
+        // seePdfIcon.classList.add("lupa");
+        // seePdfIcon.addEventListener("click", function (ev) {
+        //     //ev.preventDefault();
+
+        //     // Fondo modal
+        //     var modal = document.createElement("div");
+        //     modal.style.position = "fixed";
+        //     modal.style.top = 0;
+        //     modal.style.left = 0;
+        //     modal.style.width = "100%";
+        //     modal.style.height = "100%";
+        //     modal.style.backgroundColor = "black";
+        //     //modal.style.backgroundColor = "rgba(0,0,0,0,5)";
+        //     modal.style.opacity = 0.5;
+        //     modal.style.zIndex = 99;
+        //     document.body.appendChild(modal);
+
+        //     // Contenido modal
+        //     var visualizador = document.createElement("div");
+        //     visualizador.setAttribute("id","visualizador");
+        //     visualizador.style.position = "fixed";
+        //     visualizador.style.top = "10%";
+        //     visualizador.style.left = "15%";
+        //     visualizador.style.width = "70%";
+        //     visualizador.style.height = "80%";
+        //     visualizador.style.backgroundColor = "white";
+        //     visualizador.style.zIndex = 100;
+        //     document.body.appendChild(visualizador);
+
+        //     var closer = document.createElement("span");
+        //     closer.innerHTML = "X";
+        //     closer.style.position = "fixed";
+        //     closer.style.top = 0;
+        //     closer.style.right = 0;
+        //     closer.style.padding = "1em";
+        //     closer.style.zIndex = 101;
+        //     closer.style.backgroundColor = "darkblue";
+        //     closer.style.cursor = "pointer";
+        //     closer.style.color = "white";
+        //     visualizador.appendChild(closer);
+
+        //     closer.addEventListener("pointerover", function () { this.style.backgroundColor = "black"; })
+        //     closer.addEventListener("mousedown", function () { this.style.backgroundColor = "darkred"; })
+        //     closer.addEventListener("pointerout", function () { this.style.backgroundColor = "darkblue"; })
+        //     closer.addEventListener("click", function () {
+        //         document.body.removeChild(modal); //modal.parentElement
+        //         document.body.removeChild(visualizador);
+        //     })
+
+        //     var btnCancel = document.createElement("button");
+        //     btnCancel.type = "button";
+        //     btnCancel.id = "btnCancel";
+        //     btnCancel.innerHTML = "Cancelar";
+        //     visualizador.appendChild(btnCancel);
+        //     btnCancel.addEventListener("click", function () {
+        //         document.body.removeChild(modal); //modal.parentElement
+        //         document.body.removeChild(visualizador);
+        //     })
+
+        //     // Crear vista CRUD
+        //     fetch("http://serverpedroerasmus/views/norol/request/js/templates/show_image.html")
+        //     .then(x=>x.text())
+        //     .then(y=>{
+        //         let form = document.createElement("div");
+        //         form.setAttribute("id", "modal_crud_convocatory");
+        //         form.innerHTML = y;
+        //         form.style.display = "flex";
+        //         form.style.justifyContent = "space-around";
+        //         visualizador.appendChild(form);
+        //     })
+        // });
         document.querySelector("#identificacion").appendChild(seePdfIcon);
-    });
 
 });
 

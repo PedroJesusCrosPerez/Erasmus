@@ -47,11 +47,12 @@ select[name="group"]{ grid-area: 8 / 1 / 9 / 3; }
 #groupError         { grid-area: 9 / 1 / 10 / 3; }
 
 label[for="photo"]          { grid-area: 10 / 1 / 11 / 3; }
-div[name="photo"]           { grid-area: 11 / 1 / 12 / 3; }
-/* input[name="file[photo]"]   { grid-area: 11 / 1 / 12 / 3; } */
+/* div[name="photo"]           { grid-area: 11 / 1 / 12 / 2; } */
+input[name="file[photo]"]   { grid-area: 11 / 1 / 12 / 3; }
 #photoError                 { grid-area: 12 / 1 / 13 / 3; }
+/* div[name="icon-lupa"] { grid-area: 11 / 2 / 12 / 3; } */
 
-#ideSiguiente { grid-area: 15 / 1 / 16 / 3; }
+#ideSiguiente { grid-area: 17 / 1 / 18 / 3; }
 
 
 

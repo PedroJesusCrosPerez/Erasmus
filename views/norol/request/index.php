@@ -20,6 +20,7 @@ echo '
   <!--<script type="text/javascript" src="'.$thisdir.'js/webcam.js" charset="utf-8" defer></script>--><!--  -->
   <!-- <script type="text/javascript" src="js/Validator.js" charset="utf-8" defer></script> -->
   <!-- <script src="js/inputJs.js"></script> -->
+  <script src="'.$thisdir.'js/modal.js"></script>
 
   <!-- CSS3 -->
   <link rel="stylesheet" href="'.$thisdir.'css/styleStructure.css"> <!-- Esqueleto de la web -->

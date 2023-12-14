@@ -182,6 +182,7 @@ class DBConvocatory
     }
 
     // find convocatory_has_group by group_id
+    //c.id, c.type, c.date_start_requests, c.date_end_requests, c.date_baremation, date_definitive_lists, country, movilities, project_id
     public static function findByGroupId($group_id)
     {
         try {
@@ -234,10 +235,12 @@ class DBConvocatory
 
         foreach ($arrGroup as $value) {
             $arrConvocatory = DBConvocatory::findByGroupId($value->getId());
-            $arrCon_has_group[] = array(
-                "group" => $value,
-                "convocatories" => $arrConvocatory
-            );
+            if ( $arrConvocatory != null ) {
+                $arrCon_has_group[] = array(
+                    "group" => $value,
+                    "convocatories" => $arrConvocatory
+                );
+            }
         }
         
         return $arrCon_has_group;

@@ -11,7 +11,7 @@ class Main
 Main::main();
 
 /**
- * Generar un token si se ha logeado previamente, en la api hay que leer si tiene el token en las cabeceras del post
+ * Mostrar listados provisionales, y listados definitivos
  */
 
 ?>

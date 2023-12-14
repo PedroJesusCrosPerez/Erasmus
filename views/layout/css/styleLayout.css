@@ -199,3 +199,6 @@ main {
 }
 li a:hover  { background-color: grey; }
 li a:active { background-color: lightgrey; }
+img[src="views/src/logos/logo.png"] {
+  padding-left: 80px;
+}

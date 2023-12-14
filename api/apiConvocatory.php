@@ -170,7 +170,6 @@ switch ($_SERVER["REQUEST_METHOD"])
                     switch ($_GET["group"]) {
                         case 'findAll':
                             $groups = DBGroup::findAll();
-                            
                             echo json_encode(DBConvocatory::createArrCon_has_group( $groups ));
                             break;
                         

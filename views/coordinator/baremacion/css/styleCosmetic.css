@@ -110,3 +110,5 @@ table[name="tbaremar"] th {
 .desplegable {
     border-bottom: 1px solid black;
 }
+
+#list_convocatories { height: 100%; border-bottom-left-radius: 15px; border-bottom-right-radius: 15px; }

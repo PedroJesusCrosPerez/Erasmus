@@ -27,7 +27,7 @@ class Router
                         require_once "coordinator/create_convocatory/index.php";
                         break;
                     
-                    // TODO CRUD CONVOCATORY
+                    // CRUD convocatory
                     case 'crud_convocatory':
                         require_once "coordinator/crud_convocatory/index.php";
                         break;

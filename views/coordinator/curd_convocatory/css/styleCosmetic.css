@@ -1,0 +1,162 @@
+/* ESTÉTICA */
+.item_selected { background-color: grey; }
+
+/* Reglas para aplicar con JS */
+.btnSeleccionado {
+  background-color: #82af6e;
+}
+.btnDeseleccionado {
+  background-color: #b5e7a0; /* Esta clase no sería necesario, ya que con hacer desde javascript un var.classList.remove("btnSeleccionado"), sería sufuciente */
+}
+
+
+/* Estética de la web */
+.form-container {
+  border-radius: 20px;
+  background-color: #ffffff;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  text-align: center;
+  font-size: 24px;
+  color: #3b3b3b;
+}
+
+label {
+  display: block;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+input,
+textarea, 
+select {
+  border: none;
+  border-radius: 5px;
+  background-color: #f7e6d8;
+  color: #3b3b3b;
+  font-size: 10px;
+  resize: none;
+  transition: all 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="date"]:focus,
+select:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.topButton {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+  border: none;
+  /*background-color: #b5e7a0;*/
+  /*color: #fff;*/
+  font-size: 0.8rem;
+  /*cursor: pointer;*/
+  transition: transform 0.3s ease-in-out;
+}
+
+
+.inputError {
+    color: darkred;
+    font-size: small;
+    font-weight: bold;
+}
+
+
+
+button[type="button"], 
+button[type="submit"], 
+input[type="submit"] {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #b5e7a0;
+  color: #3b3b3b;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button[type="button"]:hover, 
+button[type="submit"]:hover, 
+input[type="submit"]:hover {
+    background-color: #91c36c;
+}
+
+/* Domicilio */
+
+#domicilio select {
+  user-select: none;
+}
+
+
+/* Items baremables */
+#btnCreateTitle { text-align: center; }
+#btnCreate { width: 100%; }
+table,tr,td,th {
+  border: solid 1px;
+  border-collapse: collapse;
+  text-align: center;
+}
+table th {
+  padding: 1em;
+  font-weight: bold;
+  background-color: rgb(70, 70, 70);
+  color: white;
+  border: black;
+}
+table input[type="checkbox"] {
+  height: 30px;
+}
+table * {
+  font-size: 0.9em;
+}
+
+/* Buttons */
+.divBtnAction {
+  display: flex;
+  justify-content: space-around;
+}
+
+.btn {
+  width: 30px;
+  height: 30px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 1.8em;
+  cursor: pointer;
+}
+
+/* ICONS */
+.btnCreate { background-image: url('../../../views/src/icons/create.svg'); }
+.btnUpdate { background-image: url('../../../views/src/icons/pencil.svg'); }
+.btnDelete { background-image: url('../../../views/src/icons/trash.svg'); }
+
+.btnCreate:hover { background-image: url('../../../views/src/icons/create-hover.svg'); }
+.btnUpdate:hover { background-image: url('../../../views/src/icons/pencil-hover.svg'); }
+.btnDelete:hover { background-image: url('../../../views/src/icons/trash-hover.svg'); }
+
+
+form[action="createConvocatory.php"] input,
+form[action="createConvocatory.php"] select {
+  font-size: 1em;
+}
+
+form[action="createConvocatory.php"] label,
+form[action="createConvocatory.php"] button {
+  font-size: 1.4em;
+}
+
+form[action="createConvocatory.php"] input[type="radio"] {
+  height: 2em;
+}
