@@ -7,5 +7,5 @@
     "date_requests_start"   :   "Debe ser previa a ''fecha de fin de solicitudes''.",
     "date_requests_end"     :   "Debe ser previa a ''fecha de baremación'' y posterior a ''fecha de inicio solicitudes''.",
     "date_baremation"       :   "Debe ser previa a ''fecha de listas definitivas'' y posterior a ''fecha de fin solicitudes''.",
-    "date_definitive_lists" :   "Debe ser posterior a ''fecha de baremación''."
+    "date_definitive_lists" :   "Debe ser posterior a ''fecha de baremación''"
 }

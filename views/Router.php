@@ -75,6 +75,7 @@ class Router
                 // header("Location: ".$url_server);
             }
         }
+        
         else 
         {
             require_once 'landingpage/index.php';

@@ -129,6 +129,19 @@
       background-color: #91c36c;
   }
   
+
+  /* Identificación */
+  div[name="vista_previa"] {
+    width: 100%;
+    height: 80px;
+    border: 1px solid black;
+    background-color: lightgrey;
+  }
+  input[name="photo"] {
+    /* visibility: hidden; */
+    display: none;
+  }
+
   /* Domicilio */
   
   #domicilio select {

@@ -24,6 +24,7 @@ class Validator {
     // Methods
     isError() {
         return Object.keys(this.errors).length > 0;
+        // return this.errors.length != 0;
     }
 
     showErrors() {
@@ -80,20 +81,31 @@ class Validator {
         return true;
     }
 
-    isInt(variant, fieldName, errorMessage) {
-        if (typeof variant !== 'number' || !Number.isInteger(variant)) {
+    intRange(variable, fieldName, errorMessage, min, max) {
+        variable = parseInt(variable);
+        if (!(variable > min && variable < max)) {
+            this.setErrors(fieldName, 'intRange', errorMessage);
+        }
+        else
+        {
+            this.errors = "";
+        }
+    }    
+
+    isInt(variable, fieldName, errorMessage) {
+        if (typeof variable !== 'number' || !Number.isInteger(variable)) {
             this.setErrors(fieldName, 'isInt', errorMessage);
         }
     }
 
-    isNumeric(variant, fieldName, errorMessage) {
-        if (typeof variant !== 'number' || isNaN(variant)) {
+    isNumeric(variable, fieldName, errorMessage) {
+        if (typeof variable !== 'number' || isNaN(variable)) {
             this.setErrors(fieldName, 'isNumber', errorMessage);
         }
     }
 
     isEmpty(variable, fieldName, errorMessage) {
-        if (!variable) {
+        if (!variable || variable == "") {
             this.setErrors(fieldName, 'empty', errorMessage);
         }
     }
@@ -111,9 +123,13 @@ class Validator {
     }
 
     isNull(variable, fieldName, errorMessage) {
-        if (variable === null) {
+        if (variable === null || variable == "null") {
             this.setErrors(fieldName, 'isNull', errorMessage);
-        }
+        } 
+        // else 
+        // {
+        //     this.errors = "";
+        // }
     }
 
     // JSON

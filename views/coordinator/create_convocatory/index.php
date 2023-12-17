@@ -42,9 +42,9 @@ echo '
       <!-- Formulario Información - START -->
       <div id="information">
 
-        <label for="project">Proyecto:</label>
+        <label for="project" class="lblTitle">Proyecto:</label>
         <select name="project" id="project">
-          <option value="null" disabled selected>**Proyecto al que pertenece**</option>
+          <option value="null">**Proyecto al que pertenece**</option>
           ';
           foreach ($arrProjects as $project) {
             echo '<option value="'.$project->getId().'">'.$project->getName().'</option>';
@@ -53,11 +53,11 @@ echo '
         </select>
         <label for="project" class="inputError" id="projectError"></label>
         
-        <label for="country">País:</label>
+        <label for="country" class="lblTitle">País:</label>
         <input type="text" name="country" maxlength="40">
         <label for="country" class="inputError" id="countryError"></label>
 
-        <label for="group">Destinatarios:</label>
+        <label for="group" class="lblTitle">Destinatarios:</label>
         <select name="group">
           <option value="null">**Grupo al que va destinado**</option>
           ';
@@ -68,18 +68,18 @@ echo '
         </select>
         <label for="group" class="inputError" id="groupError"></label>
 
-        <label for="movilities">Núero de movilidades:</label>
-        <input type="number" name="movilities" value="1" min="1" max="30">
+        <label for="movilities" class="lblTitle">Núero de movilidades:</label>
+        <input type="number" name="movilities">
         <label for="movilities" class="inputError" id="movilitiesError"></label>
 
         <div name="divType">
-          <label for="type" name="type">Tipo</label>
+          <label for="type" name="type" class="lblTitle">Tipo</label>
           <div>
-            <label for="type" name="type_long">Larga</label>
+            <label for="type" name="type_long" class="lblTitle">Larga</label>
             <input type="radio" name="type" value="long">
           </div>
           <div>
-            <label for="type" name="type_short">Corta</label>
+            <label for="type" name="type_short" class="lblTitle">Corta</label>
             <input type="radio" name="type" value="short">
           </div>
         </div>
@@ -94,19 +94,19 @@ echo '
       <!-- Formulario Fechas - START -->
       <div id="dates">
 
-        <label for="date_requests_start" name="date_requests_start">Fecha de inicio solicitudes</label>
+        <label for="date_requests_start" name="date_requests_start" class="lblTitle">Fecha de inicio solicitudes</label>
         <input type="date" name="date_requests_start" id="date_requests_start">
         <label for="date_requests_start" class="inputError" id="date_requests_startError"></label>
 
-        <label for="date_requests_end" name="date_requests_end">Fecha de fin solicitudes</label>
+        <label for="date_requests_end" name="date_requests_end" class="lblTitle">Fecha de fin solicitudes</label>
         <input type="date" name="date_requests_end" id="date_requests_end">
         <label for="date_requests_end" class="inputError" id="date_requests_endError"></label>
 
-        <label for="date_baremation" name="date_baremation">Fecha de baremación / listados provisionales</label>
+        <label for="date_baremation" name="date_baremation" class="lblTitle">Fecha de baremación / listados provisionales</label>
         <input type="date" name="date_baremation" id="date_baremation">
         <label for="date_baremation" class="inputError" id="date_baremationError"></label>
 
-        <label for="date_definitive_lists" name="date_definitive_lists">Fecha de listas definitivas</label>
+        <label for="date_definitive_lists" name="date_definitive_lists" class="lblTitle">Fecha de listas definitivas</label>
         <input type="date" name="date_definitive_lists" id="date_definitive_lists">
         <label for="date_definitive_lists" class="inputError" id="date_definitive_listsError"></label>
 

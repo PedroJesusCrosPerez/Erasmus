@@ -29,8 +29,9 @@
 }
 .inputError {
   color: darkred;
-  font-size: small;
+  font-size: 0.8em;
   font-weight: bold;
+  padding-top: 0.5em;
 }
 .true {
   color: green;

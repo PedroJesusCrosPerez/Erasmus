@@ -41,7 +41,7 @@ function identificacion_domicilio() {
 function domicilio_uploadFiles() {
     v_domicilio.classList.add('eliminar');
     v_uploadFiles.classList.remove('eliminar');
-    v_uploadFiles.classList.add('flex'); // TODO cuidado
+    v_uploadFiles.classList.add('flex');
     estadoFormulario = false;
 
     h2Titulo.innerHTML = h2UploadFiles;
@@ -65,7 +65,7 @@ function domicilio_identificacion() {
 // ANTERIOR - Pasar de UploadFiles a Domicilio
 function uploadFiles_domicilio() {
     v_uploadFiles.classList.add('eliminar');
-    v_uploadFiles.classList.remove('flex'); // TODO cuidado
+    v_uploadFiles.classList.remove('flex');
     v_domicilio.classList.remove('eliminar');
 
     h2Titulo.innerHTML = h2Domicilio;
@@ -171,10 +171,31 @@ function limpiar()
 
 
 
-
-
-
 window.addEventListener("load", function () {
+
+    let inputFile = document.querySelector("input[name='file[photo]']");
+    let preview = document.querySelector("#imgFotoPerfil");
+    let inputPhoto = document.querySelector("input[name='photo']");
+    // let inputPhoto = document.querySelector("#blob");
+
+    document.querySelector("input[name='file[photo]']").addEventListener("change", function () {
+        let file = inputFile.files[0];
+
+        const reader = new FileReader();
+            reader.addEventListener('load', (event) => {
+            preview.src = event.target.result;
+            inputPhoto.value = preview.src;
+        });
+        
+        reader.readAsDataURL(file);
+    })
+
+})
+
+
+
+
+// window.addEventListener("load", function () {
 
     // document.querySelector("input[type='file'][name='file[photo]']").addEventListener("change", function () {
     //     this.style.gridColumn = "1 / 2";
@@ -187,13 +208,13 @@ window.addEventListener("load", function () {
     // });
 
 
-        document.querySelector("input[type='file'][name='file[photo]']").style.gridColumn = "1 / 2";
-        let seePdfIcon = document.createElement("div");
-        seePdfIcon.style.width = "100%";
-        seePdfIcon.style.height = "80px";
-        seePdfIcon.innerHTML = "Vista previa de foto";
-        seePdfIcon.style.border = "1px solid black";
-        seePdfIcon.style.backgroundColor = "lightgrey";
+        // document.querySelector("input[type='file'][name='file[photo]']").style.gridColumn = "1 / 2";
+        // let seePdfIcon = document.createElement("div");
+        // seePdfIcon.style.width = "100%";
+        // seePdfIcon.style.height = "80px";
+        // seePdfIcon.innerHTML = "Vista previa de foto";
+        // seePdfIcon.style.border = "1px solid black";
+        // seePdfIcon.style.backgroundColor = "lightgrey";
         // seePdfIcon.classList.add("lupa");
         // seePdfIcon.addEventListener("click", function (ev) {
         //     //ev.preventDefault();
@@ -265,7 +286,7 @@ window.addEventListener("load", function () {
         //         visualizador.appendChild(form);
         //     })
         // });
-        document.querySelector("#identificacion").appendChild(seePdfIcon);
+        // document.querySelector("#identificacion").appendChild(seePdfIcon);
 
-});
+// });
 

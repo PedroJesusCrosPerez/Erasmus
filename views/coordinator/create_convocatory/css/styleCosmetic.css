@@ -63,14 +63,6 @@ select:focus {
 }
 
 
-.inputError {
-    color: darkred;
-    font-size: small;
-    font-weight: bold;
-}
-
-
-
 button[type="button"], 
 button[type="submit"], 
 input[type="submit"] {
@@ -152,11 +144,16 @@ form[action="createConvocatory.php"] select {
   font-size: 1em;
 }
 
-form[action="createConvocatory.php"] label,
+.lblTitle,
 form[action="createConvocatory.php"] button {
   font-size: 1.4em;
 }
 
 form[action="createConvocatory.php"] input[type="radio"] {
   height: 2em;
+}
+
+.inputDisabled {
+  pointer-events: none;
+  opacity: 0.7;
 }

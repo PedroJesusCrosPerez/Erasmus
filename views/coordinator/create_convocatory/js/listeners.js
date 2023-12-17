@@ -19,7 +19,7 @@ document.body.addEventListener("load", inicializarWeb());
 
 // Inputs
     // Next
-    btnInformationNext.addEventListener("click", information_dates);
+    // btnInformationNext.addEventListener("click", information_dates);
 
 
 // ============================================================================

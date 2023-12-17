@@ -16,11 +16,10 @@ echo '
   <script type="text/javascript" src="'.$thisdir.'js/formElement.js" charset="utf-8" defer></script> <!-- Elementos del html pasados a javascript -->
   <script type="text/javascript" src="'.$thisdir.'js/functions.js" charset="utf-8" defer></script><!--  --> <!--<script type="text/javascript" src="script/programa.js" charset="utf-8" defer></script><!---->
   <script type="text/javascript" src="'.$thisdir.'js/listeners.js" charset="utf-8" defer></script><!--  -->
-  <script type="text/javascript" src="'.$thisdir.'js/inputJs.js" charset="utf-8" defer></script><!--  -->
-  <!--<script type="text/javascript" src="'.$thisdir.'js/webcam.js" charset="utf-8" defer></script>--><!--  -->
   <!-- <script type="text/javascript" src="js/Validator.js" charset="utf-8" defer></script> -->
-  <!-- <script src="js/inputJs.js"></script> -->
   <script src="'.$thisdir.'js/modal.js"></script>
+  <script src="'.$thisdir.'js/webcam.js"></script>
+  <script src="'.$thisdir.'js/visualizarPDF.js"></script>
 
   <!-- CSS3 -->
   <link rel="stylesheet" href="'.$thisdir.'css/styleStructure.css"> <!-- Esqueleto de la web -->
@@ -89,24 +88,17 @@ echo '
         echo '
         </select>
         <label for="group" class="inputError" id="groupError"></label>
-        
+
         <label for="photo" id="lblPhoto">Fotografía:</label>
-        <input type="file" name="file[photo]">
-        <!--<input type="file" name="file[]" id="file" class="inputfile inputfile" data-multiple-caption="{count} archivos seleccionados" multiple />-->
-        <!--<div class="container-input" name="photo">
-            <input type="file" name="file2[]" id="file" class="inputfile inputfile"/>
-            <label for="file">
-            <span class="iborrainputfile"></span>
-            <strong>
-            <svg xmlns="http://www.w3.org/2000/svg" class="iborrainputfile" width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"></path></svg>
-            Seleccionar archivo
-            </strong>
-            </label>
-        </div>-->
+        <div name="photo">
+            <input type="file" id="imgDesktop" name="file[photo]">
+            <button id="openWebcam" onclick="modalFoto(event)">Open Webcam Modal</button>
+        </div>
+        <div name="vista_previa">
+            <img id="imgFotoPerfil" src="" alt="Vista previa de foto perfil">
+            <input type="text" name="photo" id="blob">
+        </div>
         <label for="photo" class="inputError" id="photoError"></label>
-        <!--<button id="openWebcam" onclick="modalFoto(event)">Open Webcam Modal</button>
-        <img id="imgFotoPerfil" src="" alt="Foto Perfil">
-        <input type="text" id="blob" readonly>-->
 
         <!-- <button type="button" id="btnViewImage">Visualizar imágen</button> -->
 
@@ -147,18 +139,11 @@ echo '
             foreach ($arrItems as $value) {
                 echo '
                 <label for="item_name">'.$value->getName().'</label>
-                <input type="file" name="file['.$value->getId().']">
-                <!--<input type="file" name="file[]" id="file" class="inputfile inputfile" data-multiple-caption="{count} archivos seleccionados" multiple />-->
-                <!--<div class="container-input" name="item">
-                    <input type="file" name="file2[]" id="file" class="inputfile inputfile" data-multiple-caption="{count} archivos seleccionados" multiple />
-                    <label for="file">
-                        <span class="iborrainputfile"></span>
-                        <strong>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="iborrainputfile" width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"></path></svg>
-                            Seleccionar archivo
-                        </strong>
-                    </label>
-                </div>-->
+                <div>
+                    <input type="file" name="file['.$value->getId().']">
+                    <!--<input type="file" id="documento1">--> <button class="abrirPDF">Abrir PDF</button>
+                    <div id="contenedor"></div>
+                </div>
                 <br><br>
                 ';
             }
@@ -178,32 +163,34 @@ echo '
 </form>
 
 </div>
-
-// <script>
-//   "use strict";
-
-//   ;
-//   (function (document, window, index) {
-//       var inputs = document.querySelectorAll(".inputfile");
-//       Array.prototype.forEach.call(inputs, function (input) {
-//           var label = input.nextElementSibling,
-//               labelVal = label.innerHTML;
-
-//           input.addEventListener("change", function (e) {
-//               var fileName = "";
-//               if (this.files && this.files.length > 1)
-//                   fileName = (this.getAttribute("data-multiple-caption") || "").replace(
-//                       "{count}", this.files.length);
-//               else
-//                   fileName = e.target.value.split("\\").pop();
-
-//               if (fileName)
-//                   label.querySelector("span").innerHTML = fileName;
-//               else
-//                   label.innerHTML = labelVal;
-//           });
-//       });
-//   }(document, window, 0));
-// </script>
 ';
 ?>
+
+<!-- Estilo personalizado de input:file -->
+<!--<input type="file" name="file[]" id="file" class="inputfile inputfile" data-multiple-caption="{count} archivos seleccionados" multiple />-->
+<!--<div class="container-input" name="photo">
+    <input type="file" name="file2[]" id="file" class="inputfile inputfile"/>
+    <label for="file">
+    <span class="iborrainputfile"></span>
+    <strong>
+    <svg xmlns="http://www.w3.org/2000/svg" class="iborrainputfile" width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"></path></svg>
+    Seleccionar archivo
+    </strong>
+    </label>
+</div>-->
+<!--<button id="openWebcam" onclick="modalFoto(event)">Open Webcam Modal</button>
+<img id="imgFotoPerfil" src="" alt="Foto Perfil">
+<input type="text" id="blob" readonly>-->
+
+<!-- Estilo personalizado 2 de input:file -->
+<!--<input type="file" name="file[]" id="file" class="inputfile inputfile" data-multiple-caption="{count} archivos seleccionados" multiple />-->
+<!--<div class="container-input" name="item">
+    <input type="file" name="file2[]" id="file" class="inputfile inputfile" data-multiple-caption="{count} archivos seleccionados" multiple />
+    <label for="file">
+        <span class="iborrainputfile"></span>
+        <strong>
+            <svg xmlns="http://www.w3.org/2000/svg" class="iborrainputfile" width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"></path></svg>
+            Seleccionar archivo
+        </strong>
+    </label>
+</div>-->

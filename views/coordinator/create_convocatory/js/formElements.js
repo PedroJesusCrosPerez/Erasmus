@@ -10,7 +10,7 @@ let v_inputError = document.getElementsByClassName("inputError"); // errores de 
 let v_topButton = document.getElementsByClassName("topButton");
 
 // VALIDATOR
-const val = new Validator();
+// const val = new Validator();
 
 // Botones superiores
 let btnInformation =document.getElementById("btnInformation");

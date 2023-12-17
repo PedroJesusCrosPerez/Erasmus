@@ -55,7 +55,7 @@ window.addEventListener("load", function () {
                         convoAux.querySelector(".date_end_requests").innerHTML =    convocatory.date_end_requests;
                         convoAux.querySelector(".group_name").innerHTML =           group.name;
                         // Enlace para acceder a rellenar la solicitud correspondiente
-                        convoAux.querySelector("a").href = "?menu=complete_request&id="+convocatory.id;
+                        convoAux.querySelector("a").href = "?menu=complete_request&convocatory_id="+convocatory.id;
                         
                         // Agregar la convocatoria y añadirla al contenedor
                         convocatory_container.appendChild(convoAux);

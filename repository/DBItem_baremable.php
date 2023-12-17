@@ -64,7 +64,7 @@ class DBItem_baremable
             $arrItem_baremable = [];
             $sql = "SELECT * FROM convocatory_has_item_baremable WHERE convocatory_id = :convocatory_id AND contributes_student IS null;";
             $stmt = $db->prepare($sql);
-            $stmt->bindParam(':convocatory_id', $convocatory_id, PDO::PARAM_INT);
+            $stmt->bindParam(':convocatory_id', $convocatory_id);
             $stmt->execute();
     
             // Process

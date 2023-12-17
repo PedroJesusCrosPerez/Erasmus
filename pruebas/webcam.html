@@ -1,3 +1,20 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webcam Modal Example</title>
+    <style>
+        /* Add your custom styles here if needed */
+    </style>
+</head>
+<body>
+
+    <button id="openWebcam" onclick="modalFoto(event)">Open Webcam Modal</button>
+    <img id="imgFotoPerfil" src="" alt="Foto Perfil">
+    <input type="text" id="blob" readonly>
+
+    <script>
 let r;
 
 window.addEventListener("load", function () {
@@ -16,11 +33,10 @@ function modalFoto(ev) {
   var btnEnviarFoto=document.createElement("button");
 
   video.setAttribute("id","player");
-  video.controls = false;
+  video.controls = true;
   video.style.width="100%";
   video.style.height="auto";
   video.autoplay = true;
-  video.style.zIndex = "99";
 
   contenedor.setAttribute("id","contenedor");
   canvas.setAttribute("id","canvas");
@@ -34,7 +50,6 @@ function modalFoto(ev) {
   btnCaptura.innerHTML="Tomar Foto";
   btnCaptura.setAttribute("id","capture");
   btnCaptura.style.margin="10%";
-  btnCaptura.style.zIndex = "1000";
 
   btnEnviarFoto.innerHTML="Finalizar";
   btnEnviarFoto.setAttribute("id","btnFinalizarFoto");
@@ -46,12 +61,7 @@ function modalFoto(ev) {
     document.getElementById('imgFotoPerfil').src=r.recortar();
     document.getElementById('blob').value=r.recortar();
     document.getElementById('blob').setAttribute("readonly", "readonly");
-    document.querySelector("#imgDesktop").value = "";
-    // cerrarModal(event);
-    
-    document.body.removeChild(document.getElementById("modal"));
-    document.body.removeChild(document.getElementById("visualizador"));
-    document.body.removeChild(document.getElementById("closer"));
+    cerrarModal(event);
   });
   const constraints = {
     video: true,
@@ -67,7 +77,7 @@ function modalFoto(ev) {
     r = new Recuadro(0,0,180,200,canvas);
     r.pinta();
     //CONSEGUIR BASE64 const imageDataURL = canvas.toDataURL('image/png');
-    // cerrarModal();
+    
   });
 
   // Attach the video stream to the video element and autoplay.
@@ -216,3 +226,7 @@ Recuadro.prototype.recortar=function(){
   img.src=c.toDataURL();
   return img.src;
 }
+    </script>
+
+</body>
+</html>

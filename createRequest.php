@@ -8,7 +8,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     $name =         isset($_POST["name"])       ? $_POST["name"]        : null;
     $surname =      isset($_POST["surname"])    ? $_POST["surname"]     : null;
     $birthdate =    isset($_POST["birthdate"])  ? $_POST["birthdate"]   : null;
-    $photo = null;
+    $photo = isset($_POST["photo"])  ? $_POST["photo"]   : null;
     $convocatory_id = 19; // TODO variable temporal
     $request_id = 123456789; // TODO variable temporal
 
@@ -33,21 +33,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
             $thisFileName = basename($fileName);
             $file_extension = strtolower(pathinfo($thisFileName, PATHINFO_EXTENSION));
 
-            if ($id === 'photo') {
-                // Condición para el primer archivo (foto)
-                $allowed_extensions_first = array("jpeg", "jpg", "png");
-                if (in_array($file_extension, $allowed_extensions_first)) {
-                    $thisFileName = $convocatory_id . "-" . $dni . '-' . $thisFileName;
-                    $targetDir = $uploadDir . "photos/";
-                    $targetFile = $targetDir . $thisFileName;
-                    move_uploaded_file($tmp_name, $targetFile);
-                    // echo "Foto del candidato subida correctamente.<br>";
-                    // $arrItems["photo"] = $targetFile;
-                    $photo = $targetFile;
-                } else {
-                    // echo "La extensión de la foto del candidato no es válida. Se permiten solo extensiones JPEG, JPG o PNG.<br>";
-                }
-            } else {
+            // if ($id == 'photo') {
+            //     // Condición para el primer archivo (foto)
+            //     $allowed_extensions_first = array("jpeg", "jpg", "png");
+            //     if (in_array($file_extension, $allowed_extensions_first)) {
+            //         $thisFileName = $convocatory_id . "-" . $dni . '-' . $thisFileName;
+            //         $targetDir = $uploadDir . "photos/";
+            //         $targetFile = $targetDir . $thisFileName;
+            //         move_uploaded_file($tmp_name, $targetFile);
+            //         // echo "Foto del candidato subida correctamente.<br>";
+            //         // $arrItems["photo"] = $targetFile;
+            //         $photo = $targetFile;
+            //     } else {
+            //         // echo "La extensión de la foto del candidato no es válida. Se permiten solo extensiones JPEG, JPG o PNG.<br>";
+            //     }
+            // } else {
                 // Condición para archivos restantes (documentos)
                 if ($file_extension == "pdf") {
                     $thisFileName = $convocatory_id . "-request_id-" . $id . "-" . $dni . '-' . $thisFileName;
@@ -60,7 +60,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
                 } else {
                     // echo "La extensión del documento no es válida. Se permite solo la extensión PDF.<br>";
                 }
-            }
+            // }
         }
 
     } else {
@@ -86,6 +86,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     );
 
     DBRequest::insert($request, $arrItems);
+    // var_dump($request);
 } else {
     // Si alguien intenta acceder directamente a este archivo sin enviar datos por POST,
     // puedes redirigirlo a la página principal o mostrar un mensaje de error.
