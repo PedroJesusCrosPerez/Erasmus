@@ -1,48 +1,27 @@
 <?php
-    //include_once "helpers/Autoload.php";
-    //include_once $_SERVER["DOCUMENT_ROOT"]."helpers/Autoload.php";
-
 
 class Login
 {
 
-    static function login($user, $remember=false)
+    static function login($coordinator, $remember=false)
     {
-        if ( !empty($user->getRole()) ) 
+        if ( !(empty($coordinator) && $coordinator == null) ) 
         {
-            Session::save("user", $user);
-
-            switch ( $user->getRole() ) 
-            {
-                case 'student':
-                    header("Location: ?rol=student");
-                    break;
-
-                case 'admin':
-                    header("Location: ?rol=admin");
-                    break;
-
-                case 'teacher':
-                    header("Location: ?rol=teacher");
-                    break;
-
-                default:
-                    header("Location: ?rol=null");
-                    break;
-            }
+            Session::save("coordinator", $coordinator);
+            header("Location: ?role=coordinator");
         }
     }
 
     static function logout()
     {
         Session::start();
-        Session::delete("user");
+        Session::delete("coordinator");
     }
 
     static function isLoged() 
     {
         Session::start();
-        return Session::exist("user");
+        return Session::exist("coordinator");
     }
 
 }

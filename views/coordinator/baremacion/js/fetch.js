@@ -20,10 +20,10 @@ window.addEventListener("load", function () {
                 var contenido = this.lastElementChild;
                 if (contenido.style.display === "flex") {
                     contenido.style.display = "none";
-                    contenido.parentElement.classList.remove("showCrud");
+                    // contenido.parentElement.classList.remove("showCrud");
                 } else {
                     contenido.style.display = "flex";
-                    contenido.parentElement.classList.add("showCrud");
+                    // contenido.parentElement.classList.add("showCrud");
                 }
             });
         });
@@ -100,6 +100,136 @@ window.addEventListener("load", function () {
         })
     }
 
+    function openModalCrud(convocatory, project, requests) {
+        // let convocatory = item.convocatory;
+        // let project = item.project;
+        // let requests = item.requests;
+
+        //ev.preventDefault();
+        // Fondo modal
+        var modal = document.createElement("div");
+        modal.style.position = "fixed";
+        modal.style.top = 0;
+        modal.style.left = 0;
+        modal.style.width = "100%";
+        modal.style.height = "100%";
+        modal.style.backgroundColor = "black";
+        //modal.style.backgroundColor = "rgba(0,0,0,0,5)";
+        modal.style.opacity = 0.5;
+        modal.style.zIndex = 99;
+        document.body.appendChild(modal);
+
+        // Contenido modal
+        var visualizador = document.createElement("div");
+        visualizador.setAttribute("id","visualizador");
+        visualizador.style.position = "fixed";
+        visualizador.style.top = "10%";
+        visualizador.style.left = "15%";
+        visualizador.style.width = "70%";
+        visualizador.style.height = "80%";
+        visualizador.style.backgroundColor = "white";
+        visualizador.style.zIndex = 100;
+        document.body.appendChild(visualizador);
+
+        var closer = document.createElement("span");
+        closer.innerHTML = "X";
+        closer.style.position = "fixed";
+        closer.style.top = 0;
+        closer.style.right = 0;
+        closer.style.padding = "1em";
+        closer.style.zIndex = 101;
+        closer.style.backgroundColor = "darkblue";
+        closer.style.cursor = "pointer";
+        closer.style.color = "white";
+        visualizador.appendChild(closer);
+
+        closer.addEventListener("pointerover", function () { this.style.backgroundColor = "black"; })
+        closer.addEventListener("mousedown", function () { this.style.backgroundColor = "darkred"; })
+        closer.addEventListener("pointerout", function () { this.style.backgroundColor = "darkblue"; })
+        closer.addEventListener("click", function () {
+            document.body.removeChild(modal); //modal.parentElement
+            document.body.removeChild(visualizador);
+        })
+
+        // var btnCancel = document.createElement("button");
+        // btnCancel.type = "button";
+        // btnCancel.id = "btnCancel";
+        // btnCancel.innerHTML = "Cancelar";
+        // visualizador.appendChild(btnCancel);
+        // btnCancel.addEventListener("click", function () {
+        //     document.body.removeChild(modal); //modal.parentElement
+        //     document.body.removeChild(visualizador);
+        // })
+
+        // Crear vista CRUD
+        fetch("http://serverpedroerasmus/views/coordinator/baremacion/js/templates/crud.php")
+        .then(x=>x.text())
+        .then(y=>{
+            let form = document.createElement("div");
+            form.setAttribute("id", "modal_crud_convocatory");
+            form.innerHTML = y;
+
+            console.log(convocatory);
+            console.log(project);
+            console.log(requests);
+            // Rellenar datos automáticamente de convocatoria
+            form.querySelector("input[name='convocatory_id']").value = convocatory.id;
+            form.querySelector("select[name='project']").value = convocatory.project_id;
+            form.querySelector("input[name='country']").value = convocatory.country;
+            form.querySelector("select[name='group']").value = requests[0].group;
+            form.querySelector("input[name='movilities']").value = convocatory.movilities;
+            form.querySelector("input[value='"+ convocatory.type +"']").checked = true;
+            
+            // Dates
+            form.querySelector("input[name='date_requests_start']").value = convocatory.date_start_requests;
+            form.querySelector("input[name='date_requests_end']").value = convocatory.date_end_requests;
+            form.querySelector("input[name='date_baremation']").value = convocatory.date_baremation;
+            form.querySelector("input[name='date_definitive_lists']").value = convocatory.date_definitive_lists;
+            
+            visualizador.appendChild(form);
+
+            // form.querySelector("#btnConfirm").addEventListener("click", function () {
+            //     let form = document.querySelector("form[name='create_item_baremable']");
+            //     let formData = new FormData(form);
+            //     let formDataObject = {};
+            
+            //     // Itera sobre todos los elementos del formulario
+            //     for (const element of form.elements) {
+            //         // Verifica si el elemento es un checkbox
+            //         if (element.type === "checkbox") {
+            //             // Almacena el estado del checkbox (marcado o no marcado)
+            //             if (element.checked) {
+            //                 formDataObject[element.name] = true;
+            //             } else {
+            //                 formDataObject[element.name] = false;
+            //             }
+            //         } else {
+            //             // Almacena el valor del input en la clave correspondiente
+            //             formDataObject[element.name] = element.value;
+            //         }
+
+            //         if (element.type === "select") {
+            //             let options = element.children;
+            //             for (const option of options) {
+            //                 if (option.selected == true) {
+            //                     formDataObject["nameValue"] = option.value;
+            //                     formDataObject["name"] = option.innerHTML;
+            //                 }
+            //             }
+            //         }
+            //     }
+            
+            //     let datajson = JSON.stringify(formDataObject);
+            //     /*localStorage.setItem("item", datajson );
+            //     document.body.removeChild(modal); //modal.parentElement
+            //     document.body.removeChild(visualizador);
+
+            //     createTr(datajson);*/
+            //     console.log(formDataObject["name"]);
+            // });
+        })
+    }
+
     fetch("http://serverpedroerasmus/views/coordinator/baremacion/js/templates/convocatory.html")
     .then(x => x.text())
     .then(y => {
@@ -124,7 +254,7 @@ window.addEventListener("load", function () {
             return response.json();
         })
         .then(data => {
-            console.log(data);
+            // console.log(data);
             // Obtener elementos del DOM relevantes
             let convocatory_container = document.getElementById("convocatories").children[1];
             convocatory_container.innerHTML = "";
@@ -146,6 +276,7 @@ window.addEventListener("load", function () {
                         convocatoryTemplate.querySelector('.project').innerText                 = project.name;
 
                         // Convocatory
+                        convocatoryTemplate.convocatory_id = convocatory.id;
                         convocatoryTemplate.querySelector('.country').innerText                 = convocatory.country;
                         convocatoryTemplate.querySelector('.type').innerText                    = convocatory.type;
                         convocatoryTemplate.querySelector('.date_start_requests').innerText     = convocatory.date_start_requests;
@@ -153,32 +284,70 @@ window.addEventListener("load", function () {
                         convocatoryTemplate.querySelector('.date_baremation').innerText         = convocatory.date_baremation;
                         convocatoryTemplate.querySelector('.date_definitive_lists').innerText   = convocatory.date_definitive_lists;
 
-                        fetch("http://serverpedroerasmus/views/coordinator/baremacion/js/templates/request.html")
-                        .then(x => x.text())
-                        .then(y => {
-                            var request = document.createElement("ul");
-                            request.innerHTML = y;
-                            request.classList.add("list_requests");
-
-
-                            let divContainerRequests = document.createElement("div");
-                            divContainerRequests.classList.add("contenido");
-                            // Request
-                            for (const item of requests) {
-                                let requestTemplate = request.cloneNode(true);
-
-                                requestTemplate.querySelector('.dni').innerHTML = item.dni;
-                                requestTemplate.querySelector('.surname').innerHTML = item.surname;
-                                requestTemplate.querySelector('.name').innerHTML = item.name;
-                                requestTemplate.querySelector('.birthdate').innerHTML = item.birthdate;
-                                requestTemplate.querySelector('.phone').innerHTML = item.phone;
-                                // requestTemplate.querySelector('img').src = item.photo;
-                                requestTemplate.querySelector('.baremar').addEventListener("click", openModalBaremar)
-
-                                divContainerRequests.appendChild(requestTemplate);
-                            }
-                            convocatoryTemplate.appendChild(divContainerRequests);
+                        // DELETE
+                        convocatoryTemplate.querySelector('.delete').addEventListener("click", function () {
+                            fetch("http://serverpedroerasmus/api/apiConvocatory.php", {
+                                method: "DELETE",
+                                headers: {"Content-Type": "application/json"},
+                                body: JSON.stringify(this.parentElement.convocatory_id)
+                            })
+                            .then(response => {
+                                // Verificar si la respuesta está en el rango de códigos de éxito (200-299)
+                                if (!response.ok) {
+                                    throw new Error('Network response was not ok');
+                                }
+                                return response.json();
+                            })
+                            .then(data => {
+                                
+                            })
                         });
+
+                        // UPDATE
+                        if (requests.length == 0) {
+                            let divContenido = document.createElement("div");
+                            divContenido.classList.add("contenido");
+                            divContenido.innerHTML = "¡¡Esta convocatoria no tiene solicitudes!!";
+                            let requests = [];
+                            requests[0] = { group: "null" };                            
+                            
+                            convocatoryTemplate.querySelector('.showCrud').addEventListener("click", function () {
+                                openModalCrud(convocatory, project, requests);
+                            });
+                            convocatoryTemplate.appendChild(divContenido);
+                        } else {
+                            convocatoryTemplate.querySelector('.showCrud').addEventListener("click", function () {
+                                openModalCrud(convocatory, project, requests);
+                            });
+
+                            fetch("http://serverpedroerasmus/views/coordinator/baremacion/js/templates/request.html")
+                            .then(x => x.text())
+                            .then(y => {
+                                var request = document.createElement("ul");
+                                request.innerHTML = y;
+                                request.classList.add("list_requests");
+
+
+                                let divContainerRequests = document.createElement("div");
+                                divContainerRequests.classList.add("contenido");
+                                // Request
+                                for (const item of requests) {
+                                    let requestTemplate = request.cloneNode(true);
+
+                                    requestTemplate.querySelector('.dni').innerHTML = item.dni;
+                                    requestTemplate.querySelector('.surname').innerHTML = item.surname;
+                                    requestTemplate.querySelector('.name').innerHTML = item.name;
+                                    requestTemplate.querySelector('.birthdate').innerHTML = item.birthdate;
+                                    requestTemplate.querySelector('.phone').innerHTML = item.phone;
+                                    // requestTemplate.querySelector('img').src = item.photo;
+                                    requestTemplate.querySelector('.baremar').addEventListener("click", openModalBaremar)
+
+                                    divContainerRequests.appendChild(requestTemplate);
+                                }
+                                convocatoryTemplate.appendChild(divContainerRequests);
+                            });
+                        }
+
 
                         // convocatoryTemplate.querySelector('.files').innerHTML = baremation.files; // TODO
                         // convocatoryTemplate.addEventListener("click", cambiarColorRequests);
@@ -186,37 +355,6 @@ window.addEventListener("load", function () {
                     });
                     cambiarColor();
                     ejecutarFuncionesMenuDesplegable();
-                // } else {
-                //     length = data.length;
-
-                //     for (var i = 0; i < length; i++) {
-                //         var item = data[i];
-                //         var convocatories = item.convocatories;
-                    
-                //         if (convocatories) {
-                //             var length_j = convocatories.length;
-                    
-                //             for (var j = 0; j < length_j; j++) {
-                //                 var convocatory = convocatories[j];
-                //                 if (convocatory != null) {
-                //                     var convoAux = pregunta.cloneNode(true);
-                        
-                //                     // Agregar clases y asignar contenido
-                //                     convoAux.id = convocatory.id;
-                //                     convoAux.getElementsByClassName("convocatory_name")[0].innerHTML = convocatory.id;
-                //                     convoAux.getElementsByClassName("group_name")[0].innerHTML = item.group.name || "Default Statement";
-                //                     convoAux.querySelector("a").href = "?menu=complete_request&convocatory_id="+convocatory.id;
-                        
-                //                     // Agregar la pregunta al contenedor y ocultarla
-                //                     convocatory_container.appendChild(convoAux);
-                //                 } else {
-                //                     convocatory_container.appendChild(p);
-                //                 }
-                //             }
-                //         }
-                //     }
-                    
-                // }
             }
         })
     })

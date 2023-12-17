@@ -60,15 +60,25 @@
 .baremar:hover { background-color: #2b1d4e; }
 
 #head { background-image: none; }
+
 .showCrud {
     background-image: url(http://serverpedroerasmus/views/src/icons/crud_convocatory.png);
     background-repeat: no-repeat;
-    background-position: right;
-    background-size: 3em;
+    background-position: center;
+    background-size: 2em;
 }
-
 .showCrud:hover {
     background-image: url(http://serverpedroerasmus/views/src/icons/crud_convocatory_hover.png);
+}
+
+.delete {
+    background-image: url(http://serverpedroerasmus/views/src/icons/delete.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 2em;
+}
+.delete:hover {
+    background-image: url(http://serverpedroerasmus/views/src/icons/delete_hover.png);
 }
 
 
@@ -111,4 +121,5 @@ table[name="tbaremar"] th {
     border-bottom: 1px solid black;
 }
 
-#list_convocatories { height: 100%; border-bottom-left-radius: 15px; border-bottom-right-radius: 15px; }
+#list_convocatories { height: 100%; border-bottom-left-radius: 15px; border-bottom-right-radius: 15px; overflow-y: auto; max-height: 100%;}
+

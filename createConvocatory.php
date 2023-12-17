@@ -104,6 +104,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit"]))
     */
     
     echo DBConvocatory::insert($convocatory, $group, $arrItems);
+    header("Location: http://serverpedroerasmus?coordinator=create_convocatory");
     // foreach ($arrItems as $key => $value) {
     //     if (!is_array($value)) {
     //         echo("KEY: ".$key." | VALUE: ".$value);

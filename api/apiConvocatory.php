@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Cómo utilizar esta api
  * TODO como utilizar apiConvocatory
@@ -16,29 +17,29 @@
 
 
 // Autoload
-include_once $_SERVER["DOCUMENT_ROOT"]."/helpers/Autoload.php";
+include_once $_SERVER["DOCUMENT_ROOT"] . "/helpers/Autoload.php";
 
 // Cabeceras
-header('Content-Type: application/json');
+// header('Content-Type: application/json');
 
 // Api
-switch ($_SERVER["REQUEST_METHOD"]) 
-{
+switch ($_SERVER["REQUEST_METHOD"]) {
     case 'GET': // SELECT
-        switch ($_GET["convocatory"]) 
-        {
+        switch ($_GET["convocatory"]) {
             case 'findAll':
                 echo json_encode(DBConvocatory::findAll());
                 break;
-            
+
+            case 'findAllAll':
+                echo json_encode(DBConvocatory::findAllAll());
+                break;
+
             case 'findByOnDate':
                 // echo json_encode(DBConvocatory::findByMoreDate());
                 echo json_encode("==> pending to implement");
                 break;
-            
-            case 'findAllAll':
-                // echo json_encode(DBConvocatory::findAllAll());
-                
+
+            case 'findAllAllParaPruebas':
                 echo '
                 [
                     {
@@ -170,28 +171,28 @@ switch ($_SERVER["REQUEST_METHOD"])
                     switch ($_GET["group"]) {
                         case 'findAll':
                             $groups = DBGroup::findAll();
-                            echo json_encode(DBConvocatory::createArrCon_has_group( $groups ));
+                            echo json_encode(DBConvocatory::createArrCon_has_group($groups));
                             break;
-                        
+
                         case 'findById':
                             if (isset($_GET["id"])) {
                                 $group = DBGroup::findById($_GET["id"]);
                                 $convocatories = DBConvocatory::findByGroupId($_GET["id"]);
-                                
+
                                 echo json_encode(DBConvocatory::createArrCon_has_groupByGroup_id($_GET["id"]));
                             }
                             break;
-                        
+
                         default: // Select * | findAll
                             $group = DBGroup::findAll();
                             $convocatories = DBConvocatory::findAll();
-                            
-                            echo json_encode(DBConvocatory::createArrCon_has_group( $group, $convocatories ));
+
+                            echo json_encode(DBConvocatory::createArrCon_has_group($group, $convocatories));
                             break;
                     }
                 }
                 break;
-            
+
             default:
                 echo json_encode(['error' => 'Invalid operation']);
                 break;
@@ -199,26 +200,233 @@ switch ($_SERVER["REQUEST_METHOD"])
         break;
 
     case 'POST': // UPDATE
-        $convocatory = new Convocatory(1, 'Type Example', '2023-01-01', '2023-02-01', '2023-03-01', '2023-04-01', 'Country Example', 123);
-        DBConvocatory::update($convocatory);
+        /**
+         * >>>>>>>>>>>>>>> CONVOCATORY >>>>>>>>>>>>>>>
+         * 
+         * Recoger datos de la convocatoria
+         */
+        $convocatory_id =   isset($_POST["convocatory_id"]) ? $_POST["convocatory_id"]  : null; // number
+        $project =          isset($_POST["project"])        ? $_POST["project"]         : null; // number
+        $country =          isset($_POST["country"])        ? $_POST["country"]         : null; // string
+        $movilities =       isset($_POST["movilities"])     ? $_POST["movilities"]      : null; // number
+        $type =             isset($_POST["type"])           ? $_POST["type"]            : null; // string
+        // Fechas de una convocatoria
+        $date_requests_start =      isset($_POST["date_requests_start"])    ? $_POST["date_requests_start"]     : null; // date
+        $date_requests_end =        isset($_POST["date_requests_end"])      ? $_POST["date_requests_end"]       : null; // date
+        $date_baremation =          isset($_POST["date_baremation"])        ? $_POST["date_baremation"]         : null; // date
+        $date_definitive_lists =    isset($_POST["date_definitive_lists"])  ? $_POST["date_definitive_lists"]   : null; // date
+
+
+        $convocatory =
+            new Convocatory(
+                null,
+                $type,
+                $date_requests_start,
+                $date_requests_end,
+                $date_baremation,
+                $date_definitive_lists,
+                $country,
+                $movilities,
+                $project
+            );
+        /**
+         * <<<<<<<<<<<<<< CONVOCATORY <<<<<<<<<<<<<<<
+         */
+
+
+
+        /**
+         * >>>>>>>>>>>>>>> GROUP >>>>>>>>>>>>>>>
+         * 
+         * Recoger datos de la grupo
+         */
+        $group_id = isset($_POST["group"]) ? $_POST["group"] : null; // string
+
+        $group = DBGroup::findById($group_id);
+        /**
+         * <<<<<<<<<<<<<< GROUP <<<<<<<<<<<<<<<
+         */
+
+
+
+
+        /**
+         * >>>>>>>>>>>>>>>>>> ITEMS BAREMABLES >>>>>>>>>>>>>>>>
+         * 
+         * Recoger datos de los items baremables
+         */
+        $arrItems = array();
+        foreach ($_POST["baremable"] as $item) {
+            // $baremables =   isset($_POST["baremable"]) && is_array($_POST["baremable"]) ? $_POST["baremable"]   : null; // number
+            $required =    isset($_POST["required" . $item])   ? $_POST["required" . $item]    : false; // bool
+            $min_value =   isset($_POST["min_value" . $item])  ? $_POST["min_value" . $item]   : null; // number
+            $max_value =   isset($_POST["max_value" . $item])  ? $_POST["max_value" . $item]   : null; // number
+            $contributes_student = isset($_POST["contributes_student" . $item]) ? $_POST["contributes_student" . $item] : false; // bool
+
+            $arrItems[] =
+                new Convocatory_has_item_baremable(
+                    $convocatory_id,
+                    $item,
+                    $required,
+                    $min_value,
+                    $max_value,
+                    $contributes_student
+                );
+
+            $arrScore = null;
+            if ($item == 4) {
+                $languages = DBLanguage::findAll();
+                $arrScore = array();
+
+                foreach ($languages as $value) {
+                    $arrScore[$value->getId()] = $_POST["score_" . $value->getId()];
+                }
+                $arrItems["languages"] = $arrScore;
+            }
+        }
+        /**
+         * <<<<<<<<<<<<<<<<< ITEMS BAREMABLES <<<<<<<<<<<<<<<<<<
+         */
+
+        /**
+         * UPDATE en las tabas:
+         *  - convocatory
+         *  - convocatory_has_group
+         *  - convocatory_has_item_baremable
+         */
+
+        echo DBConvocatory::update($convocatory, $group, $arrItems, $convocatory_id);
+        // header("Location: ?coordinator=baremation");
+        // echo "¡¡La convocatoria se ha actualizado con éxito!!";
         break;
 
     case 'PUT': // INSERT
-        $data = json_decode(file_get_contents('php://input'), true);
-        echo json_encode(var_dump($data));
-        //$convocatory = new Convocatory(1, 'Type Example', '2023-01-01', '2023-02-01', '2023-03-01', '2023-04-01', 'Country Example', 123);
-        //DBConvocatory::insert($convocatory);
+        // TODO para pasar a la api el archivo createConvocatory.php tendría que leer los datos del formulario en el body de $_PUT[]
+        // $data = json_decode(file_get_contents('php://input'), true);
+        // echo json_encode(var_dump($data));
+        /**
+         * >>>>>>>>>>>>>>> CONVOCATORY >>>>>>>>>>>>>>>
+         * 
+         * Recoger datos de la convocatoria
+         */
+        $convocatory_id = null;
+        // Esta variable se debe obtener utilizando transacciones de MYSQL
+        $project =      isset($_POST["project"])    ? $_POST["project"]     : null; // number
+        $country =      isset($_POST["country"])    ? $_POST["country"]     : null; // string
+        $movilities =   isset($_POST["movilities"]) ? $_POST["movilities"]  : null; // number
+        $type =         isset($_POST["type"])       ? $_POST["type"]        : null; // string
+        // Fechas de una convocatoria
+        $date_requests_start =      isset($_POST["date_requests_start"])    ? $_POST["date_requests_start"]     : null; // date
+        $date_requests_end =        isset($_POST["date_requests_end"])      ? $_POST["date_requests_end"]       : null; // date
+        $date_baremation =          isset($_POST["date_baremation"])        ? $_POST["date_baremation"]         : null; // date
+        $date_definitive_lists =    isset($_POST["date_definitive_lists"])  ? $_POST["date_definitive_lists"]   : null; // date
+
+
+        $convocatory =
+            new Convocatory(
+                null,
+                $type,
+                $date_requests_start,
+                $date_requests_end,
+                $date_baremation,
+                $date_definitive_lists,
+                $country,
+                $movilities,
+                $project
+            );
+        /**
+         * <<<<<<<<<<<<<< CONVOCATORY <<<<<<<<<<<<<<<
+         */
+
+
+
+        /**
+         * >>>>>>>>>>>>>>> GROUP >>>>>>>>>>>>>>>
+         * 
+         * Recoger datos de la grupo
+         */
+        $group_id = isset($_POST["group"]) ? $_POST["group"] : null; // string
+
+        $group = DBGroup::findById($group_id);
+        /**
+         * <<<<<<<<<<<<<< GROUP <<<<<<<<<<<<<<<
+         */
+
+
+
+
+        /**
+         * >>>>>>>>>>>>>>>>>> ITEMS BAREMABLES >>>>>>>>>>>>>>>>
+         * 
+         * Recoger datos de los items baremables
+         */
+        $arrItems = array();
+        foreach ($_POST["baremable"] as $item) {
+            // $baremables =   isset($_POST["baremable"]) && is_array($_POST["baremable"]) ? $_POST["baremable"]   : null; // number
+            $required =    isset($_POST["required" . $item])   ? $_POST["required" . $item]    : false; // bool
+            $min_value =   isset($_POST["min_value" . $item])  ? $_POST["min_value" . $item]   : null; // number
+            $max_value =   isset($_POST["max_value" . $item])  ? $_POST["max_value" . $item]   : null; // number
+            $contributes_student = isset($_POST["contributes_student" . $item]) ? $_POST["contributes_student" . $item] : false; // bool
+
+            $arrItems[] =
+                new Convocatory_has_item_baremable(
+                    $convocatory_id,
+                    $item,
+                    $required,
+                    $min_value,
+                    $max_value,
+                    $contributes_student
+                );
+
+            $arrScore = null;
+            if ($item == 4) {
+                $languages = DBLanguage::findAll();
+                $arrScore = array();
+
+                foreach ($languages as $value) {
+                    $arrScore[$value->getId()] = $_POST["score_" . $value->getId()];
+                }
+                $arrItems["languages"] = $arrScore;
+            }
+        }
+        /**
+         * <<<<<<<<<<<<<<<<< ITEMS BAREMABLES <<<<<<<<<<<<<<<<<<
+         */
+
+
+
+
+        /**
+         * INSERT en las tabas:
+         *  - convocatory
+         *  - convocatory_has_group
+         *  - convocatory_has_item_baremable
+         */
+
+        echo DBConvocatory::insert($convocatory, $group, $arrItems);
+        header("Location: http://serverpedroerasmus?coordinator=create_convocatory");
+        // foreach ($arrItems as $key => $value) {
+        //     if (!is_array($value)) {
+        //         echo("KEY: ".$key." | VALUE: ".$value);
+        //         echo "<hr>";
+        //     } else {
+        //         foreach ($arrScore as $key => $value) {
+        //             echo("KEY: ".$key." | VALUE: ".$value);
+        //             echo "<hr>";
+        //         }
+        //     }
+        // }
         break;
 
     case 'DELETE': // DELETE
-        //$convocatory = new Convocatory(1, 'Type Example', '2023-01-01', '2023-02-01', '2023-03-01', '2023-04-01', 'Country Example', 123);
         $id = json_decode(file_get_contents('php://input'), true);
         DBConvocatory::delete($id);
+        // header("Location: ?coordinator=baremation");
+        // require_once "views/coordinator/baremacion/index.php";
+        // echo "¡¡La convocatoria se ha actualizado con éxito!!";
         break;
-    
+
     default:
         echo json_encode(['error' => 'Invalid request']);
         break;
 }
-
-?>

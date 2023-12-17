@@ -22,6 +22,7 @@
 
     <!-- JS -->
     <script src="helpersJS/Validator.js"></script>
+    <script src="views/layout/js/nav.js"></script>
 </head>
 
 <body>

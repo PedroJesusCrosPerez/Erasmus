@@ -359,11 +359,12 @@ document.forms[0].addEventListener("submit", function (ev) {
         for (const error of errors) {
             console.log(error);
         }
+        alert("Error en la creación de la convocatoria");
     } else {
-        alert("TODO Bien");
-        ev.preventDefault();
+        alert("¡¡Convocatoria creada con éxito!!");
+        // ev.preventDefault();
         console.log(val);
-        alert(val);
+        // alert(val);
     }
 })
 // })
@@ -393,7 +394,6 @@ btnInformationNext.addEventListener("click", function () {
             inputError.innerHTML = "";
             this.status = true;
             information_dates();
-            console.log("BIEN");
         } else {
             inputElement.classList.add("lblError");
             inputError.classList.remove("hide");

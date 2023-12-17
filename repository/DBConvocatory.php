@@ -264,36 +264,123 @@ class DBConvocatory
     // ############################################################################################
     // ################################## UPDATE ##################################################
     // ############################################################################################
-    public static function update(Convocatory $convocatory)
+    // update tables convocatory, convocatory_has_group, convocatory_has_item_baremable
+    public static function update(Convocatory $con, Group $group, $arrItem, $convocatoryIdToUpdate)
     {
-        try {
-            $stmt = DB::getConnection()->prepare("UPDATE convocatories SET type = ?, date_start_requests = ?, date_end_requests = ?, date_baremation = ?, 
-                                        date_definitive_lists = ?, country = ?, project_id = ?, movilities = ? WHERE id = ?");
+        try 
+        {
+            $db = DB::getConnection();
+            $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            
+            // Inicio transacción
+            $db->beginTransaction();
+    
+            // Actualizar tabla convocatory
+            $stmt = $db->prepare("UPDATE convocatory SET type=?, date_start_requests=?, date_end_requests=?, date_baremation=?, date_definitive_lists=?, country=?, movilities=?, project_id=? WHERE id=?");
             $stmt->execute([
-                $convocatory->getType(),
-                $convocatory->getDate_start_requests(),
-                $convocatory->getDate_end_requests(),
-                $convocatory->getDate_baremation(),
-                $convocatory->getDate_definitive_lists(),
-                $convocatory->getCountry(),
-                $convocatory->getProject_id(),
-                $convocatory->getId(),
-                $convocatory->getMovilities()
+                $con->getType(), 
+                $con->getDate_start_requests(), 
+                $con->getDate_end_requests(), 
+                $con->getDate_baremation(), 
+                $con->getDate_definitive_lists(), 
+                $con->getCountry(), 
+                $con->getMovilities(), 
+                $con->getProject_id(),
+                $convocatoryIdToUpdate
             ]);
-        } catch (PDOException $e) {
-            die("Error during update: " . $e->getMessage());
+    
+            // Actualizar tabla convocatory_has_group
+            $stmt = $db->prepare("UPDATE convocatory_has_group SET group_id=? WHERE convocatory_id=?");
+            $stmt->execute([$group->getId(), $convocatoryIdToUpdate]);
+    
+            // Actualizar tabla convocatory_has_item_baremable
+            $stmt = $db->prepare("UPDATE convocatory_has_item_baremable SET required=?, min_value=?, max_value=?, contributes_student=? WHERE convocatory_id=? AND item_baremable_id=?");
+            foreach ($arrItem as $item) 
+            {
+                if ($item instanceof Convocatory_has_item_baremable && $item->getItem_baremable_id() != 4) {             
+                    $required = $item->getRequired() ? 1 : 0;
+                    $contributes_strudent = $item->getContributes_student() ? 1 : 0;
+                    $max_value = is_numeric($item->getMax_value()) ? $item->getMax_value() : null;
+    
+                    $stmt->execute([
+                        $required, 
+                        $item->getMin_value(), 
+                        $max_value, 
+                        $contributes_strudent,
+                        $convocatoryIdToUpdate,
+                        $item->getItem_baremable_id()
+                    ]);
+                }
+            }
+    
+            // Si existe la clave 'languages'
+            // Actualizar tabla convocatory_has_item_baremable_has_language
+            if ( isset($arrItem["languages"]) ) {
+                $stmt = $db->prepare("UPDATE convocatory_has_item_baremable_has_languages SET score=? WHERE convocatory_has_item_baremable_convocatory_id=? AND languages_id=?");
+    
+                foreach ($arrItem["languages"] as $key => $value) {
+                    $stmt->execute([
+                        $value,
+                        $convocatoryIdToUpdate, 
+                        $key
+                    ]);
+                }
+            }
+            
+            // COMMIT si todo está bien
+            $db->commit();
+        } 
+        catch (Exception $e) 
+        {
+            // Sino, rollback y vuelvo al estado inicial antes de comenzar la transacción
+            $db->rollBack();
+            echo "Fallo: " . $e->getMessage();
         }
     }
 
-    public static function delete($id)
+
+
+
+    // ############################################################################################
+    // ################################## DELETE ##################################################
+    // ############################################################################################
+    public static function delete($convocatory_id)
     {
-        try {
-            $stmt = DB::getConnection()->prepare("DELETE FROM convocatory WHERE id = ?");
-            $stmt->execute([$id]);
-        } catch (PDOException $e) {
-            die("Error during deletion: " . $e->getMessage());
+        try 
+        {
+            $db = DB::getConnection();
+            $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            
+            // Inicio transacción
+            $db->beginTransaction();
+    
+            // Eliminar de la tabla convocatory_has_item_baremable_has_languages
+            $stmt = $db->prepare("DELETE FROM convocatory_has_item_baremable_has_languages WHERE convocatory_has_item_baremable_convocatory_id = ?");
+            $stmt->execute([$convocatory_id]);
+    
+            // Eliminar de la tabla convocatory_has_item_baremable
+            $stmt = $db->prepare("DELETE FROM convocatory_has_item_baremable WHERE convocatory_id = ?");
+            $stmt->execute([$convocatory_id]);
+    
+            // Eliminar de la tabla convocatory_has_group
+            $stmt = $db->prepare("DELETE FROM convocatory_has_group WHERE convocatory_id = ?");
+            $stmt->execute([$convocatory_id]);
+    
+            // Eliminar de la tabla convocatory
+            $stmt = $db->prepare("DELETE FROM convocatory WHERE id = ?");
+            $stmt->execute([$convocatory_id]);
+    
+            // COMMIT si todo está bien
+            $db->commit();
+        } 
+        catch (Exception $e) 
+        {
+            // Sino, rollback y vuelvo al estado inicial antes de comenzar la transacción
+            $db->rollBack();
+            echo "Fallo: " . $e->getMessage();
         }
     }
+    
 }
 
 ?>

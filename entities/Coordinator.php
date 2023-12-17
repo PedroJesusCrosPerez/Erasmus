@@ -1,5 +1,5 @@
 <?php
-class Group implements JsonSerializable 
+class Coordinator implements JsonSerializable 
 {
     // Properties
     private $id;

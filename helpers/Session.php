@@ -47,6 +47,10 @@ class Session
         return $_SESSION[$clave] ?? null;
     }
 
+
+    static function save2($clave, $valor) {
+        $_SESSION[$clave] = $valor;
+    }
 }
 
 ?>

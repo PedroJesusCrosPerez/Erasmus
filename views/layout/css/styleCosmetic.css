@@ -48,3 +48,8 @@
   font-size: x-large;
   font-weight: bold;
 }
+.inputDisabled {
+  pointer-events: none;
+  opacity: 0.7;
+  background-color: rgb(183, 183, 183);
+}
