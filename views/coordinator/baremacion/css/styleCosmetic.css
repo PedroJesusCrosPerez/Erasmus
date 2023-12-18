@@ -20,6 +20,7 @@
 .contenido {
     background-color: grey;
     border-radius: 20px;
+    flex-wrap: wrap;
 }
 
 /* Cabecera */

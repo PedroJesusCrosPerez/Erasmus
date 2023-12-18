@@ -93,44 +93,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     // ####################################################################################################################################################################################
     // ########################################################## ENVIAR CORREO ADJUNTADO PDF #############################################################################################
     // ####################################################################################################################################################################################
-    // $destinatario = "pedrojcros@gmail.com";
-    // $asunto = "Solicitud beca erasmus";
-    // $cuerpo = "Hola cuerpo";
-
-    // // require_once $_SERVER["DOCUMENT_ROOT"] . "/vendor/autoload.php";
-    // // require_once $_SERVER["DOCUMENT_ROOT"] . '/vendor/autoload.php';
-
-    // use GuzzleHttp\Client;
-    // $client = new Client();
-    // // $data = [
-    // //     'key1' => 'value1',
-    // //     'key2' => 'value2'
-    // // ];
-    // $response = $client->request('POST', 'http://localhost/correo/api/apiCreatePDF.php', [
-    //     'form_params' => $request,
-    // ]);
-
-    // $pdf = $response->getBody();
-
-    // file_put_contents($_SERVER["DOCUMENT_ROOT"] . '/correo/pdfs/mipdf.pdf', $pdf);
-
-    // // header('Content-Type: application/pdf');
-    // // header('Content-Disposition: attachment; filename="mipdf.pdf"');
-
-    // // ############################################################
-    // // ################## ENVIAR CORREO ###########################
-    // // ############################################################
-    // require_once $_SERVER["DOCUMENT_ROOT"] . "/helpers/ServicioCorreos.php";
-
-    // $correo = new ServicioCorreos($destinatario, $asunto, $cuerpo, $pdf);
-    // $correo->enviar();
-
-    // require_once $_SERVER["DOCUMENT_ROOT"]."/helpers/Session.php";
-    // Session::save("request", $request);
     $clave = "request";
     $valor = $request;
     $_SESSION[$clave] = $valor;
     require_once $_SERVER["DOCUMENT_ROOT"]."/sendMail.php";
+    // require_once $_SERVER["DOCUMENT_ROOT"]."/views/norol/list_convocatories/index.php";
+    // header("Location: ?menu=list_convocatories");
+
+    // echo $request;
 } else {
     // Si alguien intenta acceder directamente a este archivo sin enviar datos por POST,
     // puedes redirigirlo a la página principal o mostrar un mensaje de error.

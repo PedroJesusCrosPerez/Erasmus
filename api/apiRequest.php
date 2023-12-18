@@ -85,29 +85,10 @@ switch ($_SERVER["REQUEST_METHOD"])
         break;
 
     case 'DELETE': // DELETE
-        switch ($_POST["property"]) 
-        {
-            case 'id':
-                $data = json_decode(file_get_contents('php://input'), true);
-                $response = DBRequest::delete($data["id"]);
-                
-                echo $response ? json_encode(new Response("true")) : json_encode(new Response("false"));
-                break;
-            
-            case 'name':
-                $data = json_decode(file_get_contents('php://input'), true);
-                $response = DBRequest::deleteByName($data["name"]);
-                
-                echo $response ? json_encode(new Response("true")) : json_encode(new Response("false"));
-                break;
-
-            default:
-                $data = json_decode(file_get_contents('php://input'), true);
-                $response = DBRequest::deleteByName($data["name"]);
-                
-                echo $response ? json_encode(new Response("true")) : json_encode(new Response("false"));
-                break;
-        }
+        $request_id = json_decode(file_get_contents('php://input'), true);
+        // $request_id = $_GET["request_id"];
+        DBRequest::delete($request_id);
+        echo json_encode("true");
         break;
     
     default:

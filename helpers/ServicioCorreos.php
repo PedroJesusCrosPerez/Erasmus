@@ -19,7 +19,7 @@ class ServicioCorreos {
     public function enviar() {
         $mail = new PHPMailer();
         $mail->IsSMTP();
-        $mail->SMTPDebug  = 2;
+        // $mail->SMTPDebug  = 2;
         $mail->SMTPAuth   = true;
         $mail->SMTPSecure = "tls";
         $mail->Host       = "smtp.gmail.com";

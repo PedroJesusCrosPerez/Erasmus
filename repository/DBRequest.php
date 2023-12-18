@@ -281,30 +281,36 @@ class DBRequest
     // ############################################################################################
     // ################################## DELETE ##################################################
     // ############################################################################################
-    static function delete($id): bool
+    // delete by request id
+    public static function delete($id)
     {
-        $cn = new DB(); // TODO quitar en el futuro
-        // Variables
-        $tuples = 0;
-        // Consulta SQL
-        $sql = "DELETE FROM request WHERE id = ?";
-        $stmt = $cn->prepare($sql);
-        $stmt->bind_param("i", $id);
-    
-        if ($stmt->execute()) {
-            echo "Eliminación exitosa";
-            $tuples = $stmt->affected_rows;
-        } else {
-            echo "Error al eliminar: " . $stmt->error;
+        try {
+            $db = DB::getConnection();
+
+            // Begin a transaction
+            $db->beginTransaction();
+
+            // Delete from baremacion table
+            $stmt1 = $db->prepare("DELETE FROM baremacion WHERE request_id = :id");
+            $stmt1->bindParam(':id', $id);
+            $stmt1->execute();
+
+            // Delete from request table
+            $stmt2 = $db->prepare("DELETE FROM request WHERE id = :id");
+            $stmt2->bindParam(':id', $id);
+            $stmt2->execute();
+
+            // Commit the transaction if both deletions were successful
+            $db->commit();
+
+            return true;
+        } catch (PDOException $e) {
+            // Rollback the transaction if there was an error
+            $db->rollBack();
+            die("Error al eliminar datos en la tabla request: " . $e->getMessage());
         }
-    
-        // Cerrar la conexión
-        $stmt->close();
-        $cn->close();
-    
-        // Return
-        return $tuples;
     }
+
 
     static function deleteByName($name): bool
     {

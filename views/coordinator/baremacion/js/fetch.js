@@ -334,13 +334,33 @@ window.addEventListener("load", function () {
                                 for (const item of requests) {
                                     let requestTemplate = request.cloneNode(true);
 
-                                    requestTemplate.querySelector('.dni').innerHTML = item.dni;
+                                    requestTemplate.request_id = item.id;
+                                    // requestTemplate.querySelector('.dni').innerHTML = item.dni;
+                                    requestTemplate.querySelector('.dni').innerHTML = item.id;
                                     requestTemplate.querySelector('.surname').innerHTML = item.surname;
                                     requestTemplate.querySelector('.name').innerHTML = item.name;
                                     requestTemplate.querySelector('.birthdate').innerHTML = item.birthdate;
                                     requestTemplate.querySelector('.phone').innerHTML = item.phone;
                                     // requestTemplate.querySelector('img').src = item.photo;
                                     requestTemplate.querySelector('.baremar').addEventListener("click", openModalBaremar)
+                                    requestTemplate.querySelector('.delete').addEventListener("click", function () {
+                                        fetch("http://serverpedroerasmus/api/apiRequest.php", {
+                                            method: "DELETE",
+                                            headers: {"Content-Type": "application/json"},
+                                            body: JSON.stringify(this.parentElement.parentElement.request_id)
+                                        })
+                                        .then(response => {
+                                            // Verificar si la respuesta está en el rango de códigos de éxito (200-299)
+                                            if (!response.ok) {
+                                                throw new Error('Network response was not ok');
+                                            }
+                                            return response.json();
+                                        })
+                                        .then(data => {
+                                            this.parentElement.parentElement.style.display = "none";
+                                            alert("¡¡Solicitud se ha eliminado con éxito!!");
+                                        })
+                                    });
 
                                     divContainerRequests.appendChild(requestTemplate);
                                 }
