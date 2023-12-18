@@ -24,8 +24,9 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/helpers/Autoload.php";
 
 // Api
 switch ($_SERVER["REQUEST_METHOD"]) {
-    case 'GET': // SELECT
-        switch ($_GET["convocatory"]) {
+    case 'GET':     // SELECT
+        switch ($_GET["convocatory"]) 
+        {
             case 'findAll':
                 echo json_encode(DBConvocatory::findAll());
                 break;
@@ -167,8 +168,10 @@ switch ($_SERVER["REQUEST_METHOD"]) {
                 break;
 
             case 'findByGroup':
-                if (isset($_GET["group"])) {
-                    switch ($_GET["group"]) {
+                if (isset($_GET["group"])) 
+                {
+                    switch ($_GET["group"]) 
+                    {
                         case 'findAll':
                             $groups = DBGroup::findAll();
                             echo json_encode(DBConvocatory::createArrCon_has_group($groups));
@@ -199,7 +202,7 @@ switch ($_SERVER["REQUEST_METHOD"]) {
         }
         break;
 
-    case 'POST': // UPDATE
+    case 'POST':    // UPDATE
         /**
          * >>>>>>>>>>>>>>> CONVOCATORY >>>>>>>>>>>>>>>
          * 
@@ -300,7 +303,7 @@ switch ($_SERVER["REQUEST_METHOD"]) {
         // echo "¡¡La convocatoria se ha actualizado con éxito!!";
         break;
 
-    case 'PUT': // INSERT
+    case 'PUT':     // INSERT
         // TODO para pasar a la api el archivo createConvocatory.php tendría que leer los datos del formulario en el body de $_PUT[]
         // $data = json_decode(file_get_contents('php://input'), true);
         // echo json_encode(var_dump($data));
@@ -418,7 +421,7 @@ switch ($_SERVER["REQUEST_METHOD"]) {
         // }
         break;
 
-    case 'DELETE': // DELETE
+    case 'DELETE':  // DELETE
         $id = json_decode(file_get_contents('php://input'), true);
         DBConvocatory::delete($id);
         // header("Location: ?coordinator=baremation");

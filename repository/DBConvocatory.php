@@ -221,7 +221,7 @@ class DBConvocatory
         }
     }
     
-    // static function createArrCon_has_group($group, $arrConvocatory) {
+    // public static function createArrCon_has_group($group, $arrConvocatory) {
     //     $arrCon_has_group = array(
     //         "group" => $group,
     //         "convocatories" => $arrConvocatory
@@ -229,7 +229,7 @@ class DBConvocatory
         
     //     return $arrCon_has_group;
     // }
-    static function createArrCon_has_group($arrGroup) {
+    public static function createArrCon_has_group($arrGroup) {
         $arrConvocatory = null;
         $arrCon_has_group = array();
 
@@ -245,8 +245,23 @@ class DBConvocatory
         
         return $arrCon_has_group;
     }
+
+    static function createArrCon_has_group2($arrGroup)
+    {
+        $arrCon_has_group = array();
+
+        foreach ($arrGroup as $value) {
+            $arrCon_has_group[] = array(
+                "group" => $value,
+                "convocatories" => DBConvocatory::findByGroupId($value->getId())
+            );
+        }
+
+        return $arrCon_has_group;
+    }
+
     
-    static function createArrCon_has_groupByGroup_id($group_id) {
+    public static function createArrCon_has_groupByGroup_id($group_id) {
         $group = DBGroup::findById($group_id);
         $arrCon = DBConvocatory::findByGroupId($group_id);
         

@@ -138,6 +138,21 @@ class Request implements JsonSerializable
         );
     }
 
+    public function myToString() {
+        return sprintf(
+            "DNI: %s<br>· Name: %s<br>· Surname: %s<br>· Birthdate: %s<br>· Group: %s<br>· Phone: %s<br>· Email: %s<br>· Address: %s<br>· Convocatory ID: %s<br>",
+            $this->getDni(),
+            $this->getName(),
+            $this->getSurname(),
+            $this->getBirthdate(),
+            $this->getGroup(),
+            $this->getPhone(),
+            $this->getEmail(),
+            $this->getAddress(),
+            $this->getConvocatory_id()
+        );
+    }
+
     public function jsonSerialize() {
         return get_object_vars($this);
     }

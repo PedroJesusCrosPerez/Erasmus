@@ -41,24 +41,45 @@ window.addEventListener("load", function () {
                 // Iterar sobre las preguntas y crear elementos para cada una
                 for (var i = 0; i < length; i++) 
                 {
+                    // if (data[i] != null) 
+                    // {
+                    //     var convocatory = data[i].convocatories[0];
+                    //     var group = data[i].group;
+                    //     var convoAux = pregunta.cloneNode(true);
+
+                    //     // Asignar contenido
+                    //     this.convocatory_id = convocatory.id;
+                    //     // Agregar clases
+                    //     convoAux.querySelector(".country").innerHTML =              convocatory.country;
+                    //     convoAux.querySelector(".movilities").innerHTML =           convocatory.movilities;
+                    //     convoAux.querySelector(".date_end_requests").innerHTML =    convocatory.date_end_requests;
+                    //     convoAux.querySelector(".group_name").innerHTML =           group.name;
+                    //     // Enlace para acceder a rellenar la solicitud correspondiente
+                    //     convoAux.querySelector("a").href = "?menu=complete_request&convocatory_id="+convocatory.id;
+                        
+                    //     // Agregar la convocatoria y añadirla al contenedor
+                    //     convocatory_container.appendChild(convoAux);
+                    // }
                     if (data[i] != null) 
                     {
-                        var convocatory = data[i].convocatories[0];
-                        var group = data[i].group;
-                        var convoAux = pregunta.cloneNode(true);
+                        for (const convocatory of data[i].convocatories) {
+                            // var convocatory = data[i].convocatories[0];
+                            var group = data[i].group;
+                            var convoAux = pregunta.cloneNode(true);
 
-                        // Asignar contenido
-                        this.convocatory_id = convocatory.id;
-                        // Agregar clases
-                        convoAux.querySelector(".country").innerHTML =              convocatory.country;
-                        convoAux.querySelector(".movilities").innerHTML =           convocatory.movilities;
-                        convoAux.querySelector(".date_end_requests").innerHTML =    convocatory.date_end_requests;
-                        convoAux.querySelector(".group_name").innerHTML =           group.name;
-                        // Enlace para acceder a rellenar la solicitud correspondiente
-                        convoAux.querySelector("a").href = "?menu=complete_request&convocatory_id="+convocatory.id;
-                        
-                        // Agregar la convocatoria y añadirla al contenedor
-                        convocatory_container.appendChild(convoAux);
+                            // Asignar contenido
+                            this.convocatory_id = convocatory.id;
+                            // Agregar clases
+                            convoAux.querySelector(".country").innerHTML =              convocatory.country;
+                            convoAux.querySelector(".movilities").innerHTML =           convocatory.movilities;
+                            convoAux.querySelector(".date_end_requests").innerHTML =    convocatory.date_end_requests;
+                            convoAux.querySelector(".group_name").innerHTML =           group.name;
+                            // Enlace para acceder a rellenar la solicitud correspondiente
+                            convoAux.querySelector("a").href = "?menu=complete_request&convocatory_id="+convocatory.id;
+                            
+                            // Agregar la convocatoria y añadirla al contenedor
+                            convocatory_container.appendChild(convoAux);
+                        }
                     }
                 }
             }
