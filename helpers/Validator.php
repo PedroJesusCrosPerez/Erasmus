@@ -68,6 +68,16 @@ class Validator implements JsonSerializable
         return $isValid;
     }
 
+    function stringRange($value, $fieldName, $errorMessage, $minLength, $maxLength) {
+        $length = strlen($value);
+        
+        if ($length < $minLength || $length > $maxLength) {
+            $this->setErrors($fieldName, "stringRange", $errorMessage);
+        }
+        
+        return null; // La cadena cumple con los requisitos de longitud
+    }
+
     function stringRegex($fieldName, $value, $regex, $errorMessage) : bool 
     {
         $isValid = true;
@@ -156,6 +166,16 @@ class Validator implements JsonSerializable
             $this->setErrors($fieldName, 'isNull', $errorMessage);
         }
     }
+
+    function intRange($variable, $fieldName, $errorMessage, $min, $max) {
+        $variable = intval($variable);
+        if (!($variable > $min && $variable < $max)) {
+            $this->setErrors($fieldName, 'intRange', $errorMessage);
+        } else {
+            $this->errors = "";
+        }
+    }
+    
 
     // JSON
     static function esJSON($cadena) {

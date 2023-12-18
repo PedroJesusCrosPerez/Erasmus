@@ -22,18 +22,59 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit"]))
     $date_definitive_lists =    isset($_POST["date_definitive_lists"])  ? $_POST["date_definitive_lists"]   : null; // date
 
 
-    $convocatory = 
-    new Convocatory(
-        null,
-        $type,
-        $date_requests_start,
-        $date_requests_end,
-        $date_baremation,
-        $date_definitive_lists,
-        $country,
-        $movilities,
-        $project
-    );
+    /**
+     * >>>>>>>>>>>>>>> VALIDAR >>>>>>>>>>>>>>>
+     */
+    $val = new Validator();
+    // IS NULL
+    $val->isNull($project,      "project",      "El proyecto seleccionado es NULO");
+    $val->isNull($country,      "country",      "El proyecto seleccionado es NULO");
+    $val->isNull($movilities,   "movilities",   "El proyecto seleccionado es NULO");
+    $val->isNull($type,         "type",         "El proyecto seleccionado es NULO");
+    $val->isNull($date_requests_start,      "date_requests_start",      "El proyecto seleccionado es NULO");
+    $val->isNull($date_requests_end,        "date_requests_end",        "El proyecto seleccionado es NULO");
+    $val->isNull($date_baremation,          "date_baremation",          "El proyecto seleccionado es NULO");
+    $val->isNull($date_definitive_lists,    "date_definitive_lists",    "El proyecto seleccionado es NULO");
+
+    // IS NUMERIC
+    $val->isNumeric($project,       "project",      "El proyecto debe ser un ID (un número), con el cuál poder acceder a él");
+    $val->isNumeric($movilities,    "movilities",   "La cantidad de movilidades deben ser numéricas");
+    
+    // RANGE
+        // - INT RANGE
+        $min = 1;
+        $max = 30;
+    $val->intRange($movilities,    "movilities",   "Debes tener entre [".$min." y ".$max."] movilidades", $min, $max);
+    
+        // - STRING RANGE
+        $minLength = 1;
+        $maxLength = 30;
+    $val->stringRange($country, "country", "El país debe tener una longitud entre [".$minLength." y ".$maxLength." caracteres.", $minLength, $maxLength);
+    /**
+     * <<<<<<<<<<<<<<< VALIDAR <<<<<<<<<<<<<<<
+     */
+
+
+    if ($val->isError()) 
+    {
+        echo "Se ha producido los siguientes errores: <br>";
+        echo $val->getErrors();
+    } 
+    else 
+    {
+        $convocatory = 
+        new Convocatory(
+            null,
+            $type,
+            $date_requests_start,
+            $date_requests_end,
+            $date_baremation,
+            $date_definitive_lists,
+            $country,
+            $movilities,
+            $project
+        );
+    }
     /**
      * <<<<<<<<<<<<<< CONVOCATORY <<<<<<<<<<<<<<<
      */
@@ -103,8 +144,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit"]))
      *  - convocatory_has_item_baremable
     */
     
-    echo DBConvocatory::insert($convocatory, $group, $arrItems);
-    header("Location: http://serverpedroerasmus?coordinator=create_convocatory");
+    DBConvocatory::insert($convocatory, $group, $arrItems);
+    header("Location: ?coordinator=create_convocatory");
     // foreach ($arrItems as $key => $value) {
     //     if (!is_array($value)) {
     //         echo("KEY: ".$key." | VALUE: ".$value);

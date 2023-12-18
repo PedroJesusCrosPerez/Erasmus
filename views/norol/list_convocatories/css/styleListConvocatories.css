@@ -44,9 +44,12 @@
 
 /* CONVOCATORIAS */
 .convocatory-container {
-    height: 100px;
+    /* height: 200px; */
     width: 500px;
     max-width: 500px;
+    overflow-y: auto;
+    max-height: 550px;
+    min-height: 95%;
 
     /* display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -202,4 +205,7 @@ button:hover {
     background-color: rgba(0, 128, 255, 0.8);
 } */
 
-.convocatory-container > div:nth-child(3) { height: 1.5em; }
+.convocatory-container > div:nth-child(3) { 
+    height: 1.5em;
+}
+

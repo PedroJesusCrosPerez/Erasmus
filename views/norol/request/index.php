@@ -95,7 +95,7 @@ echo '
             <button id="openWebcam" onclick="modalFoto(event)">Open Webcam Modal</button>
         </div>
         <div name="vista_previa">
-            <img id="imgFotoPerfil" src="" alt="Vista previa de foto perfil">
+            <img id="imgFotoPerfil" src="" alt="Vista previa de foto perfil" width="80px" height="80px">
             <input type="text" name="photo" id="blob">
         </div>
         <label for="photo" class="inputError" id="photoError"></label>

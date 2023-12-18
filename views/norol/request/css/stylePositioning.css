@@ -34,3 +34,13 @@ input[type="text"],input[type="date"] {
     text-align: center;
     padding-top: 2em;
 }
+
+
+div[name='vista_previa'] {
+    text-align: center;
+    cursor: pointer;
+}
+div[name='vista_previa']:hover {
+    background-color: rgb(255, 255, 255);
+    opacity: 0.8;
+}
